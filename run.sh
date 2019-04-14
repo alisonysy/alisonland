@@ -1,0 +1,1 @@
+vue inspect > output.js
