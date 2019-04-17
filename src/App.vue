@@ -1,20 +1,29 @@
 <template>
   <div id="app">
-    <loading/>
+    <home/>
   </div>
 </template>
 
 <script>
 import loading from '@/components/loading.vue';
+import home from '@/views/Home.vue'
 
-export default{
-  name:'home',
-  components:{
+export default {
+  name: 'App',
+  components: {
     loading,
+    home
+  },
+  data () {
+    return {
+      //
+    }
   }
 }
 </script>
 
 <style>
-*{box-sizing: border-box;padding: 0;margin: 0;}
+*{padding:0;margin: 0;box-sizing: border-box}
+
+
 </style>
