@@ -1,16 +1,17 @@
 <template>
   <main class="home">
-
+    <navigation/>
   </main>
 </template>
 
 <script>
   //import HelloWorld from '../components/HelloWorld'
+  import navigation from '@/components/navigation'
 
   export default {
     name:'home',
     components: {
-      
+      navigation
     }
   }
 </script>
@@ -20,9 +21,14 @@
   height: 100vh;
   min-width:100vw;
   background-image: 
-    linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.1)),
-    url('../assets/bg/PATTERN_2.png');
+    linear-gradient(rgba(255,255,255,0.8),rgba(255,255,255,0.65)),
+    url('../assets/home-bg-lines-gap.png');
   background-repeat:  repeat-x;
-  background-size: contain;
+  background-size: cover;
+}
+
+#navigation-wrapper{
+  position:fixed;
+  bottom:0;
 }
 </style>

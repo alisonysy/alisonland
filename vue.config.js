@@ -6,6 +6,7 @@ const imageminJpegtran = require("imagemin-jpegtran");
 const imageminOptipng = require("imagemin-optipng");
 const imageminSvgo = require("imagemin-svgo");
 const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminPng = require('imagemin-pngquant');
 
 module.exports = {
   configureWebpack:{
@@ -19,6 +20,9 @@ module.exports = {
           // Lossless optimization with custom option
           // Feel free to expirement with options for better result for you
           plugins: [
+            imageminPng({
+              quality:70
+            }),
             imageminGifsicle({
               interlaced: true
             }),
