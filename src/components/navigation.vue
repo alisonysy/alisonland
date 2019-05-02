@@ -1,15 +1,24 @@
 <template>
   <nav id="navigation-wrapper">
-    <div class="tab active"></div>
-    <div class="tab"></div>
-    <div class="tab"></div>
-    <div class="tab"></div>
+    <div v-for="val in tabObj" class="tab whiteFont dspFlex fs16">
+      <span>{{val}}</span>
+    </div>
   </nav>
 </template>
 
 <script>
 export default {
-  name:'navigation'
+  name:'navigation',
+  data(){
+    return {
+      tabObj:{
+        tab1:'Favourite',
+        tab2:'Blogs',
+        tab3:'Portfolio',
+        tab4:'About Me'
+      }
+    }
+  }
 }
 </script>
 
@@ -28,6 +37,8 @@ export default {
   margin:0 2%;
   background:linear-gradient(to top,rgba(255,255,255,0.3) ,rgba(255,255,255,0.3)),
              #2aa1b7;
+  justify-content: center;
+  align-items: center;
 }
 
 .tab:hover{
@@ -35,6 +46,8 @@ export default {
   transform:translate(0,-20%);
   height:150%;
 }
+
+
 
 
 </style>

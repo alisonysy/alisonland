@@ -28,6 +28,7 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "monad", monospace;
 }
 /* general position and display settings */
 .posiRela {
@@ -54,6 +55,9 @@ export default {
   color:#04244a;
 }
 
+.whiteFont{
+  color:#fff;
+}
 
 /* import fonts */
 @font-face {
