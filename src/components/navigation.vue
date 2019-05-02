@@ -31,7 +31,8 @@ export default {
 }
 
 .tab:hover{
-  transform:translate(0,-30%);
+  cursor: pointer;
+  transform:translate(0,-20%);
   height:150%;
 }
 
