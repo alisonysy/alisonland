@@ -1,15 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import favourites from './views/favourites.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path:'/',
+      name:'home',
+      component:Home,
+    },
+    {
+      path: '/favsite',
+      name: 'favourites',
+      component: favourites
     },
     {
       path: '/about',

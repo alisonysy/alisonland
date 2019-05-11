@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <home/>
+    <router-view></router-view>
   </div>
 </template>
+
 
 <script>
 import loading from "@/components/loading.vue";
 import home from "@/views/Home.vue";
-
 export default {
   name: "App",
   components: {
@@ -24,12 +24,14 @@ export default {
 </script>
 
 <style>
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "monad", monospace;
+  font-family: "monad", "Space Mono",monospace;
 }
+a{text-decoration: none;color:unset;}
 /* general position and display settings */
 .posiRela {
   position: relative;
@@ -64,4 +66,5 @@ export default {
   font-family: "monad";
   src: url("assets/fonts/Monad.otf") format("opentype");
 }
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
 </style>

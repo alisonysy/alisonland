@@ -9,6 +9,7 @@
     </div>
     <div class="announcement">
       <p>Welcome to my journey of being a web developer. Hope you enjoy and plz feel free to leave a message for any further discussion :)</p>
+      <p>欢迎同道的你，也欢迎随时留言探讨~</p>
     </div>
     <div class="profileImg-wrapper posiAbso">
       <img
@@ -110,13 +111,13 @@ export default {
 }
 
 .announcement p{
-  font-family: monospace;
+  font-family: 'Space Mono',monospace;
 }
 
 /* profile img */
 .profileImg-wrapper{
   top: 10%;
-  right: 22%;
+  right: 20%;
   width: 16%;
   will-change: transform;
 }

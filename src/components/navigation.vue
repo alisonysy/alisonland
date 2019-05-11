@@ -1,7 +1,9 @@
 <template>
   <nav id="navigation-wrapper">
     <div v-for="val in tabObj" class="tab whiteFont dspFlex fs16">
+      <router-link to="/favsite">
       <span>{{val}}</span>
+      </router-link>
     </div>
   </nav>
 </template>
@@ -12,12 +14,15 @@ export default {
   data(){
     return {
       tabObj:{
-        tab1:'Favourite',
+        tab1:'Favourites',
         tab2:'Blogs',
         tab3:'Portfolio',
         tab4:'About Me'
       }
     }
+  },
+  mounted:()=>{
+
   }
 }
 </script>
