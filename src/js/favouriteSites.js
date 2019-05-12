@@ -1,7 +1,8 @@
-exports.leanclound = !(function(){
+function fetchLeanCloudData(){
   var leancloudInit = require('./leancloudInit');
   var AV = require('leancloud-storage');
-  console.log('executed')
+  var query = new AV.Query("FavouriteSites");
+  return    query.find()
   // var FavSite = AV.Object.extend('FavouriteSites');
   // var favSite = new FavSite();
   // favSite.save({
@@ -14,4 +15,7 @@ exports.leanclound = !(function(){
   // }).then(function(object) {
   //   console.log(object);
   // })
-})();
+};
+
+export default new fetchLeanCloudData();
+

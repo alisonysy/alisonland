@@ -2,43 +2,104 @@
   <div class="favourites">
     <favHeader/>
     <div class="desc"></div>
-    <div class="siteContent"></div>
+    <ul class="siteContent">
+      <li v-for="site in dataAllsites" v-bind:key="site.id" class="siteLi">
+        <siteItem :item="site"/>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 import favHeader from "@/components/header.vue";
+import siteItem from "@/components/siteItem.vue";
 export default {
-  data:()=>{
+  data: () => {
     return {
-      
-    }
+      dataAllsites: [],
+      dataSite: {
+        id: "",
+        title: "",
+        category: "",
+        series: false,
+        abstract: "",
+        recom: 0,
+        related_blogs: null,
+        url: "",
+        tag: [],
+        createdAt: null,
+        updatedAt: null
+      }
+    };
   },
   name: "favourites",
   components: {
-    favHeader
+    favHeader,
+    siteItem
   },
   methods: {
+    fetchLeanCloudData() {
+      var fetchLeanCloudData_favSites = require("../js/favouriteSites.js")
+        .default; //this returns a promise
+      fetchLeanCloudData_favSites.then(
+        res => {
+          res.forEach(element => {
+            let siteEl = {};
+            let attr = [
+              "id",
+              "title",
+              "category",
+              "series",
+              "abstract",
+              "recom",
+              "related_blogs",
+              "url",
+              "tag",
+              "createdAt",
+              "updatedAt"
+            ];
+            attr.forEach(i => {
+              if (element[i]) {
+                siteEl[i] = element[i];
+              } else if (i === "series") {
+                siteEl[i] = element.attributes[i];
+              } else if (element.attributes[i]) {
+                siteEl[i] = element.attributes[i];
+              }
+            });
+            console.log(siteEl);
+            this.dataAllsites.push(siteEl);
+          });
+          console.log(this.dataAllsites);
+        },
+        err => {
+          console.error(err);
+        }
+      );
+    },
     generateRandomBlock() {
       let blockNum = 3,
-          minWidth = 25,
-          maxDis,
-          addedWidth;
-      maxDis = 100 - blockNum * minWidth;
-      addedWidth = Math.floor(Math.random()*maxDis);
-      let siteContent = $('.siteContent');
+        minWidth = 25,
+        availableDis,
+        addedWidth;
+      availableDis = 100 - blockNum * minWidth;
+      addedWidth = Math.floor(Math.random() * availableDis);
+      let siteContent = $(".siteContent");
       let siteDiv = $(document.createElement("div"));
-      siteDiv.addClass('site')
+      siteDiv.addClass("site");
       siteDiv.css({
-        height:'20em',
-        width:`${minWidth+addedWidth}%`,
-        border:'1px solid red'
-      })
+        height: "20em",
+        width: `${minWidth + addedWidth}%`,
+        border: "1px solid red"
+      });
       siteContent.append(siteDiv);
     }
   },
   mounted() {
-    this.generateRandomBlock();
+    //this.generateRandomBlock();
+  },
+  beforeMount() {
+    this.fetchLeanCloudData();
   }
 };
 </script>
@@ -47,6 +108,10 @@ export default {
 .desc {
   height: 50vh;
   border-bottom: 2px solid #04244a;
+}
+.siteLi{
+  display: inline-block;
+  max-width: 50%;
 }
 </style>
 

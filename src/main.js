@@ -5,7 +5,6 @@ import router from './router'
 import store from './store'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import favouriteSites from '@/js/favouriteSites.js'
 
 import jquery from 'jquery'
 Vue.config.productionTip = false;

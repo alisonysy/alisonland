@@ -32,6 +32,7 @@ export default {
   font-family: "monad", "Space Mono",monospace;
 }
 a{text-decoration: none;color:unset;}
+ul,li{list-style: none;padding: 0;margin: 0;}
 /* general position and display settings */
 .posiRela {
   position: relative;
