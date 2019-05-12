@@ -9,6 +9,11 @@
 <script>
 import favHeader from "@/components/header.vue";
 export default {
+  data:()=>{
+    return {
+      
+    }
+  },
   name: "favourites",
   components: {
     favHeader
@@ -21,15 +26,15 @@ export default {
           addedWidth;
       maxDis = 100 - blockNum * minWidth;
       addedWidth = Math.floor(Math.random()*maxDis);
-      console.log(addedWidth)
-      let siteContent = document.querySelector(".siteContent");
-      let siteDiv = document.createElement("div");
-      siteDiv.classList.add("site");
-      siteDiv.style.height = "20em";
-      siteDiv.style.width = `${minWidth + addedWidth}%`;
-
-      siteDiv.style.border = "1px solid red";
-      siteContent.insertAdjacentElement("afterbegin", siteDiv);
+      let siteContent = $('.siteContent');
+      let siteDiv = $(document.createElement("div"));
+      siteDiv.addClass('site')
+      siteDiv.css({
+        height:'20em',
+        width:`${minWidth+addedWidth}%`,
+        border:'1px solid red'
+      })
+      siteContent.append(siteDiv);
     }
   },
   mounted() {
@@ -44,3 +49,4 @@ export default {
   border-bottom: 2px solid #04244a;
 }
 </style>
+

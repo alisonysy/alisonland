@@ -7,10 +7,10 @@ import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import favouriteSites from '@/js/favouriteSites.js'
 
-// import $ from 'jquery'
-
+import jquery from 'jquery'
 Vue.config.productionTip = false;
-// Vue.prototype.$ = $;
+Vue.prototype.$ = jquery;
+window.$ = jquery;
 
 
 /* filters */
