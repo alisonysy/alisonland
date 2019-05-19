@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "leancloud-storage": "^3.13.1",
+    "jquery": "^3.4.1",
+    "leancloud-storage": "^3.13.2",
     "material-design-icons-iconfont": "^3.0.3",
     "roboto-fontface": "*",
     "vue": "^2.6.10",

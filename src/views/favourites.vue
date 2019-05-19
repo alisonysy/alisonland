@@ -2,7 +2,7 @@
   <div class="favourites">
     <favHeader/>
     <div class="desc"></div>
-    <ul class="siteContent">
+    <ul class="siteContent whiteFont">
       <li v-for="site in dataAllsites" v-bind:key="site.id" class="siteLi">
         <siteItem :item="site"/>
       </li>
@@ -41,7 +41,7 @@ export default {
     fetchLeanCloudData() {
       var fetchLeanCloudData_favSites = require("../js/favouriteSites.js")
         .default; //this returns a promise
-      fetchLeanCloudData_favSites.then(
+      return fetchLeanCloudData_favSites.then(
         res => {
           res.forEach(element => {
             let siteEl = {};
@@ -67,7 +67,6 @@ export default {
                 siteEl[i] = element.attributes[i];
               }
             });
-            console.log(siteEl);
             this.dataAllsites.push(siteEl);
           });
           console.log(this.dataAllsites);
@@ -93,6 +92,19 @@ export default {
         border: "1px solid red"
       });
       siteContent.append(siteDiv);
+    },
+    siteLiHeight() {
+      let li = $(".siteLi");
+      let liLen = $(".siteLi").length;
+      for (let i = 0; i < liLen; i++) {
+        let liHeight = li.eq(i)[0].scrollHeight;
+        if(i%2 && i!==0){
+          let prevLiHeight = li.eq(i-1)[0].scrollHeight;
+          let minH = prevLiHeight > liHeight ? prevLiHeight : liHeight;
+          li.eq(i-1).css('height',`${minH}px`);
+          li.eq(i).css('height',`${minH}px`);
+        }
+      }
     }
   },
   mounted() {
@@ -100,6 +112,9 @@ export default {
   },
   beforeMount() {
     this.fetchLeanCloudData();
+  },
+  updated() {
+    this.siteLiHeight();
   }
 };
 </script>
@@ -107,9 +122,11 @@ export default {
 <style scoped>
 .desc {
   height: 50vh;
-  border-bottom: 2px solid #04244a;
 }
-.siteLi{
+.siteContent {
+  background: #04244a;
+}
+.siteLi {
   display: inline-block;
   max-width: 50%;
 }

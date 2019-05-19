@@ -53,6 +53,9 @@ ul,li{list-style: none;padding: 0;margin: 0;}
 .fs14{
   font-size: 14px;
 }
+.spMono{
+  font-family: 'Space Mono';
+}
 /* general color settings */
 .deepBlue{
   color:#04244a;
