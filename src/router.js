@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+//navigation
 import favourites from './views/favourites.vue'
+import blogs from './views/blogs.vue'
 
 Vue.use(Router)
 
@@ -16,6 +18,11 @@ export default new Router({
       path: '/favsite',
       name: 'favourites',
       component: favourites
+    },
+    {
+      path:'/blogs',
+      name:'blogs',
+      component: blogs
     },
     {
       path: '/about',

@@ -3,7 +3,9 @@
     <div class="headerLeft">
       <div class="otherLinks dspFlex fs20 deepBlue">{{homeDate | dateFormate}}</div>
       <div class="nameBg">
-        <span class="initialLetter whiteFont fs20">A</span>
+        <router-link to="/">
+          <span class="initialLetter whiteFont fs20">A</span>
+        </router-link>
       </div>
     </div>
     <div class="functions headerRight">

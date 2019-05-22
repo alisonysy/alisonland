@@ -1,8 +1,8 @@
 <template>
   <nav id="navigation-wrapper">
     <div v-for="val in tabObj" class="tab whiteFont dspFlex fs16">
-      <router-link to="/favsite">
-      <span>{{val}}</span>
+      <router-link :to="val.rt">
+      <span>{{val.name}}</span>
       </router-link>
     </div>
   </nav>
@@ -14,10 +14,22 @@ export default {
   data(){
     return {
       tabObj:{
-        tab1:'Favourites',
-        tab2:'Blogs',
-        tab3:'Portfolio',
-        tab4:'About Me'
+        tab1:{
+          name:'Favourites',
+          rt:'/favsite'
+        },
+        tab2:{
+          name:'Blogs',
+          rt:'/blogs'
+        },
+        tab3:{
+          name:'Portfolio',
+          rt:'/portfolio'
+        },
+        tab4:{
+          name:'About Me',
+          rt:'/about-me'
+        }
       }
     }
   },

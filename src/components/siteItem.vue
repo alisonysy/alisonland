@@ -3,11 +3,15 @@
     <div class="left">
       <div class="siteAbstract spMono posiRela">
         {{site.abstract}}
-        <a class="siteArr" :href="site.url"></a>
+        <a class="siteArr" :href="site.url" target="_blank"></a>
       </div>
     </div>
     <div class="middle fs20">
-      <h1 class="siteTitle">{{site.title}}</h1>
+      <h1 class="siteTitle">
+        <a :href="site.url" target="_blank">
+          {{site.title}}
+        </a>
+      </h1>
       <ul class="siteTags">
         <li v-for="tag in site.tag" class="siteTagsLi spMono">{{tag}}</li>
       </ul>
@@ -60,7 +64,6 @@ export default {
 }
 .siteArr{
   padding-top: 2em;
-  content:'';
   width:3.5em;
   height:1px;
   border-bottom:2px solid #fff;
