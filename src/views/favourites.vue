@@ -2,7 +2,7 @@
   <div class="favourites">
     <favHeader/>
     <div class="desc"></div>
-    <ul class="siteContent whiteFont">
+    <ul class="siteContent whiteFont dspFlex">
       <li v-for="site in dataAllsites" v-bind:key="site.id" class="siteLi">
         <siteItem :item="site"/>
       </li>
@@ -93,19 +93,7 @@ export default {
       });
       siteContent.append(siteDiv);
     },
-    siteLiHeight() {
-      let li = $(".siteLi");
-      let liLen = $(".siteLi").length;
-      for (let i = 0; i < liLen; i++) {
-        let liHeight = li.eq(i)[0].scrollHeight;
-        if(i%2 && i!==0){
-          let prevLiHeight = li.eq(i-1)[0].scrollHeight;
-          let minH = prevLiHeight > liHeight ? prevLiHeight : liHeight;
-          li.eq(i-1).css('height',`${minH}px`);
-          li.eq(i).css('height',`${minH}px`);
-        }
-      }
-    }
+    
   },
   mounted() {
     //this.generateRandomBlock();
@@ -114,7 +102,6 @@ export default {
     this.fetchLeanCloudData();
   },
   updated() {
-    this.siteLiHeight();
   }
 };
 </script>
@@ -125,10 +112,12 @@ export default {
 }
 .siteContent {
   background: #04244a;
+  width:100vw;
+  flex-flow: row wrap;
 }
 .siteLi {
   display: inline-block;
-  max-width: 50%;
+  width: 50%;
 }
 </style>
 

@@ -1,7 +1,10 @@
 <template>
   <div class="siteItem dspFlex" :data-id="site.id">
     <div class="left">
-      <div class="siteAbstract spMono">{{site.abstract}}</div>
+      <div class="siteAbstract spMono posiRela">
+        {{site.abstract}}
+        <a class="siteArr" :href="site.url"></a>
+      </div>
     </div>
     <div class="middle fs20">
       <h1 class="siteTitle">{{site.title}}</h1>
@@ -28,16 +31,10 @@ export default {
     }
   },
   methods:{
-    siteItemHeight(){
-      let item = $('.siteItem');
-      for(let i=0;i<item.length;i++){
-        console.log('height is')
-        console.log(item.eq(i)[0].scrollHeight)
-      }
-    }
+
   },
   mounted() {
-    this.siteItemHeight();
+
   },
   updated(){
     
@@ -48,18 +45,41 @@ export default {
 <style scoped>
 .siteItem {
   width: 100%;
-  padding: 3em 1em;
+  padding: 8% 3%;
     border-bottom: 1px solid #fff;
   border-right: 1px solid #fff;
-
+  height: 100%;
 }
 .left {
   width: 33%;
-  padding-right: 1.5em;
+  padding-right: 5%;
 }
 .siteAbstract {
   font-size: .8em;
   line-height: 2em;
+}
+.siteArr{
+  padding-top: 2em;
+  content:'';
+  width:3.5em;
+  height:1px;
+  border-bottom:2px solid #fff;
+  position: absolute;
+  bottom: -2.7em;
+  right: 1em;
+  border-radius: 2px;
+
+}
+.siteArr::before{
+  content:'';
+  width:1.7em;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  bottom: .5em;
+  right:-0.2em;
+  transform: rotate(-135deg);
+  border-radius: 2px;
 }
 
 .middle{
@@ -87,7 +107,6 @@ export default {
   text-orientation: upright;
   letter-spacing: -0.5em;
   font-family: "Space mono", monospace;
-  height: 100%;
   padding-right: 1em;
 }
 </style>
