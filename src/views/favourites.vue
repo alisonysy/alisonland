@@ -76,24 +76,6 @@ export default {
         }
       );
     },
-    generateRandomBlock() {
-      let blockNum = 3,
-        minWidth = 25,
-        availableDis,
-        addedWidth;
-      availableDis = 100 - blockNum * minWidth;
-      addedWidth = Math.floor(Math.random() * availableDis);
-      let siteContent = $(".siteContent");
-      let siteDiv = $(document.createElement("div"));
-      siteDiv.addClass("site");
-      siteDiv.css({
-        height: "20em",
-        width: `${minWidth + addedWidth}%`,
-        border: "1px solid red"
-      });
-      siteContent.append(siteDiv);
-    },
-    
   },
   mounted() {
     //this.generateRandomBlock();

@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "fav-header",
+  name: "site-header",
   computed: {
     homeDate: () => {
       return new Date();

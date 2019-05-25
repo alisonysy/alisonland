@@ -49,10 +49,10 @@ export default {
       let img = document.querySelector(".profileImg-wrapper > img");
       if (this.profileImgName === "home-profile-1-origin") {
         this.profileImgName = "home-profile-2-origin";
-        img.style.transform = "rotate(10deg)";
+        img.style.transform = "rotate(5deg)";
       } else {
         this.profileImgName = "home-profile-1-origin";
-        img.style.transform = "rotate(-10deg)"
+        img.style.transform = "rotate(-5deg)"
       }
     }
   },
@@ -124,7 +124,7 @@ export default {
 .profileImgUp {
   max-width: 100%;
   will-change: transform;
-  transform: rotate(-10deg);
+  transform: rotate(-5deg);
 }
 
 /* navigation */

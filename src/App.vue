@@ -71,4 +71,8 @@ ul,li{list-style: none;padding: 0;margin: 0;}
   src: url("assets/fonts/Monad.otf") format("opentype");
 }
 @import url('https://fonts.googleapis.com/css?family=Space+Mono');
+@font-face{
+  font-family: 'anthology-outline';
+  src:url('assets/fonts/Anthology-Outline.ttf') format('truetype');
+}
 </style>
