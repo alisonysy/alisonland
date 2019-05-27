@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="postBody markdown-body">
-        > 以下内容翻译自MDN：[MDN Visual Formatting Model](https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model)
+        > 以下内容摘自MDN：[MDN Visual Formatting Model](https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model)
 
         ## 什么是视觉格式化模型
         视觉格式化模型是处理文档和在视觉媒体上呈现该文档的一套机制。
