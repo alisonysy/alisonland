@@ -54,8 +54,17 @@
         
         Until then, I thought it was all good as the app runs under debug mode. But when I switched to the release mode. Another error came up. :)
 
-        ### Bug 3 - Undefined symbols for architecture i386: "xxxx", referenced from
-
+        ### Bug 3 - "_objc_class_$_" referenced from
+        I was on `release` mode when getting these errors. However, it can be archived on release mode and run on real device after being plugged into laptop. 
+        It just cannot be run on simulators. After following one answer on SO that we'd switch to `debug` mode, the errors were gone.
+        ## Do - Switch to debug mode
+        But we cannot stay satisfied with debug mode, cos eventually we need to be on release mode to archive the app. And I wonder why debug mode fixes the bug? What makes the difference? 
+        Then I tried setting the release mode of `Build Active Architecture Only` on the target -> Build Settings to **Yes** as the debug mode. 
+        It RUNS!
+        <span class="postConcepts">Build Active Architecture Only</span>
+        Setting this to 'Yes' means XCode will detect which device is connected and will set the active <span class="postRelated" @click="relatedSite(relatedSites.architecture)">architecture</span> accordingly. This means if you now build the app with `Build Active Architecture Only` set to 'Yes', it would now only build the current active architecture to save time, say e.g. armv6 but not armv7 even if it is stated in `Valid Architecture`. 
+        Thus, we may probably setting this option to 'Yes' when we want the app to run on simulators; then switch back to 'No' when we archive the app, cos we want it to be universally run on different devices.
+        ## Do - Set 'Build Active Architecture Only' to 'Yes' when running on simulators
 
       </div>
     </article>
@@ -68,7 +77,10 @@ export default {
   name:'xcode-01',
   data:function(){
     return {
-      postTags:['xcode','debug','entry-level']
+      postTags:['xcode','debug','entry-level'],
+      relatedSites:{
+        architecture:'https://docs.elementscompiler.com/Platforms/Cocoa/CpuArchitectures/'
+      }
     }
   },
   components:{
@@ -77,6 +89,11 @@ export default {
   computed:{
     postUpdatedAt(){
       return false;
+    }
+  },
+  methods:{
+    relatedSite(url){
+      window.location.href = url;
     }
   }
 }
