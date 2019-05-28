@@ -94,7 +94,14 @@ export default {
   methods:{
     relatedSite(url){
       window.location.href = url;
+    },
+    getTitle(){
+      let title = $('.postTitle');
+      title = title.text().trim();
     }
+  },
+  mounted(){
+    this.getTitle();
   }
 }
 </script>
