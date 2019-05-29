@@ -1,4 +1,5 @@
 const ImageminPlugin = require("imagemin-webpack");
+const webpack = require('webpack');
 
 // Before importing imagemin plugin make sure you add it in `package.json` (`dependencies`) and install
 const imageminGifsicle = require("imagemin-gifsicle");
@@ -10,7 +11,6 @@ const imageminPng = require('imagemin-pngquant');
 
 module.exports = {
   configureWebpack:{
-   
     plugins: [
       // Make sure that the plugin is after any plugins that add images, example `CopyWebpackPlugin`
       new ImageminPlugin({
@@ -40,8 +40,24 @@ module.exports = {
             })
           ]
         }
+      }),
+      new webpack.LoaderOptionsPlugin({
+        vue: {}
       })
     ],  
+  },
+  chainWebpack: config => {
+    config.module
+      .rule('md')
+      .test(/\.md$/)
+      .use('vue-loader')
+      .loader('vue-loader')
+      .end()
+      .use('vue-markdown-loader')
+      .loader('vue-markdown-loader/lib/markdown-compiler')
+      .options({
+        raw:true
+      })
   },
   publicPath: process.env.NODE_ENV === 'production'
     ? '/alisonland/'
