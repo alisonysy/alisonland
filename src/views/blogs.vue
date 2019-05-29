@@ -2,7 +2,7 @@
   <main class="blogPage">
     <blogHeader/>
     <router-link to="/blogs/xcode-01">xcode</router-link>
-    <test />
+    <test class="test"/>
   </main>
 </template>
 
@@ -18,6 +18,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+.test > *{
+  font-family: 'Space Mono', sans-serif;
+}
 </style>
