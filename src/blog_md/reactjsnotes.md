@@ -23,7 +23,7 @@ ReactDOM.render(
 + React elements are **immutable**, meaning that once created, they cannot be changed. The only way to **update** an element is to create a new element.
 + In React, `class` should be `className`, `tabindex` should be `tabIndex`.
 
-## Function Component
+## Function component
 Sometimes, we don't need to define a class for everthing, we can simply write components, and we use **function components** which <h5 class="postDefine">only contain a render method and don’t have their own state.</h5>
 ```
 function Name(props){
@@ -87,6 +87,10 @@ When defining the constructor of a **subclass**, a `super(props)` call at the st
 Note: inside the `render()` method, like Vue, there should be ONLY 1 root element.
 
 ### Store state in the parent component rather than child
+#### Why we lift up the `state`?
++ We need a single 'source of truth' for data that changes; data may need to be rendered in multiple components
+
+#### How? --lift it up to children's closest common ancestor
 + Firstly pass `this.state.xxx` down to child component within its `renderXXX()` method
 + Then register an event handler that links to a method from the parent compoenent, note that the handler can be accessed by its child component thru `this.props.event()`
 + Inside the handler, a copy of the original `this.state.xxx` would be created and `this.state.xxx` would be updated
@@ -175,5 +179,59 @@ class ActionLink extends React.Component{
       </a>
     )
   }
+}
+```
+
+
+## Conditional rendering
++ We may embed any expressions in JSX by wrapping them in curly braces.
++ Use inline `if` with logical operator `&&`.
+  In JavaScript, true && expression always evaluates to expression, and false && expression always evaluates to false:
+```
+return (
+  {
+    ...
+    { msg.length > 0 &&
+      <h1> You have {msg.length} messages to read. </h1>
+    }
+  }
+)
+```
++ Use inline if-else with conditional operator `condition ? true : false`
+
+## Listing
+To render a list of elements from an array, use `map()` to return an array of elements to be rendered:
+```
+function numberList(props){
+  const number = [1,2,3,4,5];
+  const numberLi = number.map((num)=>{
+    return (
+      <li key={number.toString()}>{num}</li>
+    )
+  });
+  return (
+    <ul>{numberLi}</ul>
+  )
+}
+```
+Note: 
++ `props.key` is NOT accessible by the component itself.
++ When extracting `<li>` component, say, we call the extracted component `<listItem>`, `map()` function should be used in the original `<numberList>` component; and we should keep the `key` in the returned array from `map()`.
+```
+function listItem(props){
+  return (
+    <li>props.val</li>
+  )
+}
+function numberList(props){
+  const number = props.number;
+  const numberLi = number.map((num)=>{
+    return (
+      <listItem key={number.toString()} val={number} />
+    )
+  })
+  return (
+    <ul>{numberLi}</ul>
+  )
 }
 ```
