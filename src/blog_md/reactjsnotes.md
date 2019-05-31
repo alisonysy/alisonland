@@ -24,7 +24,7 @@ ReactDOM.render(
 + In React, `class` should be `className`, `tabindex` should be `tabIndex`.
 
 ## Function component
-Sometimes, we don't need to define a class for everthing, we can simply write components, and we use **function components** which <h5 class="postDefine">only contain a render method and don’t have their own state.</h5>
+Sometimes, we don't need to define a class for everthing, we can simply write components, and we use **function components** which <span class="postDefine">only contain a render method and don’t have their own state.</span>
 ```
 function Name(props){
   return (
