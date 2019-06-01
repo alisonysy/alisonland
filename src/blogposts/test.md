@@ -8,10 +8,10 @@ The project was already run before, but the app might need modifications on styl
 >     |- _MACOSX
 >     |- ios
 >     |- podfile
->     |- **(other files not listed)**
+>     |- *(other files not listed)*
 >   |- package.json
 >   |- package-lock.json
->   |- **(other files not listed)**
+>   |- *(other files not listed)*
 
 ## Do - Structure your project
 I tried to drag the outer  `ios` folder to XCode, but it said no `.xcproject` or `.xcworkspace` detected. I realised that given the `_MACOSX` folder and the embeded `ios` folder, I need to restructure the unzipped project as presumably targets and files paths may not match the current structure. I didn't remove the `_MACOSX` folder but moved all files from the inner `ios` folder to the outer `ios` folder.
@@ -41,6 +41,7 @@ But we cannot stay satisfied with debug mode, cos eventually we need to be on re
 Then I tried setting the release mode of `Build Active Architecture Only` on the target -> Build Settings to **Yes** as the debug mode. 
 It RUNS!
 <div class="postConcepts">Build Active Architecture Only</div>
+
 Setting this to 'Yes' means XCode will detect which device is connected and will set the active <span class="postRelated" @click="relatedSite(relatedSites.architecture)">architecture</span> accordingly. This means if you now build the app with `Build Active Architecture Only` set to 'Yes', it would now only build the current active architecture to save time, say e.g. armv6 but not armv7 even if it is stated in `Valid Architecture`. 
 Thus, we may probably setting this option to 'Yes' when we want the app to run on simulators; then switch back to 'No' when we archive the app, cos we want it to be universally run on different devices.
 ## Do - Set 'Build Active Architecture Only' to 'Yes' when running on simulators

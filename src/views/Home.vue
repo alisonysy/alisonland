@@ -11,7 +11,7 @@
       <p>Welcome to my journey of being a web developer. Hope you enjoy and plz feel free to leave a message for any further discussion :)</p>
       <p>欢迎同道的你，也欢迎随时留言探讨~</p>
     </div>
-    <div class="profileImg-wrapper posiAbso">
+    <!-- <div class="profileImg-wrapper posiAbso">
       <img
         :src="profileImg(profileImgName)"
         @mouseover="changeProfileImg()"
@@ -19,7 +19,7 @@
         alt="Alison"
         class="profileImgUp"
       >
-    </div>
+    </div> -->
     <navigation/>
   </main>
 </template>

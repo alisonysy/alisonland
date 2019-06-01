@@ -4,7 +4,7 @@
     <article class="post">
       <div class="postHeader">
         <h2 class="postCategory">
-          bugs
+          XCode
         </h2>
         <h1 class="postTitle">
           First Time Running and Archiving Existing Project with XCode <span class="postSubTitle">Debugging Records</span>

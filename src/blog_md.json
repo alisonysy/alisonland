@@ -1,0 +1,44 @@
+{
+  "CSS":[
+    {
+      "id":"260519-visual-formatting-model",
+      "createdAt":"May 26 2019",
+      "title":"Visual Formatting Model 视觉格式化模型",
+      "subTitle":"How Each Element And Its Correspondent Box(es) Are Generated?",
+      "abstract":"CSS的盒模型(box model)把元素当成一个个长方形盒子渲染，每个盒子包括内容(content)、内边距(padding)、边框(border)、外边距(margin)4个部分。而当一个页面有很多这样的盒子时，这些盒子的具体位置和最终渲染的布局则由视觉格式化模型(visual formatting model)决定。",
+      "updatedAt":"",
+      "tag":["css","box model","entry-level","basic concept","block box","block container box","block-level box","notes"]
+    }
+  ],
+  "XCode":[
+    {
+      "id":"250519-first-time-using-xcode-running-debugging",
+      "createdAt":"May 25 2019",
+      "title":"First Time Running and Archiving Existing Project with XCode",
+      "subTitle":"Debugging Records",
+      "abstract":"This is for those who get to use XCode to archive an existing app for the VERY FIRST time.",
+      "updatedAt":"",
+      "tag":["xcode","debug","entry-level"]
+    }
+  ],
+  "React":[
+    {
+      "id":"280519-reactjs-notes-entry-level",
+      "createdAt":"May 28 2019",
+      "title":"React.js Notes - Entry Level",
+      "subTitle":"",
+      "abstract":"My little notebook for React.js.",
+      "updatedAt":"",
+      "tag":["react","entry-level","notes"]
+    },
+    {
+      "id":"300519-react-native-nav-notes-entry-level",
+      "createdAt":"May 30 2019",
+      "title":"React-Native Navigation Notes - Entry Level",
+      "subTitle":"",
+      "abstract":"My little notebook for React-Native Navigation",
+      "updatedAt":"",
+      "tag":["react","react-native","entry-level","react-native-navigation","notes"]
+    }
+  ]
+}
