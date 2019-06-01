@@ -4,8 +4,11 @@ import Home from './views/Home.vue'
 //navigation
 import favourites from './views/favourites.vue'
 import blogs from './views/blogs.vue'
+import blogJSON from './blog_md.json'
 
 Vue.use(Router)
+
+
 
 export default new Router({
   routes: [
@@ -32,10 +35,6 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
-    {
-      path:'/blogs/xcode-01',
-      name:'xcode-01',
-      component: () => import('./blogposts/2505190001.vue')
-    }
+    
   ]
 })
