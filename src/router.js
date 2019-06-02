@@ -8,6 +8,21 @@ import blogJSON from './blog_md.json'
 
 Vue.use(Router)
 
+const blogRouteArr = (function(){
+  let blogCate = Object.keys(blogJSON);
+  let arr = [];
+  for(let i=0;i<blogCate.length;i++){
+    let temp = {};
+    let cate = blogCate[i] 
+    let cateArr = blogJSON[cate];
+    temp.category = cate;
+    cateArr.map((item)=>{
+      temp.id=item.id 
+      arr.push(temp);
+    })
+  }
+  return arr
+})(blogJSON)
 
 
 export default new Router({
@@ -35,6 +50,12 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
-    
+    ...blogRouteArr.map((entry)=>{
+      return ({
+        path:`/blogs/${entry.category}/${entry.id}`,
+        name:entry.id,
+        component:()=> import(`./blog_md/${entry.id}.md`)
+      })
+    })
   ]
 })
