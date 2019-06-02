@@ -1,19 +1,18 @@
 <template>
   <main class="blogPage">
     <blogHeader/>
-    <router-link to="/blogs/xcode-01">xcode</router-link>
-    <test class="test"/>
+    <XCodeBlog />
   </main>
 </template>
 
 <script>
 import blogHeader from '@/components/header.vue'
-import test from '@/blogposts/test.md'
+import XCodeBlog from '@/blogposts/250519-first-time-using-xcode-running-debugging.vue'
 export default {
   name:'blogs',
   components:{
     blogHeader,
-    test
+    XCodeBlog
   }
 }
 </script>

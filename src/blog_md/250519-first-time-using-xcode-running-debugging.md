@@ -2,16 +2,16 @@ As the title suggests, a few days ago I had to run an existing `react-native` pr
 First time to use a Mac and first time to work with XCode which I didn't even know before.
 The project was already run before, but the app might need modifications on styles and debugging. What I received is a zip file with a structure like this:
 
-> | MyProject
->   |- Android
->   |- ios
->     |- _MACOSX
->     |- ios
->     |- podfile
->     |- *(other files not listed)*
->   |- package.json
->   |- package-lock.json
->   |- *(other files not listed)*
++ | MyProject
++ &nbsp;&nbsp;|- Android
++ &nbsp;&nbsp;|- ios
++ &nbsp;&nbsp;&nbsp;&nbsp;|- _MACOSX
++ &nbsp;&nbsp;&nbsp;&nbsp;|- ios
++ &nbsp;&nbsp;&nbsp;&nbsp;|- podfile
++ &nbsp;&nbsp;&nbsp;&nbsp;|- *(other files not listed)*
++ &nbsp;&nbsp;|- package.json
++ &nbsp;&nbsp;|- package-lock.json
++ &nbsp;&nbsp;|- *(other files not listed)*
 
 ## Do - Structure your project
 I tried to drag the outer  `ios` folder to XCode, but it said no `.xcproject` or `.xcworkspace` detected. I realised that given the `_MACOSX` folder and the embeded `ios` folder, I need to restructure the unzipped project as presumably targets and files paths may not match the current structure. I didn't remove the `_MACOSX` folder but moved all files from the inner `ios` folder to the outer `ios` folder.

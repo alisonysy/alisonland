@@ -1,5 +1,5 @@
 <template>
-  <main class="fav-header">
+  <main class="all-header">
     <div class="headerLeft">
       <div class="otherLinks dspFlex fs20 deepBlue">{{homeDate | dateFormate}}</div>
       <div class="nameBg">
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style scoped>
-.fav-header {
+.all-header {
   display: flex;
   width: 100%;
   height: 4vw;

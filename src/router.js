@@ -17,7 +17,7 @@ const blogRouteArr = (function(){
     let cateArr = blogJSON[cate];
     temp.category = cate;
     cateArr.map((item)=>{
-      temp.id=item.id 
+      Object.assign(temp,item);
       arr.push(temp);
     })
   }
