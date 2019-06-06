@@ -47,11 +47,84 @@ const initialState = {
 function todoApp(state = initialState, action) {
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
-      return Object.assign({}, state, {
+      return Object.assign({}, state, { 
         visibilityFilter: action.filter
+      })
+    case ADD_TODO:
+      return Object.assign({},state,{
+        todos:[
+          ...state, //here, each case receives the *whole* state, we then try to split the reducer and update *just a slice* of the state
+          {
+            text:action.text,
+            completed:false
+          }
+        ]
+      })
+    case TOGGLE_TODO:
+      return Object.assign({},state,{
+        todos:state.todos.map((todo, index)=>{ //`map()` function returns a **new** array
+          if(index === action.index){ //just modify the newly checked/unchecked item
+            return Object.assign({},todo,{ // NEVER directly modify the original obj
+              completed:!todo.completed
+            })
+          }
+          return todo
+        })
       })
     default: //important to return the previous state for any *unknown* action.
       return state
   }
 }
 ```
+Here, we see that `SET_VISIBILITY_FILTER` handles `state.visibilityFilter` while `ADD_TODO` and `TOGGLE_TODO` handle `state.todos`, so
+**Spliting the reducer** to make it easier to understand:
+```
+import {
+  ADD_TODO,
+  TOGGLE_TODO,
+  SET_VISIBILITY_FILTER,
+  VisibilityFilters
+} from './actions'
+const { SHOW_ALL } = VisibilityFilters
+
+function todos(state = [], action){ //the initial state of `state.todos` is an empty array
+  switch (action.type){
+    case ADD_TODO:
+      return [
+        ...state,
+        {
+          text:action.text,
+          completed:false
+        }
+      ]
+    case TOGGLE_TODO:
+      return state.map((todo, index)=>{
+        if(index === action.index){
+          return Object.assign({}, todo, { // the key's value is an array composed of objs
+            completed: !todo.completed
+          })
+        }
+        return todo
+      })
+    default:
+      return state
+  }
+}
+
+function visibilityFilter(state = SHOW_ALL, action){
+  switch (action.type){
+    case SET_VISIBILITY_FILTER:
+      return action.filter //no need to return an obj, cos it's the key's **value**
+  }
+    default:
+      return state
+}
+
+export default function todoApp(state = {}, action){
+  return {
+    visibilityFilter: visibilityFilter(state.visibilityFilter, action),
+    todos: todos(state.todos, action)
+  }
+}
+```
+
