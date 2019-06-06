@@ -120,11 +120,62 @@ function visibilityFilter(state = SHOW_ALL, action){
       return state
 }
 
+// way 1
 export default function todoApp(state = {}, action){
   return {
     visibilityFilter: visibilityFilter(state.visibilityFilter, action),
     todos: todos(state.todos, action)
   }
 }
+
+// way 2
+// or can use `combineReducers()` to combine several reducers into one root reducer
+const todoApp = combineReducers({
+  visibilityFilter,
+  todos
+})
+
+export default todoApp
 ```
 
+## Store
+There's only ONE SINGLE store in a Redux app.
+The store has the following responsibilities:
++ holds app state
++ allows access to state via `getState()`
++ allows state to be updated via `dispatch(action)`
++ registers listeners via `subscribe(listener)`
++ handles unregistering of listeners
+
+```
+import { createStore } from 'redux'
+import todoApp from './reducers'
+const store = createStore(todoApp)
+```
+Now, we can dispatch some actions:
+```
+import {
+  addTodo,
+  toggleTodo,
+  setVisibilityFilter,
+  VisibilityFilters
+} from './actions'
+
+// Log the initial state
+console.log(store.getState())
+
+// Every time the state changes, log it
+// Note that subscribe() returns a function for unregistering the listener
+const unsubscribe = store.subscribe(() => console.log(store.getState()))
+
+// Dispatch some actions
+store.dispatch(addTodo('Learn about actions'))
+store.dispatch(addTodo('Learn about reducers'))
+store.dispatch(addTodo('Learn about store'))
+store.dispatch(toggleTodo(0))
+store.dispatch(toggleTodo(1))
+store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED)) // note that for now the `visibilityFilter` does not interact with `todos`
+
+// Stop listening to state updates
+unsubscribe()
+```
