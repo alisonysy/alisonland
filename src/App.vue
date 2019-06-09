@@ -72,7 +72,16 @@ ul,li{list-style: none;padding: 0;margin: 0;}
 }
 @import url('https://fonts.googleapis.com/css?family=Space+Mono');
 @font-face{
-  font-family: 'anthology-outline';
-  src:url('assets/fonts/Anthology-Outline.ttf') format('truetype');
+  font-family: 'el-sans-serif';
+  src:url('assets/fonts/el-sans-serif.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'el-sig';
+  src:url('assets/fonts/el-sig.ttf') format('truetype');
+}
+
+/* general markdown settings */
+.postConcepts{
+  color:#FA557C;
 }
 </style>
