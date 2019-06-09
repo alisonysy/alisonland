@@ -13,7 +13,7 @@ window.$ = jquery;
 
 
 /* filters */
-Vue.filter('dateFormate', (val) => {
+Vue.filter('dateFormat', (val) => {
   let type = Object.prototype.toString.call(val);
   if (type === "[object Date]") {
     let date = val.getDate();

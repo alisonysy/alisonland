@@ -52,9 +52,9 @@ export default new Router({
     },
     ...blogRouteArr.map((entry)=>{
       return ({
-        path:`/blogs/${entry.category}/${entry.id}`,
+        path:`/blogs/:cate/:blogid`,
         name:entry.id,
-        component:()=> import(`./blog_md/${entry.id}.md`)
+        component:()=> import(`./blogposts/${entry.id}.vue`)
       })
     })
   ]

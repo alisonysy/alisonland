@@ -4,7 +4,7 @@
     <article class="post">
       <div class="postHeader">
         <h2 class="postCategory">
-          css
+          CSS
         </h2>
         <h1 class="postTitle">
           Visual Formatting Model 视觉格式化模型 <span class="postSubTitle">How Each Element And Its Correspondent Box(es) Are Generated?</span>

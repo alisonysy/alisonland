@@ -81,7 +81,116 @@ ul,li{list-style: none;padding: 0;margin: 0;}
 }
 
 /* general markdown settings */
+/* post concept */
 .postConcepts{
-  color:#FA557C;
+  position: relative;
+  left:2em;
 }
+.postConcepts::before{
+  content:'';
+  background:#F4D160;
+  width:2em;
+  height:2em;
+  border-radius: 50%;
+  position: absolute;
+  left:-2em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.postConcepts::after{
+  content:'';
+  background:#fff;
+  width:1.4em;
+  height:1.4em;
+  border-radius: 50%;
+  position: absolute;
+  left:-1.3em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* post related */
+.postRelated{
+  position:relative;
+  border-bottom: 2px dotted #fa557c;
+}
+.postRelated:hover::before{
+  content:'Reference: ' attr(related-url);
+  position:absolute;
+  background:#F4D160;
+  border-radius: 10px;
+  top:1.5em;
+  padding:.5em;
+  font-size: .8em;
+  width:50vw;
+}
+
+/*---------------post-----------------*/
+/* post header */
+.xcode-01 .all-header .headerLeft {
+  background-color: #04244a;
+}
+
+.xcode-01 .all-header .otherLinks {
+  color: #fff;
+  border-bottom: none;
+}
+
+.xcode-01 .all-header .headerRight {
+  background-color: transparent;
+}
+
+/* title part */
+.postHeader {
+  display: flex;
+  flex-flow: column wrap;
+  color: #fff;
+  background-color: #04244a;
+  align-items: center;
+  position: relative;
+}
+
+.postCategory {
+  font-family: "el-sig";
+  font-size: 20em;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.postTitle {
+  position: absolute;
+  top: 50%;
+  font-size: 3em;
+  text-align: center;
+  padding: 0 1.3em;
+  line-height: 1.5em;
+  transform: translateY(-50%);
+}
+
+.postCreated{margin:1em;}
+
+.postTags li,
+.postAbstract {
+  font-family: monospace;
+}
+
+.postTags li {
+  display: inline-block;
+  margin: 1em;
+}
+
+.postAbstract {
+  margin: 1em 2em 5em;
+}
+
+
+/* postbody */
+.postBody-wrapper{
+  width:100%;
+  background: linear-gradient(to bottom, #04244a, transparent 15%);
+  padding-top: 1px;
+}
+.postBody {
+  width: 65%;
+  margin: 15em auto;
+}
+
 </style>
