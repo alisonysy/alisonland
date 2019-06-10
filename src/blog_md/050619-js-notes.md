@@ -4,3 +4,9 @@
 > `arr.join('')` //中间没有连接符
 `Array.prototype.concat()`用于把两个数组合并，并返回一个**新的数组**
 > `arr1.concat(arr2)`
+
+## Operators: 操作符
+`delete`操作符用于把一个属性从对象中移除
+*Syntax:*
+> delete object.property
+> delete object['property']
