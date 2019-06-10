@@ -125,19 +125,6 @@ ul,li{list-style: none;padding: 0;margin: 0;}
 }
 
 /*---------------post-----------------*/
-/* post header */
-.xcode-01 .all-header .headerLeft {
-  background-color: #04244a;
-}
-
-.xcode-01 .all-header .otherLinks {
-  color: #fff;
-  border-bottom: none;
-}
-
-.xcode-01 .all-header .headerRight {
-  background-color: transparent;
-}
 
 /* title part */
 .postHeader {
@@ -172,13 +159,19 @@ ul,li{list-style: none;padding: 0;margin: 0;}
   font-family: monospace;
 }
 
+.postTags{
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 .postTags li {
   display: inline-block;
   margin: 1em;
 }
 
 .postAbstract {
-  margin: 1em 2em 5em;
+  margin: 1em 5em 5em;
 }
 
 

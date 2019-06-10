@@ -1,6 +1,6 @@
 <template>
   <main class="home posiRela">
-    <div class="otherLinks dspFlex fs20 deepBlue">{{homeDate | dateFormate}}</div>
+    <div class="otherLinks dspFlex fs20 deepBlue">{{homeDate | dateFormat}}</div>
     <div class="nameBg posiAbso">
       <div class="name">
         <span class="initialLetter whiteFont">A</span>

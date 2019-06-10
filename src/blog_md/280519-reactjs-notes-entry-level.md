@@ -6,12 +6,12 @@ const name = function(user){
   return user.firstName + ' ' + user.lastName;
 };
 const user = {firstName:'Ash',lastName:'Ley'};
-const el = &lt;h1>Hi, {name}!&lt;/h1>;
+const el = <h1>Hi, {name}!</h1>;
 //or for more readability, separate the markup with parentheses wrapping around
 const el = (
-  &lt;h1>
+  <h1>
     Hi, {name(user)}!
-  &lt;/h1>
+  </h1>
 )
 ReactDOM.render(
   el,
@@ -38,7 +38,7 @@ Using function components as example:
 ```
 function comp1(props){
   return (
-    &lt;img className="comp1" 
+    <img className="comp1" 
       src={props.user.avatar} 
       alt={props.user.name}
     />
@@ -47,23 +47,23 @@ function comp1(props){
 
 function comp2(props){
   return (
-    &lt;div className="comp2">
-      &lt;comp1 user={props.user} /> //user={props.user} means it passes *props.user* as the *user* object down to the component called *comp1*
-      &lt;div className="comp2-div"> //so that *comp1* can directly use *props.user*
+    <div className="comp2">
+      <comp1 user={props.user} /> //user={props.user} means it passes *props.user* as the *user* object down to the component called *comp1*
+      <div className="comp2-div"> //so that *comp1* can directly use *props.user*
         {props.user.name}
-      &lt;/div>
-    &lt;/div>
+      </div>
+    </div>
   )
 }
 
 function comp3(props){
   return (
-    &lt;div className="comp3">
-      &lt;comp2 **user**={props.**author**} /> //user={props.user} means it passes *props.author* as the *user* object down to the component called *comp1*
-      &lt;div className="comp3-div"> //so that *comp2* can directly use *props.user*
+    <div className="comp3">
+      <comp2 **user**={props.**author**} /> //user={props.user} means it passes *props.author* as the *user* object down to the component called *comp1*
+      <div className="comp3-div"> //so that *comp2* can directly use *props.user*
         {props.other_attr}
-      &lt;/div>
-    &lt;/div>
+      </div>
+    </div>
   )
 }
 ```
@@ -97,13 +97,13 @@ Note: inside the `render()` method, like Vue, there should be ONLY 1 root elemen
 + As for the child component, within its `render()` method, an event handler should be registered and the callback should invoke the parent event handler, e.g.
 ```
 //one way to register an event handler
-&lt;button className="square" onClick={()=>{this.props.onClick() &lt;!--this is from parent component-->}}>
-  { this.props.xxx } &lt;!--this is from parent component-->
-&lt;/button>
+<button className="square" onClick={()=>{this.props.onClick() <!--this is from parent component-->}}>
+  { this.props.xxx } <!--this is from parent component-->
+</button>
 //another way to register an event handler
-&lt;button className="square" onClick={this.props.onClick.bind(this) &lt;!--this is from parent component-->}}>
-  { this.props.xxx } &lt;!--this is from parent component-->
-&lt;/button>
+<button className="square" onClick={this.props.onClick.bind(this) <!--this is from parent component-->}}>
+  { this.props.xxx } <!--this is from parent component-->
+</button>
 ```
 
 + Immutability is important - to create a copy of an object instead of directly modifying it

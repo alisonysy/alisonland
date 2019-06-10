@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import blogHeader from "@/components/header.vue";
+import blogHeader from "@/components/postHeader.vue";
 import thisBlog from "@/blog_md/250519-first-time-using-xcode-running-debugging.md";
 export default {
   name: "xcode-01",

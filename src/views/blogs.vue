@@ -12,7 +12,6 @@
 <script>
 import blogHeader from '@/components/header.vue'
 import blogJSON from '@/blog_md.json'
-import XCodeBlog from '@/blogposts/250519-first-time-using-xcode-running-debugging.vue'
 export default {
   name:'blogs',
   data:function(){
@@ -28,17 +27,16 @@ export default {
       let blogCate = Object.keys(blogJSON);
       let arr = [];
       for(let i=0;i<blogCate.length;i++){
-        let temp = {};
         let cate = blogCate[i] 
         let cateArr = blogJSON[cate];
-        temp.category = cate;
         cateArr.map((item)=>{
+          let temp = {};
+          temp.category = cate;
           Object.assign(temp,item);
           arr.push(temp);
         })
       }
       this.blogArr=arr;
-      console.log(this.blogArr)
     }
   },
   beforeMount(){

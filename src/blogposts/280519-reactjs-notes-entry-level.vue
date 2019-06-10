@@ -29,20 +29,20 @@
 
 <script>
 import blogHeader from '@/components/postHeader.vue'
-import thisBlog from '@/blog_md/260519-visual-formatting-model.md'
+import thisBlog from '@/blog_md/280519-reactjs-notes-entry-level.md'
 export default {
-  name:'visual-formatting-model',
+  name:'rct-notes',
   data:function(){
     return {
       postHead:{
-        postTitle:'Visual Formatting Model 视觉格式化模型',
-        postCategory:'CSS',
-        postSubtitle:'How Each Element And Its Correspondent Box(es) Are Generated?',
+        postTitle:'React.js Notes - Entry Level',
+        postCategory:'React',
+        postSubtitle:'',
         postCreated:'May 26 2019',
-        postAbstract:'CSS的盒模型(box model)把元素当成一个个长方形盒子渲染，每个盒子包括内容(content)、内边距(padding)、边框(border)、外边距(margin)4个部分。而当一个页面有很多这样的盒子时，这些盒子的具体位置和最终渲染的布局则由视觉格式化模型(visual formatting model)决定。'
+        postAbstract:'My little notebook for React.js.'
       },
       postCommonClass: "post-wrapper",
-      postTags:["css","box model","entry-level","basic concept","block box","block container box","block-level box","notes"]
+      postTags:["react","entry-level","notes"]
     }
   },
   components:{

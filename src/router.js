@@ -12,11 +12,11 @@ const blogRouteArr = (function(){
   let blogCate = Object.keys(blogJSON);
   let arr = [];
   for(let i=0;i<blogCate.length;i++){
-    let temp = {};
     let cate = blogCate[i] 
     let cateArr = blogJSON[cate];
-    temp.category = cate;
     cateArr.map((item)=>{
+      let temp = {};
+      temp.category = cate;
       Object.assign(temp,item);
       arr.push(temp);
     })

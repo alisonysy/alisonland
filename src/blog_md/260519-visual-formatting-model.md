@@ -17,11 +17,13 @@ CSS元素每个盒子的布局(layout)是由以下的因素决定的：
 该模型为页面上的元素生成盒子，盒子的类型是由CSS的`display`属性决定，同时盒子的类型会影响视觉布局。
 众所周知，盒子的类型大致有块级和内联。但我们常看见`block-level element`, `block container box`, `block box`等等的术语时，会困惑，这些指的确切是什么？
 <h4 class="postConcepts">块级元素(block-level element) vs 块级盒(block-level box)</h4>
+
 #### 块级元素(block-level element)
 <h5 class="postDefine">当其CSS的`display`属性是block / list-item / table时，该元素即为块级元素。块级元素在页面中是垂直堆叠。</h5>
 每个块级元素至少生成1个块级盒(block-level box)，被称为主块级盒(principal block-level box)，有些诸如list-item会生成更多的块级盒子，用于处理列表的点(bullet)。每个块级盒子都参与块级格式化上下文(block formatting context, aka BFC)。
 这个主块级盒是参与到定位布局中的盒子，它包含后代生成的盒子和内容。
 块级盒(block-level box)用于描述它和其父盒子、同级盒子的关系。
+
 #### 块容器盒(block container box)
 <h5 class="postDefine">只包含其他块级盒(block-level box)，或只包含内联盒子(inline box，此时会创建行内格式化上下文inline formatting context)。</h5>
 块容器盒用于描述它和后代的关系。
