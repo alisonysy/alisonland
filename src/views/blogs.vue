@@ -2,8 +2,8 @@
   <main class="blogPage">
     <blogHeader/>
     <ul>
-      <li v-for="blog in blogArr" :key="blogArr.map(i => i.id)">
-        <router-link :to="{ name:blog.id, params: { cate:blog.category,blogid:blog.id}}">{{ blog.id }}</router-link>
+      <li v-for="blog in blogArr" >
+        <router-link :to="{ name:blog.id, params: { cate:blog.category,blogid:blog.id}}">{{ blog.title }}</router-link>
       </li>
     </ul>
   </main>
@@ -16,7 +16,8 @@ export default {
   name:'blogs',
   data:function(){
     return {
-      blogArr:[]
+      blogArr:[],
+      blogCate:[]
     }
   },
   components:{
@@ -25,6 +26,7 @@ export default {
   methods:{
     blogRouteArr :function(){
       let blogCate = Object.keys(blogJSON);
+      this.blogCate = blogCate;
       let arr = [];
       for(let i=0;i<blogCate.length;i++){
         let cate = blogCate[i] 
