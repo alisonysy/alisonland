@@ -638,6 +638,7 @@
 .markdown-body li {
   word-wrap: break-all;
   font-family: "Space Mono", monospace;
+  list-style:lower-roman;
 }
 
 .markdown-body li>p {

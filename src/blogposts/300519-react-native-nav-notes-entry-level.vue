@@ -28,28 +28,28 @@
 </template>
 
 <script>
-import blogHeader from "@/components/postHeader.vue";
-import thisBlog from "@/blog_md/250519-first-time-using-xcode-running-debugging.md";
+import blogHeader from '@/components/postHeader.vue'
+import thisBlog from '@/blog_md/300519-react-native-nav-notes-entry-level.md'
 export default {
-  name: "xcode-01",
-  data: function() {
+  name:'react-native-nav-entry',
+  data:function(){
     return {
       postHead:{
-        postTitle:'First Time Running and Archiving Existing Project with XCode',
-        postCategory:'XCode',
-        postSubtitle:'Debugging Records',
-        postCreated:'May 25 2019',
-        postAbstract:'This is for those who get to use XCode to archive an existing app for the VERY FIRST time.'
+        postTitle:'React-Native Navigation Notes - Entry Level',
+        postCategory:'React',
+        postSubtitle:'',
+        postCreated:'May 30 2019',
+        postAbstract:'My little notebook for React-Native Navigation.'
       },
       postCommonClass: "post-wrapper",
-      postTags: ["xcode", "debug", "entry-level","archive"],
-    };
+      postTags:["react","react-native","entry-level","react-native-navigation","notes"]
+    }
   },
-  components: {
+  components:{
     blogHeader,
     thisBlog
   },
-  computed: {
+  computed:{
     postOwnClass() {
       return this.$options.name;
     }
@@ -63,28 +63,9 @@ export default {
   mounted() {
     this.getTitle();
   }
-};
+}
 </script>
 
 <style>
-@import url("../assets/github-markdown.css");
-
-/* this post markdown - own */
-
-.xcode-01 .markdown-body h2 {
-  margin-top: 0;
-  margin-bottom: 5em;
-}
-.xcode-01 .markdown-body h2::before {
-  content: "Conclusion: ";
-  font-size: 0.6em;
-  background: #2aa1b7;
-  color: #fff;
-  margin-right: 0.2em;
-  vertical-align: middle;
-  padding: 0.2em 0;
-}
-.xcode-01 ul:first-of-type li{
-  list-style: none;
-}
+@import url('../assets/github-markdown.css');
 </style>
