@@ -78,7 +78,7 @@ function withdraw(account, amount) {
 
 Normally, the params passed to a class are called `props`.
 `key` is a special and reserved property in React. It canNOT be referenced thru `this.props.key`. A component cannot inquire about its key.
-When defining the constructor of a **subclass**, a `super(props)` call at the start is always needed.
+When defining the constructor of a **subclass**, a `super(props)` call at the start is always needed. If a component only needs `props` from its parent, it doesn't need a `constructor`.
 
 ## `this.state` And `render()`
 + To remember data for a component, we use **state**.
