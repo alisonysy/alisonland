@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 //navigation
 import favourites from './views/favourites.vue'
 import blogs from './views/blogs.vue'
+import blogpost from './views/blogpost.vue'
+
 import blogJSON from './blog_md.json'
 
 Vue.use(Router)
@@ -56,6 +58,12 @@ export default new Router({
         name:entry.id,
         component:()=> import(`./blogposts/${entry.id}.vue`)
       })
-    })
+    }),
+    {
+      path:'/blogpost/:cate/:blogid',
+      name:'blogarticle',
+      component:blogpost,
+      props:true
+    }
   ]
 })

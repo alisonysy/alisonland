@@ -2,53 +2,56 @@
   <main class="blogPage">
     <blogHeader/>
     <ul>
-      <li v-for="blog in blogArr" >
-        <router-link :to="{ name:blog.id, params: { cate:blog.category,blogid:blog.id}}">{{ blog.title }}</router-link>
+      <li v-for="blog in blogArr">
+        <router-link
+          :to="{ name:'blogarticle', params: {cate:blog.category, blogid:blog.id, blogcont:blog}}"
+        >{{ blog.title }}</router-link>
       </li>
     </ul>
   </main>
 </template>
 
 <script>
-import blogHeader from '@/components/header.vue'
-import blogJSON from '@/blog_md.json'
+import blogHeader from "@/components/header.vue";
+import blogJSON from "@/blog_md.json";
 export default {
-  name:'blogs',
-  data:function(){
+  name: "blogs",
+  data: function() {
     return {
-      blogArr:[],
-      blogCate:[]
-    }
+      blogArr: [],
+      blogCate: []
+    };
   },
-  components:{
-    blogHeader,
+  components: {
+    blogHeader
   },
-  methods:{
-    blogRouteArr :function(){
+  methods: {
+    blogRouteArr: function() {
       let blogCate = Object.keys(blogJSON);
       this.blogCate = blogCate;
       let arr = [];
-      for(let i=0;i<blogCate.length;i++){
-        let cate = blogCate[i] 
+      for (let i = 0; i < blogCate.length; i++) {
+        let cate = blogCate[i];
         let cateArr = blogJSON[cate];
-        cateArr.map((item)=>{
+        cateArr.map(item => {
           let temp = {};
           temp.category = cate;
-          Object.assign(temp,item);
+          Object.assign(temp, item);
           arr.push(temp);
-        })
+        });
       }
-      this.blogArr=arr;
+      this.blogArr = arr;
     }
   },
-  beforeMount(){
+  beforeMount() {
     this.blogRouteArr(blogJSON);
+    console.log(this.blogArr);
   }
-}
+};
 </script>
 
 <style>
-.test > *{
-  font-family: 'Space Mono', sans-serif;
+.test > * {
+  font-family: "Space Mono", sans-serif;
 }
 </style>
