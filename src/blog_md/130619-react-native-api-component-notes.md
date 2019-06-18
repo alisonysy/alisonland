@@ -14,6 +14,11 @@ ScrollView和FlatList的区别：
 使用：
 用 **<SafeAreaView>** 把最顶层的view包裹，并且需要设置{flex:1}
 
+### RefreshControl
+用在<ScrollView>或<ListView>(*deprecated*)里面，其属性有：
++ `refreshing`(boolean) - 表明是否正在更新；它是一个controlled prop，需要在`onRefresh`的回调中设置为`true`才能正常运作
++ `onRefresh`(function) - 更新时调用
+
 ## Styling
 每个组件是Flex Container。
 
