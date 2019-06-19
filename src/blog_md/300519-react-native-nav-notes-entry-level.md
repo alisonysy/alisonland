@@ -1,4 +1,4 @@
-## The most common - `CreateStackNavigator`
+### The most common - `createStackNavigator`
 `CreateStackNavigator` is a function that takes a route configuration object and an options object and returns a React component.
 React Navigation's stack navigator provides a way for your app to transition between screens and manage *navigation history*. If your app uses only one stack navigator then it is conceptually similar to how a web browser handles navigation state.
 
@@ -18,6 +18,17 @@ const AppNavigator = createStackNavigator(
   }
 );
 ```
+
+### `createSwitchNavigator` - only show 1 screen at a time
+Often used in *authentication flow*.
+By defautl:
++ Does not handle back actions
++ Resets routes to default state when switched away
+
+**Syntax**
+> `createSwtichNavigator(RouteConfigs,SwitchNavigatorConfig);`
+
+
 
 ## Navigating to a **sibling** screen
 We call `this.props.navigation.navigate('routeName')` function:
