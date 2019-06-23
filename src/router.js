@@ -63,7 +63,21 @@ export default new Router({
       path:'/blogpost/:cate/:blogid',
       name:'blogarticle',
       component:blogpost,
-      props:true
+      props:true,
+      children: [
+        // ...blogRouteArr.map((entry)=>{
+        //   return ({
+        //     path:entry.id,
+        //     name:entry.id,
+        //     component: ()=> import(`./blog_md/${entry.id}.md`)
+        //   })
+        // })
+        {
+          path:'',
+          name:':blogid',
+          component: ()=> import(`./blog_md/250519-first-time-using-xcode-running-debugging.md`)
+        }
+      ]
     }
   ]
 })

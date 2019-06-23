@@ -1,7 +1,9 @@
 <template>
   <main>
     <blogHeader />
-    {{ blog.title }}
+    {{ blog.title }} <br/>
+    {{blog.id}}
+    <router-view :name="blog.id"/>
   </main>
 </template>
 
