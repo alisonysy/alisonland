@@ -74,8 +74,9 @@ export default new Router({
         // })
         {
           path:'',
-          name:':blogid',
-          component: ()=> import(`./blog_md/250519-first-time-using-xcode-running-debugging.md`)
+          components: {
+            default: ()=> import(`./blog_md/250519-first-time-using-xcode-running-debugging.md`)
+          }
         }
       ]
     }

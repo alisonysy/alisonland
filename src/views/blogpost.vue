@@ -1,9 +1,8 @@
 <template>
   <main>
     <blogHeader />
-    {{ blog.title }} <br/>
-    {{blog.id}}
-    <router-view :name="blog.id"/>
+    {{blog}}
+    <router-view/>
   </main>
 </template>
 
@@ -11,17 +10,18 @@
 import blogHeader from '@/components/postHeader.vue'
 export default {
   name:'blogarticle',
-  props:["blogcont","cate",'blogid'],
+  props:["blogcont"],
   data: function() {
     return {
-      blog:this.blogcont
+      blog:this.$route.params.blogid
     }
   },
   components:{
     blogHeader
   },
   beforeMount(){
-    console.log(this.blog)
+    console.log(this.blogcont)
+    
   }
 }
 </script>

@@ -4,7 +4,7 @@
     <ul>
       <li v-for="blog in blogArr">
         <router-link
-          :to="{ name:'blogarticle', params: {cate:blog.category, blogid:blog.id, blogcont:blog}}"
+          :to="{ path:`/blogpost/${blog.category}/${blog.id}`}"
         >{{ blog.title }}</router-link>
       </li>
     </ul>
