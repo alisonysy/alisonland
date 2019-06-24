@@ -64,21 +64,20 @@ export default new Router({
       name:'blogarticle',
       component:blogpost,
       props:true,
-      children: [
-        // ...blogRouteArr.map((entry)=>{
-        //   return ({
-        //     path:entry.id,
-        //     name:entry.id,
-        //     component: ()=> import(`./blog_md/${entry.id}.md`)
-        //   })
-        // })
-        {
-          path:'',
-          components: {
-            default: ()=> import(`./blog_md/250519-first-time-using-xcode-running-debugging.md`)
-          }
-        }
-      ]
+      children: (
+        blogRouteArr.map((entry)=>{
+          return ({
+            path:`/blogpost/:cate/article-${entry.id}`,
+            component: ()=> import(`./blog_md/${entry.id}.md`)
+          })
+        })
+        // {
+        //   path:'',
+        //   components: {
+        //     default: ()=> import(`./blog_md/250519-first-time-using-xcode-running-debugging.md`)
+        //   }
+        // }
+      )
     }
   ]
 })

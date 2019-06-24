@@ -19,6 +19,9 @@ export default {
   components:{
     blogHeader
   },
+  beforeCreate(){
+    this.$router.replace(`/blogpost/:cate/article-${this.$route.params.blogid}`)
+  },
   beforeMount(){
     console.log(this.blogcont)
     
