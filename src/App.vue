@@ -70,7 +70,7 @@ ul,li{list-style: none;padding: 0;margin: 0;}
   font-family: "monad";
   src: url("assets/fonts/Monad.otf") format("opentype");
 }
-@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,700&display=swap');
 @font-face{
   font-family: 'el-sans-serif';
   src:url('assets/fonts/el-sans-serif.ttf') format('truetype');
