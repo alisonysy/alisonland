@@ -20,8 +20,14 @@ ScrollView和FlatList的区别：
 + `onRefresh`(function) - 更新时调用
 
 ## Styling
-每个组件是Flex Container。
+
+#### 每个组件是Flex Container。
 
 自身充盈可用空间的情况：
 + 在自身设置`{flex:1/2...}`
 + 若含有已知高度的子组件，但**没有**设置高度或宽度时，该组件会充盈到子组件的高度，并**占满**可用的宽度
+
+#### `borderRadius` 和 `backgroundColor` 一起用
+
+原本目的是创造一系列选择不同样式的按钮`<TouchableWithoutFeedback>`，当用户点击选择的时候，被点击的按钮会有`backgroundColor`，但由于在`<TouchableWithoutFeedback>`上设置了`borderRadius`，如果同时设置`backgroundColor`的话，`backgroundColor`就会溢出：
+解决的办法是在`<TouchableWithoutFeedback>`和里面的`<Text>`中间加一层`<View>`，把`backgroundColor`设置在`<View>`上
