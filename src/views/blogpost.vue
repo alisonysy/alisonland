@@ -1,8 +1,10 @@
 <template>
-  <main>
+  <main :class="[postCommonClass,postOwnClass]">
     <blogHeader />
-    {{blog}}
-    <router-view/>
+    <article class="post">
+      {{blogId}}
+      <router-view/>
+    </article>
   </main>
 </template>
 
@@ -13,7 +15,13 @@ export default {
   props:["blogcont"],
   data: function() {
     return {
-      blog:this.$route.params.blogid
+      blogId:this.$route.params.blogid,
+      postCommonClass:'post-wrapper'
+    }
+  },
+  computed:{
+    postOwnClass(){
+      return this.blogId
     }
   },
   components:{

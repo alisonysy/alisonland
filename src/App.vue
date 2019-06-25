@@ -79,6 +79,10 @@ ul,li{list-style: none;padding: 0;margin: 0;}
   font-family: 'el-sig';
   src:url('assets/fonts/el-sig.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'calmer';
+  src: url('assets/fonts/calmer.ttf') format('truetype');
+}
 
 /* general markdown settings */
 /* post concept */
