@@ -58,4 +58,25 @@ a.x = a = {n:22};
 //此时先把对象a的值赋予对象a的属性x，属性x本来不存在，此时新建，此时对象a指向的是{n:1,x:{n:1}}
 //然后把另一个新的对象{n:22}赋值给对象a
 //Note: 对象a不再指向
+
+
+var a = {n:1};
+var b = a;
+a = {n:2};
+a.x = a;
+console.log(a); //{n: 2, x: {n:2,x:{n:2,x:{...}}}}
+console.log(b); //{n:1}
+
+var a = {n:1};
+var b = a;
+a.x = a = {n:2};
+console.log(a); //{n:2}
+console.log(b); //{n:1,x:{n:2}}
+
+//因为
+a.x = a = {n:2}
+等价于
+temp = a
+a = {n:2}
+temp.x = a
 ```
