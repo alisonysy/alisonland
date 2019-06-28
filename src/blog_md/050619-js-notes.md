@@ -47,3 +47,15 @@ function parseProtocol(url) {
 *Syntax:*
 > delete object.property
 > delete object['property']
+
+## 对象的赋值与指向
+当连续赋值时，赋值顺序是从**左**到**右**，即先进行第一个`=`的赋值，然后进行第二个...，以此类推：
+```
+let a = {n:1};
+let b = a; //此时b与a指向相同的内存地址
+
+a.x = a = {n:22}; 
+//此时先把对象a的值赋予对象a的属性x，属性x本来不存在，此时新建，此时对象a指向的是{n:1,x:{n:1}}
+//然后把另一个新的对象{n:22}赋值给对象a
+//Note: 对象a不再指向
+```
