@@ -14,6 +14,8 @@
 <script>
 import blogHeader from "@/components/header.vue";
 import blogJSON from "@/blog_md.json";
+import {categoryGetter,tagGetter,postsForTagGetter} from './../js/menuSlider.js';
+
 export default {
   name: "blogs",
   data: function() {
@@ -45,6 +47,7 @@ export default {
   },
   beforeMount() {
     this.blogRouteArr(blogJSON);
+    postsForTagGetter("react");
     console.log(this.blogArr);
   }
 };

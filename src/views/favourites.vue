@@ -78,7 +78,6 @@ export default {
     },
   },
   mounted() {
-    //this.generateRandomBlock();
   },
   beforeMount() {
     this.fetchLeanCloudData();
