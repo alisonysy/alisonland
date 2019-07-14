@@ -1,6 +1,18 @@
 <template>
   <main class="blogPage">
     <blogHeader/>
+    <div class="up-wrapper">
+      <div class="cate-wrapper">
+        <menuSlider :lis="categoryArr" />
+        <h1 class="currentCate"></h1>
+      </div>
+      <div class="txt-wrapper"></div>
+    </div>
+    <div class="down-wrapper">
+      <div>
+        
+      </div>
+    </div>
     <ul>
       <li v-for="blog in blogArr">
         <router-link
@@ -13,8 +25,9 @@
 
 <script>
 import blogHeader from "@/components/header.vue";
+import menuSlider from '@/components/menuSlider.vue';
 import blogJSON from "@/blog_md.json";
-import {categoryGetter,tagGetter,postsForTagGetter} from './../js/menuSlider.js';
+import {categoryGetter,tagGetter,postsForTagGetter,sortByCreatedAt,sortByTagLength} from './../js/menuSlider.js';
 
 export default {
   name: "blogs",
@@ -25,7 +38,8 @@ export default {
     };
   },
   components: {
-    blogHeader
+    blogHeader,
+    menuSlider
   },
   methods: {
     blogRouteArr: function() {
@@ -45,16 +59,20 @@ export default {
       this.blogArr = arr;
     }
   },
+  computed:{
+    categoryArr: () => {
+      return categoryGetter();
+    }
+  },
   beforeMount() {
     this.blogRouteArr(blogJSON);
-    postsForTagGetter("react");
+    sortByTagLength(postsForTagGetter("react"));
     console.log(this.blogArr);
   }
 };
 </script>
 
-<style>
-.test > * {
-  font-family: "Space Mono", sans-serif;
-}
+<style scoped>
+
 </style>
+

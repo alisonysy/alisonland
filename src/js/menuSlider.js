@@ -21,17 +21,51 @@ const tagGetter = () => {
 }
 
 const postsForTagGetter = (tag) => {
+  let arr = [];
   for(let [key,value] of Object.entries(blogs)){
     value.map( i => {
       let tags = i["tag"];
       if(tags.indexOf(tag) !== -1){
-        console.log(i)
+        arr.push(i);
       }
     })
   }
+  return arr;
 }
 
 const sortByCreatedAt = (arr) => {
-  
+  let temp = arr.map( blog => {
+    blog['createdAt'] = new Date(blog['createdAt']);
+    return blog;
+  });
+  temp = bubbleSort(temp,"createdAt");
+  return temp;
 }
-export {categoryGetter,tagGetter,postsForTagGetter};
+
+const sortByTagLength = (arr) => {
+  arr = arr.map( blog => {
+    blog["tagLength"] = blog.tag.length;
+    return blog;
+  });
+  arr = bubbleSort(arr,"tagLength");
+  console.log(arr)
+  return arr;
+}
+
+export {categoryGetter,tagGetter,postsForTagGetter,sortByCreatedAt,sortByTagLength};
+
+const bubbleSort = (inp,prop) => {
+  let sorted = [];
+  while(inp.length){
+    for(let i=0; i<inp.length -1;i++){
+      if(!inp[i][prop]){
+        inp[i][prop] = 0;
+      }
+      if(inp[i][prop] < inp[i+1][prop]){
+        [inp[i],inp[i+1]] = [inp[i+1],inp[i]];
+      }
+    }
+    sorted.unshift(inp.pop());
+  }
+  return sorted;
+}
