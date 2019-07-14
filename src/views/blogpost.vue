@@ -15,11 +15,14 @@ export default {
   props:["blogcont"],
   data: function() {
     return {
-      blogId:this.$route.params.blogid,
       postCommonClass:'post-wrapper'
     }
   },
   computed:{
+    blogId(){
+      return window.location.href.indexOf('/article') !== -1? 
+              window.location.href.match(/article-([\w-]+)$/)[1] : this.$route.params.blogid;
+    },
     postOwnClass(){
       return this.blogId
     }
@@ -27,12 +30,22 @@ export default {
   components:{
     blogHeader
   },
+  methods:{
+    passParams(){
+      let href = window.location.href;
+      if(href.indexOf('/article') !== -1){
+        let cate = href.match(/blogpost\/([\w-]+)\//)[1];
+        let blogid = href.match(/article-([\w-]+)$/)[1];
+        this.$router.replace(`/blogpost/${cate}/article-${blogid}`)
+      }else{
+        this.$router.replace(`/blogpost/${this.$route.params.cate}/article-${this.$route.params.blogid}`)
+      }
+    }
+  },
   beforeCreate(){
-    this.$router.replace(`/blogpost/:cate/article-${this.$route.params.blogid}`)
   },
   beforeMount(){
-    console.log(this.blogcont)
-    
+    this.passParams();
   }
 }
 </script>

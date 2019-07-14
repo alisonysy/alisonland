@@ -67,7 +67,7 @@ export default new Router({
       children: (
         blogRouteArr.map((entry)=>{
           return ({
-            path:`/blogpost/:cate/article-${entry.id}`,
+            path:`/blogpost/${entry.category}/article-${entry.id}`,
             component: ()=> import(`./blog_md/${entry.id}.md`)
           })
         })
