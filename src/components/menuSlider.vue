@@ -1,10 +1,8 @@
 <template>
   <div class="slider-wrapper">
     <ul>
-      <li v-for="item in slideItems" >
-        <router-link>
+      <li v-for="item in slideItems" @click="$emit('name-clicked',item)">
           {{item}}
-        </router-link>
       </li>
     </ul>
   </div>
@@ -17,6 +15,14 @@ export default {
   data:function(){
     return {
       slideItems:this.lis
+    }
+  },
+  computed:{
+    
+  },
+  methods:{
+    click:()=>{
+
     }
   }
 }

@@ -3,8 +3,8 @@
     <blogHeader/>
     <div class="up-wrapper">
       <div class="cate-wrapper">
-        <menuSlider :lis="categoryArr" />
-        <h1 class="currentCate"></h1>
+        <menuSlider :lis="categoryArr()" @name-clicked=" curCate = $event"/>
+        <h1 class="currentCate">{{ curCate }}</h1>
       </div>
       <div class="txt-wrapper"></div>
     </div>
@@ -34,7 +34,7 @@ export default {
   data: function() {
     return {
       blogArr: [],
-      blogCate: []
+      blogCate: [],
     };
   },
   components: {
@@ -57,17 +57,27 @@ export default {
         });
       }
       this.blogArr = arr;
-    }
-  },
-  computed:{
+    },
     categoryArr: () => {
       return categoryGetter();
     }
   },
+  computed:{
+    curCate:{
+      get: function(){
+        let cateArr = categoryGetter();
+        return cateArr[0];
+      },
+      set: function(newVal){
+        
+      }
+    }
+  },
   beforeMount() {
     this.blogRouteArr(blogJSON);
-    sortByTagLength(postsForTagGetter("react"));
-    console.log(this.blogArr);
+    this.categoryArr();
+    // sortByTagLength(postsForTagGetter("react"));
+    // console.log(this.blogArr);
   }
 };
 </script>
