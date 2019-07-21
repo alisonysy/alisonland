@@ -3,7 +3,7 @@
     <blogHeader/>
     <div class="up-wrapper">
       <div class="cate-wrapper">
-        <menuSlider :lis="categoryArr()" @name-clicked=" curCate = $event"/>
+        <menuSlider :lis="categoryArr()" @name-clicked=" curCate = $event" class="cateSlider"/>
         <h1 class="currentCate">{{ curCate }}</h1>
       </div>
       <div class="txt-wrapper"></div>
@@ -76,6 +76,6 @@ export default {
 </script>
 
 <style scoped>
-
+.cateSlider{width:24vw;}
 </style>
 
