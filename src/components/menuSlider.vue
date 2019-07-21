@@ -1,8 +1,8 @@
 <template>
   <div class="slider-wrapper">
-    <ul>
+    <ul class="dspFlex">
       <li v-for="item in slideItems" @click="$emit('name-clicked',item)">
-          {{item}}
+          <span>{{item}}</span>
       </li>
     </ul>
   </div>
@@ -29,5 +29,26 @@ export default {
 </script>
 
 <style scoped>
-
+ul{
+  flex-flow: row nowrap;
+  overflow-x: auto;
+  width:24vw;
+}
+li{
+  display: inline-block;
+  margin:.5em;
+}
+span{
+  white-space: nowrap;
+}
+ul::-webkit-scrollbar{
+  height:3px;
+  display: none;
+}
+ul:hover::-webkit-scrollbar-track{
+  background-color: transparent;
+}
+ul:hover::-webkit-scrollbar-thumb{
+  background-color: #8ac4d0;
+}
 </style>

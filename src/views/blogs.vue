@@ -35,6 +35,7 @@ export default {
     return {
       blogArr: [],
       blogCate: [],
+      curCate:this.categoryArr()[0]
     };
   },
   components: {
@@ -63,15 +64,7 @@ export default {
     }
   },
   computed:{
-    curCate:{
-      get: function(){
-        let cateArr = categoryGetter();
-        return cateArr[0];
-      },
-      set: function(newVal){
-        
-      }
-    }
+    
   },
   beforeMount() {
     this.blogRouteArr(blogJSON);
