@@ -29,7 +29,7 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "monad", "Space Mono",monospace;
+  font-family: "calmer", monospace;
 }
 a{text-decoration: none;color:unset;}
 ul,li{list-style: none;padding: 0;margin: 0;}
@@ -65,12 +65,19 @@ ul,li{list-style: none;padding: 0;margin: 0;}
   color:#fff;
 }
 
+.f-monad{
+  font-family: 'monad',Arial, sans-serif;
+}
+
 /* import fonts */
 @font-face {
   font-family: "monad";
   src: url("assets/fonts/Monad.otf") format("opentype");
 }
-@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,700&display=swap');
+@font-face {
+  font-family: "airSpace";
+  src: url("assets/fonts/AirSpace.otf") format("opentype");
+}
 @font-face{
   font-family: 'el-sans-serif';
   src:url('assets/fonts/el-sans-serif.ttf') format('truetype');

@@ -1,10 +1,10 @@
 <template>
   <main class="home posiRela">
-    <div class="otherLinks dspFlex fs20 deepBlue">{{homeDate | dateFormat}}</div>
+    <div class="otherLinks dspFlex fs20 deepBlue f-monad">{{homeDate | dateFormat}}</div>
     <div class="nameBg posiAbso">
       <div class="name">
-        <span class="initialLetter whiteFont">A</span>
-        <span class="letters deepBlue">lison</span>
+        <span class="initialLetter whiteFont f-monad">A</span>
+        <span class="letters deepBlue f-monad">lison</span>
       </div>
     </div>
     <div class="announcement">

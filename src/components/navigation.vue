@@ -2,7 +2,7 @@
   <nav id="navigation-wrapper">
     <div v-for="val in tabObj" class="tab whiteFont dspFlex fs16">
       <router-link :to="val.rt">
-      <span>{{val.name}}</span>
+      <span class="f-monad">{{val.name}}</span>
       </router-link>
     </div>
   </nav>

@@ -1,10 +1,10 @@
 <template>
   <main class="all-header">
     <div class="headerLeft">
-      <div class="otherLinks dspFlex fs20 deepBlue">{{homeDate | dateFormat}}</div>
+      <div class="otherLinks dspFlex fs20 deepBlue f-monad">{{homeDate | dateFormat}}</div>
       <div class="nameBg">
         <router-link to="/">
-          <span class="initialLetter whiteFont fs20">A</span>
+          <span class="initialLetter whiteFont fs20 f-monad">A</span>
         </router-link>
       </div>
     </div>

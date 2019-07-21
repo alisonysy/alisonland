@@ -34,8 +34,8 @@ export default {
     passParams(){
       let href = window.location.href;
       if(href.indexOf('/article') !== -1){
-        let cate = href.match(/blogpost\/([\w-]+)\//)[1];
-        let blogid = href.match(/article-([\w-]+)$/)[1];
+        let cate = href.match(/blogpost\/([\w\d-]+)\//)[1];
+        let blogid = href.match(/article-([\w\d-]+)$/)[1];
         this.$router.replace(`/blogpost/${cate}/article-${blogid}`)
       }else{
         this.$router.replace(`/blogpost/${this.$route.params.cate}/article-${this.$route.params.blogid}`)

@@ -7,7 +7,7 @@
       "subTitle":"How Each Element And Its Correspondent Box(es) Are Generated?",
       "abstract":"CSS的盒模型(box model)把元素当成一个个长方形盒子渲染，每个盒子包括内容(content)、内边距(padding)、边框(border)、外边距(margin)4个部分。而当一个页面有很多这样的盒子时，这些盒子的具体位置和最终渲染的布局则由视觉格式化模型(visual formatting model)决定。",
       "updatedAt":"",
-      "tag":["css","box model","entry-level","basic concept","block box","block container box","block-level box","notes"]
+      "tag":["css","box model","entry-level","basic concept","notes"]
     },
     {
       "id":"120719-what-is-itcss",
@@ -119,7 +119,7 @@
       "tag":["notes","redux","react","react-native","entry-level"]
     }
   ],
-  "React Native":[
+  "React-Native":[
     {
       "id":"300519-react-native-nav-notes-entry-level",
       "createdAt":"May 30 2019",

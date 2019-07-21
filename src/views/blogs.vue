@@ -1,7 +1,7 @@
 <template>
   <main class="blogPage">
     <blogHeader/>
-    <div class="up-wrapper">
+    <div class="up-wrapper dspFlex">
       <div class="cate-wrapper">
         <menuSlider :lis="categoryArr()" @name-clicked=" curCate = $event" class="cateSlider"/>
         <h1 class="currentCate">{{ curCate }}</h1>
@@ -9,9 +9,12 @@
       <div class="txt-wrapper"></div>
     </div>
     <div class="down-wrapper">
-      <div>
-        
+      <div class="dspFlex">
+        <menuSlider :lis="tagArr()" @name-clicked=" curTag = $event" class="cateSlier fs16" />
+        <!-- component for filter -->
       </div>
+      <!-- component for posts -->
+      <postCard />
     </div>
     <ul>
       <li v-for="blog in blogArr">
@@ -26,6 +29,7 @@
 <script>
 import blogHeader from "@/components/header.vue";
 import menuSlider from '@/components/menuSlider.vue';
+import postCard from '@/components/postCard.vue';
 import blogJSON from "@/blog_md.json";
 import {categoryGetter,tagGetter,postsForTagGetter,sortByCreatedAt,sortByTagLength} from './../js/menuSlider.js';
 
@@ -35,12 +39,14 @@ export default {
     return {
       blogArr: [],
       blogCate: [],
-      curCate:this.categoryArr()[0]
+      curCate:this.categoryArr()[0],
+      curTag:this.tagArr()[0]
     };
   },
   components: {
     blogHeader,
-    menuSlider
+    menuSlider,
+    postCard
   },
   methods: {
     blogRouteArr: function() {
@@ -61,6 +67,9 @@ export default {
     },
     categoryArr: () => {
       return categoryGetter();
+    },
+    tagArr: () => {
+      return tagGetter();
     }
   },
   computed:{
@@ -76,6 +85,25 @@ export default {
 </script>
 
 <style scoped>
-.cateSlider{width:24vw;}
+.up-wrapper{height:15em;border-bottom: 1px solid #04244a;}
+.cate-wrapper{
+  width:60%;
+  border-right: 1px solid #04244a;
+}
+.cateSlider{
+  width:50%;
+  margin:1em 3em;
+  font-size: 1.2em;
+}
+.currentCate{
+  font-size: 6em;
+  margin: 0 0 .5em .8em;
+  color:#2aa1b7;
+  font-family: 'monad',Arial,sans-serif;
+}
+.down-wrapper div:first-of-type{
+  width:75%;
+  padding:1em;
+}
 </style>
 
