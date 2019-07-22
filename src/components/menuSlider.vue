@@ -47,6 +47,7 @@ export default {
 </script>
 
 <style scoped>
+.slider-wrapper{width:100%;}
 ul{
   flex-flow: row nowrap;
   overflow-x: auto;

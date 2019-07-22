@@ -3,18 +3,25 @@
     <blogHeader/>
     <div class="up-wrapper dspFlex">
       <div class="cate-wrapper">
-        <menuSlider :lis="categoryArr()" @name-clicked=" curCate = $event" class="cateSlider"/>
+        <menuSlider :lis="categoryArr()" @name-clicked=" curCate = $event" class="slider"/>
         <h1 class="currentCate">{{ curCate }}</h1>
       </div>
       <div class="txt-wrapper"></div>
     </div>
     <div class="down-wrapper">
-      <div class="dspFlex">
-        <menuSlider :lis="tagArr()" @name-clicked=" curTag = $event" class="cateSlier fs16" />
+      <div class="dspFlex tagSlider-wrapper">
+        <menuSlider :lis="tagArr()" @name-clicked="selectTag" class="slier fs16" />
         <!-- component for filter -->
       </div>
       <!-- component for posts -->
-      <postCard />
+      <ul class="dspFlex">
+        <li v-for="blog in blogArr">
+          <router-link
+            :to="{ path:`/blogpost/${blog.category}/${blog.id}`}"
+          ><postCard /></router-link>
+        </li>
+      </ul>
+      
     </div>
     <ul>
       <li v-for="blog in blogArr">
@@ -40,7 +47,7 @@ export default {
       blogArr: [],
       blogCate: [],
       curCate:this.categoryArr()[0],
-      curTag:this.tagArr()[0]
+      curTag:this.tagArr()[0],
     };
   },
   components: {
@@ -70,6 +77,10 @@ export default {
     },
     tagArr: () => {
       return tagGetter();
+    },
+    selectTag: function(val){
+      console.log(postsForTagGetter(val));
+      return postsForTagGetter(val)
     }
   },
   computed:{
@@ -78,6 +89,7 @@ export default {
   beforeMount() {
     this.blogRouteArr(blogJSON);
     this.categoryArr();
+    this.selectTag(this.curTag);
     // sortByTagLength(postsForTagGetter("react"));
     // console.log(this.blogArr);
   }
@@ -90,7 +102,7 @@ export default {
   width:60%;
   border-right: 1px solid #04244a;
 }
-.cateSlider{
+.slider{
   width:50%;
   margin:1em 3em;
   font-size: 1.2em;
@@ -101,7 +113,7 @@ export default {
   color:#2aa1b7;
   font-family: 'monad',Arial,sans-serif;
 }
-.down-wrapper div:first-of-type{
+.tagSlider-wrapper{
   width:75%;
   padding:1em;
 }
