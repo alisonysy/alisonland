@@ -10,15 +10,15 @@
     </div>
     <div class="down-wrapper">
       <div class="dspFlex tagSlider-wrapper">
-        <menuSlider :lis="tagArr()" @name-clicked="selectTag" class="slier fs16" />
+        <menuSlider :lis="tagArr()" @name-clicked=" curTag = $event " class="slier fs16" />
         <!-- component for filter -->
       </div>
       <!-- component for posts -->
       <ul class="dspFlex">
-        <li v-for="blog in blogArr">
+        <li v-for="blog in selectedTag">
           <router-link
             :to="{ path:`/blogpost/${blog.category}/${blog.id}`}"
-          ><postCard /></router-link>
+          ><postCard :blog="blog"/></router-link>
         </li>
       </ul>
       
@@ -78,18 +78,22 @@ export default {
     tagArr: () => {
       return tagGetter();
     },
-    selectTag: function(val){
-      console.log(postsForTagGetter(val));
-      return postsForTagGetter(val)
-    }
+    // selectTag: function(val){
+    //   console.log(postsForTagGetter(val));
+    //   this.curTag = val;
+    //   return postsForTagGetter(val)
+    // }
   },
   computed:{
-    
+    selectedTag:function(){
+      console.log(this.curTag);
+      console.log(postsForTagGetter(this.curTag))
+      return postsForTagGetter(this.curTag);
+    }
   },
   beforeMount() {
     this.blogRouteArr(blogJSON);
     this.categoryArr();
-    this.selectTag(this.curTag);
     // sortByTagLength(postsForTagGetter("react"));
     // console.log(this.blogArr);
   }

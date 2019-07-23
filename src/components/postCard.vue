@@ -3,24 +3,22 @@
     <div class="legends">
       <img src="../assets/pot.png" alt="pot">
     </div>
-    <h1 class="f-monad">{{title}}</h1>
-    <h3>{{subTitle}}</h3>
-    <div class="abs">{{abstract}}</div>
-    <div class="createdAt">{{createdAt}}</div>
+    <h1 class="f-monad">{{this.blog.title}}</h1>
+    <h3>{{this.blog.subTitle}}</h3>
+    <div class="abs">{{this.blog.abstract}}</div>
+    <div class="createdAt">{{this.blog.createdAt}}</div>
   </div>
 </template>
 
 <script>
 export default {
   name:'post-card',
+  props:['blog'],
   data:function(){
     return {
-      title:'ITCSS - Concept Explanation',
-      subTitle:'Inverted Triangle CSS',
-      abstract:'Aka Inverted Triangle CSS, a concept developed by Harry Roberts and consists of 7 parts',
-      createdAt:'12 Jul 2019'
+      
     }
-  }
+  },
 }
 </script>
 

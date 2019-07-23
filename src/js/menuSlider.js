@@ -24,6 +24,7 @@ const postsForTagGetter = (tag) => {
   let arr = [];
   for(let [key,value] of Object.entries(blogs)){
     value.map( i => {
+      i["category"] = key;
       let tags = i["tag"];
       if(tags.indexOf(tag) !== -1){
         arr.push(i);
