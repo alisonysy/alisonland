@@ -9,28 +9,28 @@ const categoryGetter = () => {
   return arr;
 }
 
-const tagGetter = () => {
+const tagGetter = (cate) => {
   let allTags = [];
-  for(let [key,value] of Object.entries(blogs)){
-    blogs[key].map( i => {
+  // for(let [key,value] of Object.entries(blogs)){
+    blogs[cate].map( i => {
       let tags = i["tag"];
       allTags = allTags.concat(tags);
     })
-  }
+  // }
   return Array.from(new Set(allTags));
 }
 
-const postsForTagGetter = (tag) => {
+const postsForTagGetter = (cate,tag) => {
   let arr = [];
-  for(let [key,value] of Object.entries(blogs)){
-    value.map( i => {
-      i["category"] = key;
+  // for(let [key,value] of Object.entries(blogs)){
+    blogs[cate].map( i => {
+      i["category"] = cate;
       let tags = i["tag"];
       if(tags.indexOf(tag) !== -1){
         arr.push(i);
       }
     })
-  }
+  // }
   return arr;
 }
 

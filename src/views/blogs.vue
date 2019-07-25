@@ -10,7 +10,7 @@
     </div>
     <div class="down-wrapper">
       <div class="dspFlex tagSlider-wrapper">
-        <menuSlider :lis="tagArr()" @name-clicked=" curTag = $event " class="slier fs16" />
+        <menuSlider :lis="tagArr(curCate)" @name-clicked=" clickedTag = $event " class="slier fs16" />
         <!-- component for filter -->
       </div>
       <!-- component for posts -->
@@ -23,13 +23,6 @@
       </ul>
       
     </div>
-    <ul>
-      <li v-for="blog in blogArr">
-        <router-link
-          :to="{ path:`/blogpost/${blog.category}/${blog.id}`}"
-        >{{ blog.title }}</router-link>
-      </li>
-    </ul>
   </main>
 </template>
 
@@ -47,7 +40,7 @@ export default {
       blogArr: [],
       blogCate: [],
       curCate:this.categoryArr()[0],
-      curTag:this.tagArr()[0],
+      clickedTag:this.curTag
     };
   },
   components: {
@@ -75,27 +68,24 @@ export default {
     categoryArr: () => {
       return categoryGetter();
     },
-    tagArr: () => {
-      return tagGetter();
+    tagArr: (cate) => {
+      return tagGetter(cate);
     },
-    // selectTag: function(val){
-    //   console.log(postsForTagGetter(val));
-    //   this.curTag = val;
-    //   return postsForTagGetter(val)
-    // }
   },
   computed:{
     selectedTag:function(){
-      console.log(this.curTag);
-      console.log(postsForTagGetter(this.curTag))
-      return postsForTagGetter(this.curTag);
+      console.log(this.clickedTag);
+      console.log(postsForTagGetter(this.curCate,this.clickedTag))
+      return postsForTagGetter(this.curCate,this.clickedTag);
+    },
+    curTag:function(){ // to set setter
+      let cate = this.curCate
+      return this.tagArr(cate)[0]
     }
   },
   beforeMount() {
     this.blogRouteArr(blogJSON);
     this.categoryArr();
-    // sortByTagLength(postsForTagGetter("react"));
-    // console.log(this.blogArr);
   }
 };
 </script>
@@ -118,8 +108,23 @@ export default {
   font-family: 'monad',Arial,sans-serif;
 }
 .tagSlider-wrapper{
-  width:75%;
-  padding:1em;
+  width:55%;
+  padding:1em 1em 1em 3.8em;
+}
+ul{
+  margin-bottom: 3em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  overflow-x: scroll;
+}
+ul::-webkit-scrollbar{
+  height:8px;
+}
+ul:hover::-webkit-scrollbar-track{
+  background-color: transparent;
+}
+ul:hover::-webkit-scrollbar-thumb{
+  background-color: #8ac4d0;
 }
 </style>
 

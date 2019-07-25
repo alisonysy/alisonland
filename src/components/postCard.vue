@@ -25,7 +25,7 @@ export default {
 <style scoped>
 .postCard-wrapper{
   width:25em;
-  height:15em;
+  height:100%;
   margin: 0 3em;
   padding:1em;
   color:#fff;

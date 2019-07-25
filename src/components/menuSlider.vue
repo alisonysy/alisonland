@@ -1,7 +1,7 @@
 <template>
   <div class="slider-wrapper posiRela">
     <ul class="dspFlex">
-      <li v-for="item in slideItems" @click="$emit('name-clicked',item)">
+      <li v-for="item in this.lis" @click="$emit('name-clicked',item)">
           <span class="deepBlue">{{item}}</span>
       </li>
     </ul>
@@ -16,7 +16,7 @@ export default {
   props:['lis'],
   data:function(){
     return {
-      slideItems:this.lis
+      // slideItems:this.lis
     }
   },
   computed:{
