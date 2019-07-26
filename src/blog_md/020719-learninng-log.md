@@ -8,3 +8,5 @@
       Use `alt` + click to unfold DOMs;
       *Event Listeners* are right beside *Computed*, all event handlers are listed, right click to locate in scripts;
       
+### 26/07/2019
++ [x] BEMIT: both the *BEM* naming conventions and **responsive suffixes** in the format of `@<breakpoint>` 
