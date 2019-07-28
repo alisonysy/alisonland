@@ -7,7 +7,8 @@
 Actions are plain JS objects. They must have a *type* property that indicates the *type* of action being performed. *Type* should be string constants.
 They are the *only source* of info for the store. You send them to the store via `store.dispatch()`.
 <h5 class="postDefine">Action creators</h5> are functions that create actions. They simply return an action.
-```
+
+```Js
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
 export const VisibilityFilters = {
@@ -20,8 +21,10 @@ export function setVisibilityFilter(filter) {
   return { type: SET_VISIBILITY_FILTER, filter }
 }
 ```
+
 Then to initiate a dispatch, pass the returned object to `dispatch()`:
-```
+
+```js
 dispatch(addTodo(text))
 
 //or create a **bound action creator** that automatically dispatches and call it directly
@@ -36,7 +39,7 @@ Reducers should stay **pure**. You should NEVER do the following inside a reduce
 + Perform side effects like API calls and routing transitions
 + Call <span class="postQ">non-pure functions</span>, e.g. `Date.now()` or `Math.random()`
 
-```
+```js
 import { SET_VISIBILITY_FILTER, VisibilityFilters } from './actions'
 
 const initialState = {
@@ -78,7 +81,7 @@ function todoApp(state = initialState, action) {
 ```
 Here, we see that `SET_VISIBILITY_FILTER` handles `state.visibilityFilter` while `ADD_TODO` and `TOGGLE_TODO` handle `state.todos`, so
 **Spliting the reducer** to make it easier to understand:
-```
+```js
 import {
   ADD_TODO,
   TOGGLE_TODO,
@@ -147,13 +150,13 @@ The store has the following responsibilities:
 + registers listeners via `subscribe(listener)`
 + handles unregistering of listeners
 
-```
+```js
 import { createStore } from 'redux'
 import todoApp from './reducers'
 const store = createStore(todoApp)
 ```
 Now, we can dispatch some actions:
-```
+```js
 import {
   addTodo,
   toggleTodo,
