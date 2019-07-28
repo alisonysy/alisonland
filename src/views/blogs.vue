@@ -3,7 +3,7 @@
     <blogHeader/>
     <div class="up-wrapper dspFlex">
       <div class="cate-wrapper">
-        <menuSlider :lis="categoryArr()" @name-clicked=" curCate = $event" class="slider"/>
+        <menuSlider :lis="categoryArr()" @name-clicked=" curCate = $event " class="slider"/>
         <h1 class="currentCate">{{ curCate }}</h1>
       </div>
       <div class="txt-wrapper"></div>
@@ -14,7 +14,7 @@
         <!-- component for filter -->
       </div>
       <!-- component for posts -->
-      <ul class="dspFlex">
+      <ul class="dspFlex" id="postItem">
         <li v-for="blog in selectedTag">
           <router-link
             :to="{ path:`/blogpost/${blog.category}/${blog.id}`}"
@@ -30,14 +30,13 @@
 import blogHeader from "@/components/header.vue";
 import menuSlider from '@/components/menuSlider.vue';
 import postCard from '@/components/postCard.vue';
-import blogJSON from "@/blog_md.json";
 import {categoryGetter,tagGetter,postsForTagGetter,sortByCreatedAt,sortByTagLength} from './../js/menuSlider.js';
+import { constants } from 'crypto';
 
 export default {
   name: "blogs",
   data: function() {
     return {
-      blogArr: [],
       blogCate: [],
       curCate:this.categoryArr()[0],
       clickedTag:this.curTag
@@ -49,33 +48,27 @@ export default {
     postCard
   },
   methods: {
-    blogRouteArr: function() {
-      let blogCate = Object.keys(blogJSON);
-      this.blogCate = blogCate;
-      let arr = [];
-      for (let i = 0; i < blogCate.length; i++) {
-        let cate = blogCate[i];
-        let cateArr = blogJSON[cate];
-        cateArr.map(item => {
-          let temp = {};
-          temp.category = cate;
-          Object.assign(temp, item);
-          arr.push(temp);
-        });
-      }
-      this.blogArr = arr;
-    },
     categoryArr: () => {
       return categoryGetter();
     },
     tagArr: (cate) => {
       return tagGetter(cate);
     },
+    triggerTagClick:()=>{
+      let allTags = document.querySelectorAll('.tagSlider-wrapper ul li');
+      let firstTag = allTags[0];
+      firstTag.dispatchEvent(new Event('click'));
+    },
+    cateClicked:function(){
+      let postItem = document.getElementById('postItem');
+      let posts = postItem.querySelector('li');
+      if(!posts){
+        this.triggerTagClick();
+      }
+    }
   },
   computed:{
     selectedTag:function(){
-      console.log(this.clickedTag);
-      console.log(postsForTagGetter(this.curCate,this.clickedTag))
       return postsForTagGetter(this.curCate,this.clickedTag);
     },
     curTag:function(){ // to set setter
@@ -84,8 +77,13 @@ export default {
     }
   },
   beforeMount() {
-    this.blogRouteArr(blogJSON);
     this.categoryArr();
+  },
+  mounted(){
+    this.triggerTagClick();
+  },
+  updated(){
+    this.cateClicked();
   }
 };
 </script>
