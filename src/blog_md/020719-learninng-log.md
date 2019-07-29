@@ -32,3 +32,6 @@
  ⋅⋅* [hover slider - codeMyUI](https://codemyui.com/before-after-animation-filter/)
  ⋅⋅* [hover slider - codepen](https://codepen.io/mimoduo/pen/Vawydp?editors=0110)
  ⋅⋅* [many more hover effects - CSSTricks](https://css-tricks.com/direction-aware-hover-effects/)
+
+**Questions**
++ What does `dispatch` do in React?
