@@ -3,11 +3,11 @@ Event bus采用的是发布/订阅模式，常用于小到中型app里组件的�
 既然是**发布/订阅**模式，即有：订阅者(subscriber)、发布者(publisher)和事件(events)三大块。
 
 ### 把不同类型的事件和对应要执行的callback放到一个对象里
-```
+```js
 const subscriptions = {}
 ```
 一开始的对象为空，当有事件被订阅时，会在此对象上添加，同时应该对对象里每个订阅事件的函数赋予ID，用于unsubscribe，最后理想的`subscriptions`对象是：
-```
+```js
 subscriptions ={
   eventType1:{
     id1: func1,
@@ -25,7 +25,7 @@ subscriptions ={
 ### 订阅函数——指明要订阅的事件和callback
 订阅函数需要对初次注册的callback赋予ID，同时返回`unsubscribe`方法。
 **ID生成函数**：
-```
+```js
 function idGenerator(){
   let lastIndex = 0;
   return function getIndex(){ //闭包用于记录上一次的lastIndex
@@ -35,7 +35,7 @@ function idGenerator(){
 }
 const getIndex = idGenerator()
 ```
-```
+```js
 function subscribe(eventType, fn){
   const id = getIndex(); //调用的是idGenerator()返回的函数，调用并不会执行`let lastIndex = 0;`，同时getIndex()包含之前的lastIndex的信息
 
@@ -57,7 +57,7 @@ function subscribe(eventType, fn){
 ```
 
 ### 发布函数——指明发布的事件和输出的参数
-```
+```js
 function publish(eventType, data){
   if(!subscriptions[eventType]){
     return
@@ -70,7 +70,7 @@ function publish(eventType, data){
 ```
 
 ### 完整模块输出代码
-```
+```js
 const subscriptions = {};
 const getIndex = idGenerator();
 
@@ -118,7 +118,7 @@ export {subscriptions,publish,subscribe}
 import的时候，可作为单个方法引入，也可设置namespace。
 
 + 单个方法引入：
-```
+```js
 import {subscribe, publish, subscriptions} from './main1.js'
 
 let a = subscribe("loaded",function(args){
@@ -137,7 +137,7 @@ console.log(subscriptions["loaded"]["1"]); //undefined
 ```
 
 + 用eventBus作为命名空间：
-```
+```JavaScript
 import * as eventBus from './main1.js'
 
 let a = eventBus.subscribe("loaded",function(args){

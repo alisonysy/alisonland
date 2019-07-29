@@ -13,7 +13,6 @@
         <menuSlider :lis="tagArr(curCate)" @name-clicked=" clickedTag = $event " class="slier fs16" />
         <!-- component for filter -->
       </div>
-      <!-- component for posts -->
       <ul class="dspFlex" id="postItem">
         <li v-for="blog in selectedTag">
           <router-link
