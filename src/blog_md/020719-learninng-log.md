@@ -24,3 +24,11 @@
         }
       }
       ```
+
+### 29/07/2019
++ [x] Before and after comparison slider, 2 examples:
+ ⋅⋅* [all sliders effects - codeMyUI](https://codemyui.com/tag/before-and-after/)
+ ⋅⋅* [multi-layered dragging slider - codepen](https://codepen.io/nosurprisethere/pen/JJzdoP?editors=0110)
+ ⋅⋅* [hover slider - codeMyUI](https://codemyui.com/before-after-animation-filter/)
+ ⋅⋅* [hover slider - codepen](https://codepen.io/mimoduo/pen/Vawydp?editors=0110)
+ ⋅⋅* [many more hover effects - CSSTricks](https://css-tricks.com/direction-aware-hover-effects/)
