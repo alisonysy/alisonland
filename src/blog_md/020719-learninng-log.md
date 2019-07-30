@@ -16,22 +16,32 @@
 ### 27/07/2019
 + [x] Sass: intro - syntax and style rules, notes:
       `&` is the parent selector, except for being used to *add pseudo-classes* to the outer selector, it can also be used to style the outer selector in a certain context:
-      ```scss
-      [dir=rtl] & { /* match the element whose parent's text is set to use a right-to-left language */
-        margin: auto {
-          left: 0;
-          right:10px;
-        }
-      }
-      ```
+```
+[dir=rtl] & { /* match the element whose parent's text is set to use a right-to-left language */
+  margin: auto {
+    left: 0;
+    right:10px;
+  }
+}
+```
 
 ### 29/07/2019
 + [x] Before and after comparison slider, 2 examples:
- ⋅⋅* [all sliders effects - codeMyUI](https://codemyui.com/tag/before-and-after/)
- ⋅⋅* [multi-layered dragging slider - codepen](https://codepen.io/nosurprisethere/pen/JJzdoP?editors=0110)
- ⋅⋅* [hover slider - codeMyUI](https://codemyui.com/before-after-animation-filter/)
- ⋅⋅* [hover slider - codepen](https://codepen.io/mimoduo/pen/Vawydp?editors=0110)
- ⋅⋅* [many more hover effects - CSSTricks](https://css-tricks.com/direction-aware-hover-effects/)
+  + [all sliders effects - codeMyUI](https://codemyui.com/tag/before-and-after/)
+  + [multi-layered dragging slider - codepen](https://codepen.io/nosurprisethere/pen/JJzdoP?editors=0110)
+  + [hover slider - codeMyUI](https://codemyui.com/before-after-animation-filter/)
+  + [hover slider - codepen](https://codepen.io/mimoduo/pen/Vawydp?editors=0110)
+  + [many more hover effects - CSSTricks](https://css-tricks.com/direction-aware-hover-effects/)
 
 **Questions**
 + What does `dispatch` do in React?
+
+### 30/07/2019
++ Sass `@import` at-rule enables nesting imports, which can scope CSS to a particular *element* or media query:
+```
+// style.scss
+.aClass{
+  @import "theme";
+}
+```
+All styled selectors in theme.scss / theme.css will be appended as children of *aClass* selector.

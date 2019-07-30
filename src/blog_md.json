@@ -17,6 +17,15 @@
       "abstract":"",
       "updatedAt":"",
       "tag":["css","basic concept","entry-level","notes"]
+    },
+    {
+      "id":"300719-scss-intro-notes",
+      "createdAt":"Jul 30 2019",
+      "title":"Sass入门语法",
+      "subTitle":"",
+      "abstract":"目前部分是at-rules的笔记",
+      "updatedAt":"",
+      "tag":["css","basic concept","entry-level","notes","scss"]
     }
   ],
   "XCode":[

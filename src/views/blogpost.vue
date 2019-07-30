@@ -18,6 +18,7 @@
       </div>
       <div class="postBody-wrapper">
         <div class="postBody markdown-body">
+          <!-- <vue-markdown>:D</vue-markdown> -->
           <router-view/>
         </div>
       </div>
@@ -28,6 +29,7 @@
 <script>
 import blogHeader from '@/components/postHeader.vue';
 import blogJSON from '@/blog_md.json';
+import VueMarkdown from 'vue-markdown';
 
 export default {
   name:'blogarticle',
@@ -52,7 +54,8 @@ export default {
     }
   },
   components:{
-    blogHeader
+    blogHeader,
+    VueMarkdown
   },
   methods:{
     passParams(){
