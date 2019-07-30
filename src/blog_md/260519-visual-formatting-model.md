@@ -31,6 +31,8 @@ CSS元素每个盒子的布局(layout)是由以下的因素决定的：
   块级元素会生成1个或多个块级盒。块级盒和块容器盒并无直接联系，块级盒可以是也可以不是块容器盒，如<span class="postEg">当元素为table时，这个元素便不是块容器盒，因为它不能包含其他的级块盒或内联盒子</span>；反之也成立，<span class="postEg">如不可替代的行内盒子(non-replaced inline block)和不可替代的表格单元格(non-replaced table cell)</span>，它们只是块容器盒，但不是块级盒。
   一个既是块级盒又是块容器盒的盒子成为块盒(block box)。
 </h4>
+
 > block-level box &amp;&amp; block container box === block box
 
 <h4 class="postConcepts">块盒(block box)</h4>
+

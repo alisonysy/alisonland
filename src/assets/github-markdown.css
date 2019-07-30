@@ -615,6 +615,10 @@
   font-size: 1em;
 }
 
+.markdown-body h4::before{
+  content:"\01F921"
+}
+
 .markdown-body h5 {
   font-size: .875em;
 }

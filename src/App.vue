@@ -8,11 +8,14 @@
 <script>
 import loading from "@/components/loading.vue";
 import home from "@/views/Home.vue";
+import VueMarkdown from 'vue-markdown';
+
 export default {
   name: "App",
   components: {
     loading,
-    home
+    home,
+    VueMarkdown
   },
   data() {
     return {

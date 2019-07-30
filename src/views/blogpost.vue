@@ -18,7 +18,7 @@
       </div>
       <div class="postBody-wrapper">
         <div class="postBody markdown-body">
-          <!-- <vue-markdown>:D</vue-markdown> -->
+          <vue-markdown>:flushed:</vue-markdown>
           <router-view/>
         </div>
       </div>
