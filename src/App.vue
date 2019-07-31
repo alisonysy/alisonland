@@ -32,7 +32,7 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "calmer", monospace;
+  font-family: "calmer", 'Microsoft Yahei';
 }
 a{text-decoration: none;color:unset;}
 ul,li{list-style: none;padding: 0;margin: 0;}
@@ -56,9 +56,6 @@ ul,li{list-style: none;padding: 0;margin: 0;}
 .fs14{
   font-size: 14px;
 }
-.spMono{
-  font-family: 'Space Mono';
-}
 /* general color settings */
 .deepBlue{
   color:#04244a;
@@ -69,7 +66,7 @@ ul,li{list-style: none;padding: 0;margin: 0;}
 }
 
 .f-monad{
-  font-family: 'monad',Arial, sans-serif;
+  font-family: 'monad','Microsoft Yahei', sans-serif;
 }
 
 /* import fonts */

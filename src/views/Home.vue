@@ -111,7 +111,7 @@ export default {
 }
 
 .announcement p{
-  font-family: 'Space Mono',monospace;
+  font-family: 'calmer','Microsoft Yahei',sans-serif;
 }
 
 /* profile img */

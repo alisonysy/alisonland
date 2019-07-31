@@ -11,7 +11,7 @@
     <div class="down-wrapper">
       <div class="dspFlex tagSlider-wrapper">
         <menuSlider :lis="tagArr(curCate)" @name-clicked=" clickedTag = $event " class="slier fs16" />
-        <!-- component for filter -->
+        <dropdownPanel :dataArr="[{name:'bytime',val:'By created time'},{name:'bylen',val:'By tag length'}]" defaultOpt="By time"/>
       </div>
       <ul class="dspFlex" id="postItem">
         <li v-for="blog in selectedTag">
@@ -31,6 +31,7 @@ import menuSlider from '@/components/menuSlider.vue';
 import postCard from '@/components/postCard.vue';
 import {categoryGetter,tagGetter,postsForTagGetter,sortByCreatedAt,sortByTagLength} from './../js/menuSlider.js';
 import { constants } from 'crypto';
+import dropdownPanel from '@/components/dropdownPanel.vue';
 
 export default {
   name: "blogs",
@@ -44,7 +45,8 @@ export default {
   components: {
     blogHeader,
     menuSlider,
-    postCard
+    postCard,
+    dropdownPanel
   },
   methods: {
     categoryArr: () => {
