@@ -4,7 +4,7 @@ ES6语法新增了`import`和`export`的新特性，用于实现模块化。
 ## `import`用于动态导入模块
 使用动态导入时，返回的是promise对象，并且支持`await`语法。
 *Syntax:*
-```
+```JavaScript
 import('/modules/my-module.js')
   .then((module) => {
     // Do something with the module.
