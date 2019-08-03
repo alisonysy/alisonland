@@ -45,3 +45,6 @@
 }
 ```
 All styled selectors in theme.scss / theme.css will be appended as children of *aClass* selector.
+
+### 03/08/2019
++ Read MDN document on `Function.prototype.apply()`, several tricks to use this

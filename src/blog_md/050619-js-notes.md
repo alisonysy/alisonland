@@ -1,5 +1,6 @@
 ## Array: 数组相关
 `Array.prototype.join()`会把拥有一个元素以上的数组默认用`,`或指定的符号把数组内的元素连接起来，并返回一个**新的字符串**
+
 > `arr.join()` //默认是`,`连接 <br/>
 > `arr.join('')` //中间没有连接符 <br/>
 `Array.prototype.concat()`用于把两个数组合并，并返回一个**新的数组** <br/>
@@ -14,22 +15,29 @@ Syntax:
 `[a=3,b=34,c='c',d='d'] = varArr`
 **数组解构赋值的应用**：
 + 从返回的数组中获取*所需*的值并把其赋值到对应的变量上
-```
+
+```js
 [a,,c] = f() //忽略f()返回的数组的第二个元素
 ```
+
 + 把进行赋值的数组的*剩余*的元素，赋值到某个变量上
-```
+
+```js
 [a,b, ...c] = f()
 console.log(c) //f()剩余的元素会以数组的形式赋值给c
 ```
+
 + 交换两个变量的值——*省去中间变量*的需要
-```
+
+```js
 let a=1;
 let b=2;
 [a,b] = [b,a]
 ```
+
 + 从RegExp的配对中获取所需的值
-```
+
+```js
 function parseProtocol(url) { 
   var parsedURL = /^(\w+)\:\/\/([^\/]+)\/(.*)$/.exec(url);
   if (!parsedURL) {
@@ -45,12 +53,14 @@ function parseProtocol(url) {
 ## Operators: 操作符
 `delete`操作符用于把一个属性从对象中移除
 *Syntax:*
+
 > delete object.property
 > delete object['property']
 
 ## 对象的赋值与编译原理
 当连续赋值时，并且赋值涉及引用类型时：
-```
+
+```js
 var a = {n:1};
 var b = a;
 a = {n:2};
