@@ -48,3 +48,7 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 
 ### 03/08/2019
 + Read MDN document on `Function.prototype.apply()`, several tricks to use this
+
+### 05/08/2019
++ Read MDN document on `WeakMap` (about keyed collections), which is normally used to store private data and whose keys are **objects** only, e.g.:
+  We used to set *data-\** attributes on DOM nodes, which can be replaced by *Maps* and *WeakMaps* to privately bind data to a DOM node.
