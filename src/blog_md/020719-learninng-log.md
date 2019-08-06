@@ -52,3 +52,6 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 ### 05/08/2019
 + Read MDN document on `WeakMap` (about keyed collections), which is normally used to store private data and whose keys are **objects** only, e.g.:
   We used to set *data-\** attributes on DOM nodes, which can be replaced by *Maps* and *WeakMaps* to privately bind data to a DOM node.
+
+### 06/08/2019
++ CSSTricks's SVG effect: mainly &lt;feTurbulence>, &lt;feDisplacementMap>, &lt;feColorMatrix>, &lt;fePointLight>, &lt;feMerge>, etc.
