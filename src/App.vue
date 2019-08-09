@@ -91,6 +91,8 @@ ul,li{list-style: none;padding: 0;margin: 0;}
   src: url('assets/fonts/calmer.ttf') format('truetype');
 }
 
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i&display=swap');
+
 /* general markdown settings */
 /* post concept */
 .postConcepts{
