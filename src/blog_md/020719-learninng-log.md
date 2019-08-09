@@ -55,3 +55,10 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 
 ### 06/08/2019
 + CSSTricks's SVG effect: mainly &lt;feTurbulence>, &lt;feDisplacementMap>, &lt;feColorMatrix>, &lt;fePointLight>, &lt;feMerge>, etc.
+
+### 08/08/2019
++ Getting started on Katalon Studio which is an automated testing app. Get to know how to add a test case and run it, seems just to simulate whether a webpage can interact ideally with the user?
+
+### 09/08/2019
++ Read about *Measure Performance with RAIL Model* of **Why performance matters** on Goolge Developer. Trying to find out other performance measuring techniques.
+  The RAIL model link is: [RAIL Model](https://developers.google.com/web/fundamentals/performance/rail)
