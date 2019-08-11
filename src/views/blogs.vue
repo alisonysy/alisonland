@@ -11,7 +11,7 @@
     <div class="down-wrapper">
       <div class="dspFlex tagSlider-wrapper">
         <menuSlider :lis="tagArr(curCate)" @name-clicked=" clickedTag = $event " class="slier fs16" />
-        <dropdownPanel :dataArr="[{name:'bytime',val:'By created time'},{name:'bylen',val:'By tag length'}]" defaultOpt="By time"/>
+        <dropdownPanel :dataArr="[{name:'bytime',val:'By created time'},{name:'bylen',val:'By tag length'}]" defaultOpt="Default" @select-filter="selectFil"/>
       </div>
       <ul class="dspFlex" id="postItem">
         <li v-for="blog in selectedTag">
@@ -39,7 +39,8 @@ export default {
     return {
       blogCate: [],
       curCate:this.categoryArr()[0],
-      clickedTag:this.curTag
+      clickedTag:this.curTag,
+      filtered:false
     };
   },
   components: {
@@ -66,11 +67,21 @@ export default {
       if(!posts){
         this.triggerTagClick();
       }
+    },
+    selectFil:function(i){
+      if(i.name==='bytime'){
+        this.filtered = true;
+        
+      }
     }
   },
   computed:{
     selectedTag:function(){
-      return postsForTagGetter(this.curCate,this.clickedTag);
+      if(!this.filtered){
+        return postsForTagGetter(this.curCate,this.clickedTag);
+      }else{
+        return sortByCreatedAt(postsForTagGetter(this.curCate,this.clickedTag));
+      }
     },
     curTag:function(){ // to set setter
       let cate = this.curCate

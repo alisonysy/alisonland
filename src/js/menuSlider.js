@@ -31,15 +31,16 @@ const postsForTagGetter = (cate,tag) => {
       }
     })
   // }
+  console.log(arr)
   return arr;
 }
 
 const sortByCreatedAt = (arr) => {
   let temp = arr.map( blog => {
-    blog['createdAt'] = new Date(blog['createdAt']);
+    blog['createdAtCal'] = new Date(blog['createdAt']);
     return blog;
   });
-  temp = bubbleSort(temp,"createdAt");
+  temp = bubbleSort(temp,"createdAtCal");
   return temp;
 }
 

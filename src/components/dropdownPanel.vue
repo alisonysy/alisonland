@@ -2,7 +2,7 @@
   <div class="ddPanel posiRela" @click="toggleDd">
     <div class="defaultTxt">{{defaultItem}}</div>
     <ul class="dropdown posiAbso">
-      <li v-for="option in optionArr">
+      <li v-for="option in optionArr" @click="$emit('select-filter',option)">
         {{ option.val }}
       </li>
     </ul>
@@ -23,10 +23,13 @@ export default {
     toggleDd:()=>{
       let dropdown = $('.dropdown');
       if(dropdown.is(':hidden')){
-        dropdown.slideDown('slow')
+        dropdown.slideDown(300)
       }else{
-        dropdown.slideUp('slow')
+        dropdown.slideUp(300)
       }
+    },
+    selectFil:()=>{
+      console.log('d')
     }
   },
   beforeMount(){
@@ -39,6 +42,7 @@ export default {
 .ddPanel{
   width:20%;
   height: 1.5em;
+
 }
 .ddPanel::after{
   position: absolute;
@@ -51,6 +55,7 @@ export default {
   top:65%;
   transform: translateY(-50%);
 }
+.defaultTxt, .dropdown{cursor:pointer;}
 .dropdown{
   top:100%;
   left:0;
