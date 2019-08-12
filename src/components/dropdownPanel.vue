@@ -2,7 +2,7 @@
   <div class="ddPanel posiRela" @click="toggleDd">
     <div class="defaultTxt">{{defaultItem}}</div>
     <ul class="dropdown posiAbso">
-      <li v-for="option in optionArr" @click="$emit('select-filter',option)">
+      <li v-for="option in optionArr" @click="selectFil(option)"> 
         {{ option.val }}
       </li>
     </ul>
@@ -28,8 +28,9 @@ export default {
         dropdown.slideUp(300)
       }
     },
-    selectFil:()=>{
-      console.log('d')
+    selectFil:function(option){
+      this.$emit('select-filter',option);
+      this.defaultItem = option.val;
     }
   },
   beforeMount(){
