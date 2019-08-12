@@ -42,8 +42,11 @@ export default {
 <style scoped>
 .ddPanel{
   width:20%;
-  height: 1.5em;
-
+  height: 2em;
+  min-width:9em;
+  padding-left:1em;
+  line-height: 2em;
+  border:1px solid rgba(138, 196, 208,0.5);
 }
 .ddPanel::after{
   position: absolute;
@@ -55,11 +58,19 @@ export default {
   width:1.2em;
   top:65%;
   transform: translateY(-50%);
+  margin-right: 1em;
 }
 .defaultTxt, .dropdown{cursor:pointer;}
 .dropdown{
   top:100%;
   left:0;
   display: none;
+  width:100%;
+  background: #fff;
+  border:1px solid rgba(138, 196, 208,0.3);
+}
+.dropdown li{
+  border-bottom: 1px dashed rgba(138, 196, 208,0.3);
+  padding: 0 1em;
 }
 </style>

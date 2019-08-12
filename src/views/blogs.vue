@@ -10,7 +10,7 @@
     </div>
     <div class="down-wrapper">
       <div class="dspFlex tagSlider-wrapper">
-        <menuSlider :lis="tagArr(curCate)" @name-clicked=" clickedTag = $event " class="slier fs16" />
+        <menuSlider :lis="tagArr(curCate)" @name-clicked=" clickedTag = $event " class="tagSlider fs16" />
         <dropdownPanel :dataArr="[{name:'bytime',val:'By created time'},{name:'bylen',val:'By tag length'}]" defaultOpt="Default" @select-filter="selectFil"/>
       </div>
       <ul class="dspFlex" id="postItem">
@@ -70,8 +70,9 @@ export default {
     },
     selectFil:function(i){
       if(i.name==='bytime'){
-        this.filtered = true;
-        
+        this.filtered = 'bytime';
+      }else if(i.name==='bylen'){
+        this.filtered = 'bylen';
       }
     }
   },
@@ -79,8 +80,10 @@ export default {
     selectedTag:function(){
       if(!this.filtered){
         return postsForTagGetter(this.curCate,this.clickedTag);
-      }else{
+      }else if(this.filtered==='bytime'){
         return sortByCreatedAt(postsForTagGetter(this.curCate,this.clickedTag));
+      }else if(this.filtered==='bylen'){
+        return sortByTagLength(postsForTagGetter(this.curCate,this.clickedTag));
       }
     },
     curTag:function(){ // to set setter
@@ -118,8 +121,15 @@ export default {
   font-family: 'monad',Arial,sans-serif;
 }
 .tagSlider-wrapper{
-  width:55%;
+  width:100%;
   padding:1em 1em 1em 3.8em;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+.tagSlider{
+  margin-right: 3em;
 }
 ul{
   margin-bottom: 3em;

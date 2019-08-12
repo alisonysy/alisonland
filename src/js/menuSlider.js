@@ -22,7 +22,6 @@ const tagGetter = (cate) => {
 
 const postsForTagGetter = (cate,tag) => {
   let arr = [];
-  // for(let [key,value] of Object.entries(blogs)){
     blogs[cate].map( i => {
       i["category"] = cate;
       let tags = i["tag"];
@@ -30,7 +29,6 @@ const postsForTagGetter = (cate,tag) => {
         arr.push(i);
       }
     })
-  // }
   console.log(arr)
   return arr;
 }
@@ -50,7 +48,6 @@ const sortByTagLength = (arr) => {
     return blog;
   });
   arr = bubbleSort(arr,"tagLength");
-  console.log(arr)
   return arr;
 }
 
