@@ -1,3 +1,12 @@
+| Field | How to learn | How deep | Priority | Time planning |
+| ----- | ------------ | -------- | -------- | ------------- |
+| Project | Alisonland - finish `portfolio` and `about me` sections, then <br> React project on JiRenGu | x | 1 | Weekend or weekdays, before *Sep* |
+| Learning new tools | **Webpack**: notes, practice <br> **TypeScript**: after Webpack <br> Sass, ReactJS, Vue: using idle time | See left | 2 | Weekend(Webpack) before *Oct*, weekdays(Sass, ReactJS, Vue) |
+| Demo practice | Before/after comparison slider, then <br> SVG filter - cloud effects | Make it for portfolio | 2 |  Weekend or weekdays, 1 for every two weeks |
+| APIs | Notes, can be during office hours | Comprehend, notes, examples | 4 | Office hours, review at nights |
+| High level and broad, e.g. structures, design patterns | Notes, or translation | Comprehend, notes, translate | 3 | Translations at nights, reading during office hours |
+| Principles | Googling, WeChat posts | Comprehend, notes, translate | 4 | Idle time, weekdays |
+
 ### 02/07/2019
 + [x] &lt;script> tag's `async` and `defer` attributes
 + [x] native JavaScript modules, e.g. `import` and `export`
@@ -62,3 +71,12 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 ### 09/08/2019
 + Read about *Measure Performance with RAIL Model* of **Why performance matters** on Goolge Developer. Trying to find out other performance measuring techniques.
   The RAIL model link is: [RAIL Model](https://developers.google.com/web/fundamentals/performance/rail)
+
+### 12/08/2019
+
+#### 学习资料分类
++ Read article about reducing HTTP requests, e.g. reducing image requests by using sprites; the article also mentions how the location of &lt;script> tag can affect rendering
+
+按领域/方向分类：JavaScript语法、CSS、设计模式、性能相关的渲染原理、框架/工具API使用、项目，etc.
+按学习方法分类：记下有例子的笔记、翻译、自己实现、阅读理解/记下大意
+按学习程度分类：需要理解具体使用情景并实操、理解大意但无需理解相关概念、深入理解全文和相关概念、阅读并有印象
