@@ -7,6 +7,12 @@
 | High level and broad, e.g. structures, design patterns | Notes, or translation | Comprehend, notes, translate | 3 | Translations at nights, reading during office hours |
 | Principles | Googling, WeChat posts | Comprehend, notes, translate | 4 | Idle time, weekdays |
 
+## Recently Interested
+
+| Field | Specifics |
+| ----- | --------- |
+| API | valueOf() |
+
 ### 02/07/2019
 + [x] &lt;script> tag's `async` and `defer` attributes
 + [x] native JavaScript modules, e.g. `import` and `export`

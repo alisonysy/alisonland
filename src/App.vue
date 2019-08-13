@@ -169,7 +169,7 @@ ul,li{list-style: none;padding: 0;margin: 0;}
 
 .postTags li,
 .postAbstract {
-  font-family: monospace;
+  font-family: 'calmer',monospace;
 }
 
 .postTags{

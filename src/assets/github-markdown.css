@@ -615,8 +615,8 @@
   font-size: 1em;
 }
 
-.markdown-body h4::before{
-  content:"\01F921"
+.markdown-body h2::before{
+  content:"\01F36F"
 }
 
 .markdown-body h5 {

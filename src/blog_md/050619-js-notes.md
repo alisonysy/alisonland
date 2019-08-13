@@ -51,6 +51,21 @@ function parseProtocol(url) {
 ```
 
 ## Operators: 操作符
+
+### 一元操作符(Unary operators)
+
+只作用于一个值得操作符称为*一元操作符*。
+`Increment / Decrement`操作符有两种使用方式：作为*前缀*和作为*后缀*
+在通常情况下，如`variable++;`或`++variable;`，他们的作用是一样的；他们的区别在于：
+作为**前缀**时，变量的值在语句执行前变化；作为**后缀**时，变量的值在语句执行后变化，e.g.
+```js
+var age = 29;
+var anotherAge1 = --age + 2; //30
+console.log(age); // 28
+var anotherAge2 = age-- + 2; //30;
+console.log(age); // 27
+```
+
 `delete`操作符用于把一个属性从对象中移除
 *Syntax:*
 
