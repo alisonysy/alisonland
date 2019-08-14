@@ -124,6 +124,15 @@
       "abstract":"",
       "updatedAt":"",
       "tag":["javascript","performance","notes"]
+    },
+    {
+      "id":"010819-js-data-processing-practice",
+      "createdAt":"Aug 01 2019",
+      "title":"练习——递归处理数据",
+      "subTitle":"把扁平化数据结构化",
+      "abstract":"",
+      "updatedAt":"",
+      "tag":["javascript","performance","notes"]
     }
   ],
   "Redux":[
