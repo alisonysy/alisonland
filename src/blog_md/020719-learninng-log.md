@@ -12,6 +12,9 @@
 | Field | Specifics |
 | ----- | --------- |
 | API | valueOf() |
+| Principles | Vue-Router |
+
+🙈
 
 ### 02/07/2019
 + [x] &lt;script> tag's `async` and `defer` attributes
@@ -86,3 +89,6 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 按领域/方向分类：JavaScript语法、CSS、设计模式、性能相关的渲染原理、框架/工具API使用、项目，etc.
 按学习方法分类：记下有例子的笔记、翻译、自己实现、阅读理解/记下大意
 按学习程度分类：需要理解具体使用情景并实操、理解大意但无需理解相关概念、深入理解全文和相关概念、阅读并有印象
+
+### 14/08/2019
++ Read and review articles about Vue-Router, seems that for *blogpost.vue*, can add a `&lt;router-view>` to achieve the same result as it is now.
