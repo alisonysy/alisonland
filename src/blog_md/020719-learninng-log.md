@@ -91,4 +91,5 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 按学习程度分类：需要理解具体使用情景并实操、理解大意但无需理解相关概念、深入理解全文和相关概念、阅读并有印象
 
 ### 14/08/2019
-+ Read and review articles about Vue-Router, seems that for *blogpost.vue*, can add a `&lt;router-view>` to achieve the same result as it is now.
++ Read and review articles about Vue-Router, need to review how Vue-Router is realised (notebook).
++ Found **bugs**: problems occur when manually changing the current blog url to another blog post's url, either not showing the post content (md) or not showing the blog header 

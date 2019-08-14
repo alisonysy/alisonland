@@ -77,7 +77,11 @@ export default new Router({
         //     default: ()=> import(`./blog_md/250519-first-time-using-xcode-running-debugging.md`)
         //   }
         // }
-      )
+      ),
+      beforeEnter:(to,from,next)=>{
+        console.log(to);
+        next();
+      }
     }
   ]
 })
