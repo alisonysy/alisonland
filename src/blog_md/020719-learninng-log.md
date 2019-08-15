@@ -11,8 +11,9 @@
 
 | Field | Specifics |
 | ----- | --------- |
-| API | valueOf() |
-| Principles | Vue-Router |
+| API | valueOf() - when it'd be called |
+| Principles | Vue-Router - still reading the document - navigation guards|
+| Principles | Virtual DOM - how it's realised |
 
 🙈
 
@@ -91,5 +92,8 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 按学习程度分类：需要理解具体使用情景并实操、理解大意但无需理解相关概念、深入理解全文和相关概念、阅读并有印象
 
 ### 14/08/2019
-+ Read and review articles about Vue-Router, need to review how Vue-Router is realised (notebook).
++ Read and review articles about Vue-Router, need to review how Vue-Router is realised (notebook) - DONE.
 + Found **bugs**: problems occur when manually changing the current blog url to another blog post's url, either not showing the post content (md) or not showing the blog header 
+
+### 15/08/2019
++ What is under Vue.js - [Vue.js技术揭秘](https://ustbhuangyi.github.io/vue-analysis/prepare/)
