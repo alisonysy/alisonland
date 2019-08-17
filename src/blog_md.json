@@ -132,7 +132,25 @@
       "subTitle":"把扁平化数据结构化",
       "abstract":"",
       "updatedAt":"",
-      "tag":["javascript","performance","notes"]
+      "tag":["javascript","practice","recursion","data","structure"]
+    },
+    {
+      "id":"030819-js-apply-tricks",
+      "createdAt":"Aug 03 2019",
+      "title":"Array.prototype.apply的小技巧",
+      "subTitle":"",
+      "abstract":"",
+      "updatedAt":"",
+      "tag":["javascript","array","notes","tricks"]
+    },
+    {
+      "id":"130819-js-bitwise-operators",
+      "createdAt":"Aug 13 2019",
+      "title":"操作符——位操作符相关",
+      "subTitle":"",
+      "abstract":"",
+      "updatedAt":"",
+      "tag":["javascript","operator","notes"]
     }
   ],
   "Redux":[
