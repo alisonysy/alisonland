@@ -5,6 +5,7 @@ import Home from './views/Home.vue'
 import favourites from './views/favourites.vue'
 import blogs from './views/blogs.vue'
 import blogpost from './views/blogpost.vue'
+import portfolio from './views/portfolio.vue'
 
 import blogJSON from './data/blog_md.json'
 
@@ -75,6 +76,11 @@ export default new Router({
         console.log(to);
         next();
       }
+    },
+    {
+      path:'/portfolio',
+      name:'portfolio',
+      component:portfolio
     }
   ]
 })
