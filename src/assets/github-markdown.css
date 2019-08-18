@@ -545,8 +545,8 @@
 }
 
 .markdown-body blockquote {
-  border-left: .25em solid #dfe2e5;
-  color: #6a737d;
+  border-left: .25em solid #f4d160;
+  color: #f8b10b;
   padding: 0 1em;
 }
 
@@ -598,9 +598,19 @@
 }
 
 .markdown-body h1 code,
-.markdown-body h2 code{
+.markdown-body h2 code,
+.markdown-body h3 code,
+.markdown-body h4 code{
   background-color: transparent;
   color:#28527a;
+}
+
+.markdown-body p code,
+.markdown-body table code,
+.markdown-body li code{
+  background-color: #8ac4d025;
+  color:#28527a;
+  border-radius: 1px;
 }
 
 .markdown-body h2 {
@@ -748,9 +758,9 @@
 .markdown-body .highlight pre,
 .markdown-body pre {
   background-color: #04244a;
+  line-height: 2em;
   border-radius: 3px;
   font-size: 85%;
-  line-height: 1.45;
   overflow: auto;
   padding: 16px;
 }

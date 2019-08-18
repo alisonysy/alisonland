@@ -35,7 +35,7 @@
 ### 27/07/2019
 + [x] Sass: intro - syntax and style rules, notes:
       `&` is the parent selector, except for being used to *add pseudo-classes* to the outer selector, it can also be used to style the outer selector in a certain context:
-```
+```scss
 [dir=rtl] & { /* match the element whose parent's text is set to use a right-to-left language */
   margin: auto {
     left: 0;
@@ -57,7 +57,7 @@
 
 ### 30/07/2019
 + Sass `@import` at-rule enables nesting imports, which can scope CSS to a particular *element* or media query:
-```
+```scss
 // style.scss
 .aClass{
   @import "theme";

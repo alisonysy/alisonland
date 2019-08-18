@@ -30,6 +30,12 @@
 import blogHeader from '@/components/postHeader.vue';
 import blogJSON from '@/data/blog_md.json';
 import VueMarkdown from 'vue-markdown';
+import hljs from 'highlight.js';
+import javascript from 'highlight.js/lib/languages/javascript';
+import scss from 'highlight.js/lib/languages/scss';
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('scss', scss);
+import 'highlight.js/styles/tomorrow-night-bright.css';
 
 export default {
   name:'blogarticle',

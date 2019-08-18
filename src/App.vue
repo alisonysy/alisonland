@@ -153,6 +153,7 @@ ul,li{list-style: none;padding: 0;margin: 0;}
   font-family: "el-sig";
   font-size: 20em;
   color: rgba(255, 255, 255, 0.25);
+  white-space: nowrap;
 }
 
 .postTitle {
