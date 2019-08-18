@@ -1,4 +1,4 @@
-import blogJSON from './../blog_md.json';
+import blogJSON from './../data/blog_md.json';
 const blogs = typeof blogJSON === 'object'? blogJSON : JSON.parse(blogJSON);
 
 const categoryGetter = () => {

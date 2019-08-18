@@ -6,7 +6,7 @@ import favourites from './views/favourites.vue'
 import blogs from './views/blogs.vue'
 import blogpost from './views/blogpost.vue'
 
-import blogJSON from './blog_md.json'
+import blogJSON from './data/blog_md.json'
 
 Vue.use(Router)
 
@@ -52,13 +52,6 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
-    ...blogRouteArr.map((entry)=>{
-      return ({
-        path:`/blogs/:cate/:blogid`,
-        name:entry.id,
-        component:()=> import(`./blogposts/${entry.id}.vue`)
-      })
-    }),
     {
       path:'/blogpost/:cate/:blogid',
       name:'blogarticle',

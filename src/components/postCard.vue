@@ -37,12 +37,13 @@ export default {
   box-shadow: 1px 2px 8px 2px rgba(0,0,0,0.3);
 }
 h1{
+  word-break: break-word;
 }
 h3{
   margin-top: .5em;
 }
 h3::before{
-  content:'—— ';
+  content:'\01F92F';
 }
 .abs{
   margin-top: 1em;

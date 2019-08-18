@@ -28,7 +28,7 @@
 
 <script>
 import blogHeader from '@/components/postHeader.vue';
-import blogJSON from '@/blog_md.json';
+import blogJSON from '@/data/blog_md.json';
 import VueMarkdown from 'vue-markdown';
 
 export default {

@@ -130,6 +130,7 @@ export default {
 }
 .tagSlider{
   margin-right: 3em;
+  width:80%;
 }
 ul{
   margin-bottom: 3em;
