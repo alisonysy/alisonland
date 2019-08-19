@@ -12,8 +12,9 @@
 | Field | Specifics |
 | ----- | --------- |
 | API | valueOf() - when it'd be called |
-| Principles | Vue-Router - still reading the document - navigation guards|
-| Principles | Virtual DOM - how it's realised |
+| Principles | Vue-Router - still reading the document - navigation guards <br>**PAUSED** because of the increasing difficulty <br>Watch **163.com** videos |
+| Principles | Virtual DOM - how it's realised <br>Watch **163.com** videos |
+| Design patterns | Currying |
 
 🙈
 
@@ -100,3 +101,13 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 
 ### 16/08/2019
 + [JavaScript实现二叉树算法](https://www.imooc.com/learn/888)
+
+### 19/08/2019
++ Currying in JavaScript, when it's used and how to write one - [JavaScript专题之函数柯里化](https://github.com/mqyqingfeng/Blog/issues/42)
+  Frequently used when we avoid repeating certain params while calling a function.
+  To read: [Currying in JS](https://hackernoon.com/currying-in-js-d9ddc64f162e)
++ Chrome Dev Tools usage tricks: 
+
+> Press `alt` + `↑` to increase the number by 0.1;
+> Open dev tools and `ctrl` + `shift` + `p` to open *command menu*, type *coverage* to show the usage of the current page's CSS sheets;
+> Add a new style rule, which can be in a designated stylesheet.
