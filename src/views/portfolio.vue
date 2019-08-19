@@ -1,7 +1,7 @@
 <template>
   <div class="portfolio-wrapper">
     <nav class="dspFlex posiRela">
-      <div class="upperC">alison w.</div>
+      <div class="upperC fs20 dspFlex">alison w.</div>
       <!-- dropdown / whole-screen menu -->
       <fullScreenMenu :items="tabObj" @menu-closed="openMenu = false" :onMenu="openMenu"/>
     </nav>
@@ -72,6 +72,11 @@ nav{
   background: #04244a;
   & div, & span{
     font-family: 'monad','calmer',monospace;
+  }
+  & div{
+    align-items: center;
+    padding-left: 1.5em;
+    letter-spacing: .3em;
   }
 }
 </style>

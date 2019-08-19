@@ -44,6 +44,7 @@ export default {
   transform: translate(-50%,-50%);
 }
 
+
 .fullScreenWrapper div:first-of-type{
   padding: .5em 1.5em;
   letter-spacing: .6em;
@@ -54,6 +55,7 @@ export default {
 }
 
 .extendMode{
+  transition: all .5s;
   z-index: 99;
   width:100vw;
   height:100vh;
@@ -83,6 +85,7 @@ export default {
 }
 .fullScrn{
   height: 90%;
+  transition: all .5s;
 
   & ul{
     height:100%;
