@@ -105,9 +105,12 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 ### 19/08/2019
 + Currying in JavaScript, when it's used and how to write one - [JavaScript专题之函数柯里化](https://github.com/mqyqingfeng/Blog/issues/42)
   Frequently used when we avoid repeating certain params while calling a function.
-  To read: [Currying in JS](https://hackernoon.com/currying-in-js-d9ddc64f162e)
 + Chrome Dev Tools usage tricks: 
 
-> Press `alt` + `↑` to increase the number by 0.1;
-> Open dev tools and `ctrl` + `shift` + `p` to open *command menu*, type *coverage* to show the usage of the current page's CSS sheets;
-> Add a new style rule, which can be in a designated stylesheet.
+> Press `alt` + `↑` to increase the number by 0.1;<br>
+> Open dev tools and `ctrl` + `shift` + `p` to open *command menu*, type *coverage* to show the usage of the current page's CSS sheets;<br>
+> Add a new style rule, which can be in a designated stylesheet;
+
+### 20/08/2019
++ Web APIs `performance.getEntries()` can help look into loading-related times. We can also use `navigator.sendBeacon` to send the analytics data to the server. The processing model by w3c: ![The Processing Model](https://www.w3.org/TR/navigation-timing-2/timestamp-diagram.svg)
++ Read about *user-centric performance metrics* on Google Developer, the link: [User-Centric Performance Metrics](https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics)
