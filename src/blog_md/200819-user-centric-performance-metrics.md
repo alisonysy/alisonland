@@ -26,7 +26,7 @@
 
 + Inline critical CSS
 + Remove render blocking scripts from the &lt;head>
-+ [App Shell Pattern](https://developers.google.com/web/updates/2015/11/app-shell#top_of_page)
++ [App Shell Pattern](https://developers.google.com/web/updates/2015/11/app-shell#top_of_page),<br>This article talks mainly about the **service worker** which needs to be set up on both client- and server-side.
 
 ## Minimise the time bewteen FMP and TTI
 

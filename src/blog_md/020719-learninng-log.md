@@ -11,10 +11,10 @@
 
 | Field | Specifics |
 | ----- | --------- |
-| API | valueOf() - when it'd be called |
 | Principles | Vue-Router - still reading the document - navigation guards <br>**PAUSED** because of the increasing difficulty <br>Watch **163.com** videos |
 | Principles | Virtual DOM - how it's realised <br>Watch **163.com** videos |
-| Design patterns | Currying |
+| Design patterns | Currying - done for now |
+| Data structure | Binary tree **important** |
 
 🙈
 
@@ -114,3 +114,7 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 ### 20/08/2019
 + Web APIs `performance.getEntries()` can help look into loading-related times. We can also use `navigator.sendBeacon` to send the analytics data to the server. The processing model by w3c: ![The Processing Model](https://www.w3.org/TR/navigation-timing-2/timestamp-diagram.svg)
 + Read about *user-centric performance metrics* on Google Developer, the link: [User-Centric Performance Metrics](https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics)
+
+### 21/08/2019
++ Read about *[Instant Loading Web App with an Application Shell Architecture](https://developers.google.com/web/updates/2015/11/app-shell#background)* on Google Developers. Sample project and recommended tools, but no practical codes.
++ Data structure - 3 types of looping thru a binary tree, [the blog](https://juejin.im/post/5d5b307b5188253da24d3cd1#heading-18)
