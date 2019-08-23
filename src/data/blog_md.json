@@ -151,6 +151,15 @@
       "abstract":"",
       "updatedAt":"",
       "tag":["javascript","operator","notes"]
+    },
+    {
+      "id":"230819-how-to-write-a-promise",
+      "createdAt":"Aug 23 2019",
+      "title":"如何手写一个Promise",
+      "subTitle":"前端面试题",
+      "abstract":"",
+      "updatedAt":"",
+      "tag":["javascript","promise","practice","interview-question"]
     }
   ],
   "Redux":[

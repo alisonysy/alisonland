@@ -15,6 +15,7 @@
 | Principles | Virtual DOM - how it's realised <br>Watch **163.com** videos |
 | Design patterns | Currying - done for now |
 | Data structure | Binary tree **important** |
+| Principles | Writing a promise - ing |
 
 🙈
 
@@ -116,5 +117,8 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 + Read about *user-centric performance metrics* on Google Developer, the link: [User-Centric Performance Metrics](https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics)
 
 ### 21/08/2019
-+ Read about *[Instant Loading Web App with an Application Shell Architecture](https://developers.google.com/web/updates/2015/11/app-shell#background)* on Google Developers. Sample project and recommended tools, but no practical codes.
++ Read *[Instant Loading Web App with an Application Shell Architecture](https://developers.google.com/web/updates/2015/11/app-shell#background)* on Google Developers. Sample project and recommended tools, but no practical codes.
 + Data structure - 3 types of looping thru a binary tree, [the blog](https://juejin.im/post/5d5b307b5188253da24d3cd1#heading-18)
+
+### 23/08/2019
++ Read about writing a **promise** on a [blog](https://segmentfault.com/a/1190000012664201), someone mentioned an interview question on how to write a *Promise.all*
