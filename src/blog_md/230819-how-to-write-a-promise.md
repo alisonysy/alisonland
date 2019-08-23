@@ -1,3 +1,24 @@
+在控制台打印一个Promise对象，返回如下结果：
+
+成功时: ![resolved](https://cdn1.imggmi.com/uploads/2019/8/23/dce20ebba793abee9cb8c2f5f97abadd-full.png) 
+失败时: ![rejected](https://cdn1.imggmi.com/uploads/2019/8/23/7454c730759e9c81336686126017f519-full.png) 
+
+从图中可以看到，Promise实例返回的对象有`[[PromiseStatus]]`和`[[PromiseValue]]`两个属性
+
+```js
+const PENDING = 'PENDING';
+const FULFILLED = 'FULFILLED';
+const REJECTED = 'REJECTED';
+
+class MyPromise {
+  constructor(){
+    //每个新promise创建时状态都会是PENDING
+    this._status = PENDING;
+    this._value = null;
+  }
+}
+```
+
 Promise接受一个*函数*作为参数，该函数接受2个*函数*参数——`resolve`和`reject`；
 ```js
 class MyPromise {
@@ -17,25 +38,124 @@ class MyPromise {
   }
 
   _resolve(val){
-
+    //当用户在handle中调用时，表明promise状态已更改为成功，同时把用户传入的值作为成功时返回的数据
+    if(this._status !== PENDING) return;
+    this._status = FULFILLED;
+    this._value = val;
   }
 
   _reject(err){
-
+    if(this._status !== PENDING) return;
+    this._status = REJECTED;
+    this._value = val;
   }
 }
 ```
 
-在控制台打印一个Promise对象，返回如下结果：
+到这里已经实现了Promise的基本结构、状态和值，接下来到核心的`then`方法
 
-| 成功时 | ![resolved](https://cdn1.imggmi.com/uploads/2019/8/23/dce20ebba793abee9cb8c2f5f97abadd-full.png) |
-| 失败时 | ![rejected](https://cdn1.imggmi.com/uploads/2019/8/23/7454c730759e9c81336686126017f519-full.png) |
+`then`方法特性：
++ 接受两个参数，*成功*时调用的函数和*失败*时调用的函数
++ 返回的还是一个promise
++ 参数为函数时，函数接受来自Promise实例的成功时/失败时返回的数据，若有返回值，再把返回值传给到下一个`then`
++ 同一个promise可以多次调用`then`，并且调用的顺序按照`then`的注册顺序
++ `then`的触发条件是上一个的promise状态为fulfilled，i.e. 若Promise实例抛出错误，之后由then中的error function处理后，下一个then中被触发的是*成功*时调用的函数
 
-从图中可以看到，Promise实例返回的对象有`[[PromiseStatus]]`和`[[PromiseValue]]`两个属性
+
+1. `then`接受*成功*时调用的函数和*失败*时调用的函数，并在promise状态改变时对应触发他们
+2. 链式调用`then`需返回另一个promise
+3. 参数为函数时，函数接受来自Promise实例的成功时/失败时返回的数据，若有返回值，再把返回值传给到下一个`then`
+```js
+  then(onFulfilled,onRejected){
+    const {_status, _value} = this;
+    return new MyPromise(function(resolve,reject){
+      //若_status为FULFILLED
+      let fulfilled = (value) => {
+        try{
+          let res = onFulfilled(value);
+          resolve(res);
+        }catch (err){
+          reject(err);
+        }
+      }
+      
+      //若_status为REJECTED
+      let rejected = (error) => {
+        try{
+          let res = onRejected(error);
+          resolve(res);
+        }catch (err){
+          reject(err);
+        }
+      }
+
+      //根据_status的值执行不同的onFulfilled或onRejected
+      switch (_status) {
+        case FULFILLED:
+          fulfilled(_value);
+          break;
+        case REJECTED:
+          rejected(_value);
+          break;
+      }
+    })
+  }
+```
+
+4. 同一个promise可以多次调用`then`，并且调用的顺序按照`then`的注册顺序 ——> 需要有一个记录各个`then`的数组，然后依次调用
+```js
+  constructor(handle){
+    // ... codes
+    //新增两个数组，分别用于记录成功时和失败时调用的数组
+    this._fulfilledQueues = [];
+    this._rejectedQueues = [];
+  }
+
+  then(onFulfilled,onRejected){
+    const {_status, _value} = this;
+    return new MyPromise(function(resolve,reject){
+      //若_status为FULFILLED
+      let fulfilled = (value) => {
+        try{
+          let res = onFulfilled(value);
+          resolve(res);
+        }catch (err){
+          reject(err);
+        }
+      }
+      
+      //若_status为REJECTED
+      let rejected = (error) => {
+        try{
+          let res = onRejected(error);
+          resolve(res);
+        }catch (err){
+          reject(err);
+        }
+      }
+
+      //根据_status的值执行不同的onFulfilled或onRejected
+      switch (_status) {
+        //在PENDING的时候就把then方法push到
+        case PENDING:
+          this._fulfilledQueues.push(onFulfilled);
+          this._rejectedQueues.push(onRejected);
+          break;
+        case FULFILLED:
+          fulfilled(_value);
+          break;
+        case REJECTED:
+          rejected(_value);
+          break;
+      }
+    })
+  }
+```
+
 
 ### 相关知识点
 
-> 构造方法(constructor method): 用于创建和初始化一个类的对象
+> 构造方法(constructor method): 用于创建和初始化一个类的对象 <br>
 > 静态方法(static method): 静态方法无需创建实例就可以直接调用，且**不能**通过*实例*调用
 
 ## Source code
@@ -127,14 +247,14 @@ class MyPromise {
   then (onFulfilled, onRejected) {
     const { _value, _status } = this
     // 返回一个新的Promise对象
-    return new MyPromise((onFulfilledNext, onRejectedNext) => {
+    return new MyPromise((onFulfilledNext, onRejectedNext) => { // - onFulfilledNext === resolve
       // 封装一个成功时执行的函数
       let fulfilled = value => {
         try {
           if (!isFunction(onFulfilled)) {
             onFulfilledNext(value)
           } else {
-            let res =  onFulfilled(value);
+            let res =  onFulfilled(value); // - if the function does not return any res, be undefined?
             if (res instanceof MyPromise) {
               // 如果当前回调函数返回MyPromise对象，必须等待其状态改变后在执行下一个回调
               res.then(onFulfilledNext, onRejectedNext)
