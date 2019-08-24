@@ -52,6 +52,7 @@ class MyPromise {
 }
 ```
 
+### `then`方法
 到这里已经实现了Promise的基本结构、状态和值，接下来到核心的`then`方法
 
 `then`方法特性：
@@ -61,7 +62,7 @@ class MyPromise {
 + 同一个promise可以多次调用`then`，并且调用的顺序按照`then`的注册顺序
 + `then`的触发条件是上一个的promise状态为fulfilled，i.e. 若Promise实例抛出错误，之后由then中的error function处理后，下一个then中被触发的是*成功*时调用的函数
 
-
+#### 根据`then`方法特性作出修改
 1. `then`接受*成功*时调用的函数和*失败*时调用的函数，并在promise状态改变时对应触发他们
 2. 链式调用`then`需返回另一个promise
 3. 参数为函数时，函数接受来自Promise实例的成功时/失败时返回的数据，若有返回值，再把返回值传给到下一个`then`
@@ -111,6 +112,24 @@ class MyPromise {
     this._rejectedQueues = [];
   }
 
+  _resolve(val){
+    if(this._status !== PENDING) return;
+    this._status = FULFILLED;
+    this._value = val;
+    while(this._fulfilledQueues.length > 0){
+      this._fulfilledQueues.shift()(val)
+    }
+  }
+
+  _reject(val){
+    if(this._status !== PENDING) return;
+    this._status = REJECTED;
+    this._value = val;
+    while(this._rejectedQueues.length > 0){
+      this._rejectedQueues.shift()(val)
+    }
+  }
+
   then(onFulfilled,onRejected){
     const {_status, _value} = this;
     return new MyPromise(function(resolve,reject){
@@ -118,6 +137,7 @@ class MyPromise {
       let fulfilled = (value) => {
         try{
           let res = onFulfilled(value);
+          //此处的resolve函数执行的时候要按then注册的onFulfilled顺序执行，因此在_resolve函数修改↑
           resolve(res);
         }catch (err){
           reject(err);
@@ -136,7 +156,7 @@ class MyPromise {
 
       //根据_status的值执行不同的onFulfilled或onRejected
       switch (_status) {
-        //在PENDING的时候就把then方法push到
+        //在PENDING的时候就把then方法分别push到成功时和失败时要执行的函数
         case PENDING:
           this._fulfilledQueues.push(onFulfilled);
           this._rejectedQueues.push(onRejected);
@@ -152,6 +172,39 @@ class MyPromise {
   }
 ```
 
+
+以上的实现是建立在以下假设上的：
++ `then`方法的`onFulfilled`和`onRejected`接受的参数为**函数**
+> [MDN Promise.prototype.then()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then#Return_value)中表明：若`then`接受的参数并不是函数，`then`没有了handler但不会报错。当调用`then`的promise状态改变后，会返回一个新的Promise实例，而这个promise同样没有handler，只会采用调用`then`的原始promise的状态。
++ `then`方法的回调函数返回一个新的Promise实例，则需等待新的promise状态改变后再继续执行回调
++ `_resolve`和`_reject`接受的参数为**非**promise，若参数为另一个promise A，即需等待promise A的状态变化后，再更改此promise的状态
+
+```js
+  then(onFulfilled,onRejected){
+    const { _value, _status } = this;
+
+    return new MyPromise((onFulfilledNext, onRejectedNext) => {
+      let fulfilled = value => {
+        try{
+          //当onFulfilled不是函数时，新的promise的状态和返回值也跟原promise一样
+          if(typeof onFulfilled !== 'function'){
+            onFulfilledNext(value);
+          }else{
+            let res = onFulfilled(value);
+            if(res instanceof MyPromise){
+              //此处在res代表的新的promise状态改变后再调用then方法，并传入原来的handlers，用新的promise返回的数据再执行一遍then
+              res.then(onFulfilledNext,onRejectedNext)
+            }else{
+              onFulfilledNext(value);
+            }
+          }
+        } catch (err){
+          onRejectedNext(err)
+        }
+      }
+    }
+  }
+```
 
 ### 相关知识点
 
@@ -254,7 +307,7 @@ class MyPromise {
           if (!isFunction(onFulfilled)) {
             onFulfilledNext(value)
           } else {
-            let res =  onFulfilled(value); // - if the function does not return any res, be undefined?
+            let res =  onFulfilled(value); 
             if (res instanceof MyPromise) {
               // 如果当前回调函数返回MyPromise对象，必须等待其状态改变后在执行下一个回调
               res.then(onFulfilledNext, onRejectedNext)
