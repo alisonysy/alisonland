@@ -4,14 +4,25 @@
       <li v-for="item in items" :key="item.id" class="dspFlex ">
         <div class="card dspFlex">
           <div class="ptCard-top">
-            <div>Description:</div>
-            <div>Source Code:</div>
-            <div>Techniques:</div>
-            <div>References:</div>
+            <div>Description:&nbsp;
+              {{item.description}}
+            </div>
+            <div>Source Code:&nbsp;
+              <a :href="item.codeUrl" target="_blank">
+                {{item.codeUrl}}
+              </a>
+            </div>
+            <div>Techniques:&nbsp;
+              {{item.techniques}}
+            </div>
+            <div>References:&nbsp;
+              {{item.references}}
+            </div>
           </div>
           <div class="ptCard-bottom dspFlex">
-            <div>{{ item.name }}</div>
-            <div class="posiRela"></div>
+            <div class="fs20">{{ item.name }}</div>
+            <a :href="item.demoUrl" target="_blank" class="posiRela"></a>
+            <!-- <div class="posiRela"></div> -->
           </div>
         </div>
       </li>
@@ -67,7 +78,7 @@ ul{
 .card{
   @extend %dspFlexC;
   flex-flow: column wrap;
-  color:$color;
+  color:rgba(255,255,255,0.8);
   width:65vw;
   border:1px solid $color;
 }
@@ -100,6 +111,16 @@ ul{
   & div{
     margin:1em;
   }
+
+  & div:nth-of-type(2){
+    & a{
+      text-decoration: underline;
+      &:hover{
+        opacity: .8;
+        color:#fa557c;
+      }
+    }
+  }
 }
 
 .ptCard-bottom{
@@ -108,10 +129,12 @@ ul{
 
   & div:first-child{
     width:85%;
+    padding-left: .6em;
   }
-  & div:nth-last-child(1){
+  & a{
     width:15%;
     cursor: pointer;
+    display: block;
     &::before{
       content:'';
       width:5em;
@@ -127,7 +150,7 @@ ul{
       border-bottom:1px solid $color;
       position:absolute;
       right:.7em;
-      top:0.1em;
+      top:0.4em;
       transform: rotate(45deg);
     }
   }
