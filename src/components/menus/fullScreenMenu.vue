@@ -55,7 +55,7 @@ export default {
 }
 
 .extendMode{
-  transition: all .5s;
+  transition: all .8s;
   z-index: 99;
   width:100vw;
   height:100vh;

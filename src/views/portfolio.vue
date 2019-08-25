@@ -5,10 +5,11 @@
       <!-- dropdown / whole-screen menu -->
       <fullScreenMenu :items="tabObj" @menu-closed="openMenu = false" :onMenu="openMenu"/>
     </nav>
-    <main>
+    <main class="dspFlex">
       <div class="bg"></div>
-      <div class="ptCard">
-        <div class="ptCard-top">
+      <div class="ptCard dspFlex">
+        <workSwiper :works="works()"/>
+        <!-- <div class="ptCard-top">
           <div>Description:</div>
           <div>Source Code:</div>
           <div>Techniques:</div>
@@ -17,7 +18,7 @@
         <div>
           <div></div>
           <div></div>
-        </div>
+        </div> -->
       </div>
     </main>
     <!-- menuSlider for categories -->
@@ -26,6 +27,8 @@
 
 <script>
 import fullScreenMenu from '@/components/menus/fullScreenMenu.vue';
+import workSwiper from '@/components/workSwiper.vue';
+import works from '@/js/getPortfolio.js';
 
 export default {
   name:'portfolio',
@@ -53,23 +56,42 @@ export default {
     }
   },
   components:{
-    fullScreenMenu
+    fullScreenMenu,
+    workSwiper
+  },
+  computed:{
+    
   },
   methods:{
+    works:()=>{
+      return works;
+    }
+  },
+  beforeMount:function(){
+    this.works();
   }
 }
 </script>
 
 <style lang="scss" scoped>
 $color:#fff;
+$scrnWid:100vw;
+$scrnHei:100vh;
+%dspFlexC{
+  justify-content: center;
+  align-items: center;
+}
 
 .portfolio-wrapper{
   color:$color;
+  background: #04244a;
+  width:$scrnWid;
+  height: $scrnHei;
 }
 
 nav{
   justify-content: space-between;
-  background: #04244a;
+  border-bottom: 1px solid $color;
   & div, & span{
     font-family: 'monad','calmer',monospace;
   }
@@ -78,5 +100,16 @@ nav{
     padding-left: 1.5em;
     letter-spacing: .3em;
   }
+}
+
+main{
+  @extend %dspFlexC;
+  height: 90%;
+}
+
+.ptCard{
+  @extend %dspFlexC;
+  width:$scrnWid;
+  height:auto;
 }
 </style>

@@ -29,7 +29,7 @@
 import blogHeader from "@/components/header.vue";
 import menuSlider from '@/components/menuSlider.vue';
 import postCard from '@/components/postCard.vue';
-import {categoryGetter,tagGetter,postsForTagGetter,sortByCreatedAt,sortByTagLength} from './../js/menuSlider.js';
+import {categoryGetter,tagGetter,postsForTagGetter,sortByCreatedAt,sortByTagLength} from './../js/getBlogpost.js';
 import { constants } from 'crypto';
 import dropdownPanel from '@/components/dropdownPanel.vue';
 
