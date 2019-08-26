@@ -763,6 +763,7 @@
   font-size: 85%;
   overflow: auto;
   padding: 16px;
+  max-height: 85vh;
 }
 
 .markdown-body pre code {

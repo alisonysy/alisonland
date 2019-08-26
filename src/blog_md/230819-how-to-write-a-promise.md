@@ -1,3 +1,7 @@
+Reference: [Promise实现原理（附源码）](https://segmentfault.com/a/1190000012664201) : https://segmentfault.com/a/1190000012664201
+
+Note: 此文摘自《Promise实现原理（附源码）》一文，并加以自己的看法
+
 在控制台打印一个Promise对象，返回如下结果：
 
 成功时: ![resolved](https://cdn1.imggmi.com/uploads/2019/8/23/dce20ebba793abee9cb8c2f5f97abadd-full.png) 
@@ -104,6 +108,7 @@ class MyPromise {
 ```
 
 4. 同一个promise可以多次调用`then`，并且调用的顺序按照`then`的注册顺序 ——> 需要有一个记录各个`then`的数组，然后依次调用
+5. 无论是`then`还是`_resolve`，`_reject`，都是采用异步操作
 ```js
   constructor(handle){
     // ... codes
@@ -113,21 +118,28 @@ class MyPromise {
   }
 
   _resolve(val){
-    if(this._status !== PENDING) return;
-    this._status = FULFILLED;
-    this._value = val;
-    while(this._fulfilledQueues.length > 0){
-      this._fulfilledQueues.shift()(val)
-    }
+    const run = (val) => {
+      if(this._status !== PENDING) return;
+      this._status = FULFILLED;
+      this._value = val;
+      while(this._fulfilledQueues.length > 0 && this._fulfilledQueues.shift()){
+        this._fulfilledQueues.shift()(val)
+      }
+    };
+    //设置setTimeout用于异步操作
+    setTimeout(run, 0)
   }
 
   _reject(val){
-    if(this._status !== PENDING) return;
-    this._status = REJECTED;
-    this._value = val;
-    while(this._rejectedQueues.length > 0){
-      this._rejectedQueues.shift()(val)
-    }
+    const run = (val) => {
+      if(this._status !== PENDING) return;
+      this._status = REJECTED;
+      this._value = val;
+      while(this._rejectedQueues.length > 0 && this._rejectedQueues.shift()){
+        this._rejectedQueues.shift()(val)
+      }
+    };
+    setTimeout(run, 0)
   }
 
   then(onFulfilled,onRejected){
@@ -179,32 +191,117 @@ class MyPromise {
 + `then`方法的回调函数返回一个新的Promise实例，则需等待新的promise状态改变后再继续执行回调
 + `_resolve`和`_reject`接受的参数为**非**promise，若参数为另一个promise A，即需等待promise A的状态变化后，再更改此promise的状态
 
+1. 首先处理一下`then`的参数并不是函数，以及`then`返回一个新的promise的情况：
 ```js
   then(onFulfilled,onRejected){
     const { _value, _status } = this;
 
-    return new MyPromise((onFulfilledNext, onRejectedNext) => {
+    return new MyPromise((resolve, reject) => {
       let fulfilled = value => {
         try{
           //当onFulfilled不是函数时，新的promise的状态和返回值也跟原promise一样
           if(typeof onFulfilled !== 'function'){
-            onFulfilledNext(value);
+            resolve(value);
           }else{
             let res = onFulfilled(value);
             if(res instanceof MyPromise){
-              //此处在res代表的新的promise状态改变后再调用then方法，并传入原来的handlers，用新的promise返回的数据再执行一遍then
-              res.then(onFulfilledNext,onRejectedNext)
+              //此处在res代表的新的promise状态改变后再调用then方法，并传入原来的handlers，用新的promise返回的数据再执行一遍then，此时执行的then会走下面else的分支
+              res.then(resolve,reject)
             }else{
-              onFulfilledNext(value);
+              resolve(res);
             }
           }
         } catch (err){
-          onRejectedNext(err)
+          reject(err)
         }
-      }
+      };
+
+      let rejected = error => {
+        try{
+          if(typeof onRejected !== 'function'){
+            reject(error)
+          }else{
+            let res = onRejected(error);
+            if(res instanceof MyPromise){
+              res.then(resolve,reject)
+            }else{
+              reject(res);
+            }
+          }
+        } catch (err) {
+          reject(err)
+        }
+      };
+
+      // switch stetement codes 
     }
   }
 ```
+
+2. 再来处理`_resolve`和`_reject`接受另一个Promise实例的情况：
+```js
+  _resolve(val){
+    const run = (val) => {
+      if(this._status !== PENDING) return;
+      
+      let runFulfilled = (val) => {
+        while(this._fulfilledQueues.length > 0 && this._fulfilledQueues.shift()){
+          this._fulfilledQueues.shift()(val)
+        }
+      }
+
+      //若传入的val是Promise实例，则等待val的状态发生变化后再执行_resolve
+      if(val instanceof MyPromise){
+        val.then( value => {
+          this._status = FULFILLED;
+          this._value = value;
+          runFulfilled(value);
+        }, err => {
+          this._status = REJECTED;
+          this._value = err;
+          while(this._rejectedQueues.length > 0 && this._rejectedQueues.shift()){
+            this._rejectedQueues.shift()(err)
+          }
+        });
+      }else{
+        this._status = FULFILLED;
+        this._value = val;
+        runFulfilled(val);
+      }
+    };
+    //设置setTimeout用于异步操作
+    setTimeout(run, 0)
+  };
+
+  _reject(err){
+    const run = (err) => {
+      if(this._status !== PENDING) return;
+
+      let runRejected = (err) => {
+        while(this._rejectedQueues.length > 0 && this._rejectedQueues.shift()){
+          this._rejectedQueues.shift()(err)
+        }
+      };
+
+      this._status = REJECTED;
+      //下面在原文的源码中是没有的，待验证
+      if(err instanceof MyPromise){
+        err.then( val => {
+          this._value = val;
+          runRejected(error);
+        }, error => {
+          this._value = error;
+          runRejected(error);
+        })
+      }else{
+        this._value = error;
+        runRejected(error);
+      }
+    };
+    setTimeout(run, 0)
+  }
+```
+
 
 ### 相关知识点
 
