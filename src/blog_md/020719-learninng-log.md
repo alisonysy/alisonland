@@ -11,11 +11,11 @@
 
 | Field | Specifics |
 | ----- | --------- |
-| Principles | Vue-Router - still reading the document - navigation guards <br>**PAUSED** because of the increasing difficulty <br>Watch **163.com** videos |
-| Principles | Virtual DOM - how it's realised <br>Watch **163.com** videos |
-| Design patterns | Currying - done for now |
-| Data structure | Binary tree **important** |
-| Principles | Writing a promise - ing |
+| Principles | Vue-Router - still reading the document - navigation guards <br>**PAUSED** because of the increasing difficulty <br>Watch **163.com** videos - no videos |
+| Principles | Virtual DOM - how it's realised <br>Watch **163.com** videos - no videos |
+| Data structure | Binary tree **important** **PAUSED** |
+| Principles | Writing a promise - to draw a diagram for better understanding |
+| Tools | WebSocket |
 
 🙈
 
@@ -122,3 +122,37 @@ All styled selectors in theme.scss / theme.css will be appended as children of *
 
 ### 23/08/2019
 + Read about writing a **promise** on a [blog](https://segmentfault.com/a/1190000012664201), someone mentioned an interview question on how to write a *Promise.all*
+
+### 26/08/2019
++ Writing a **promise**, may need to draw a diagram for better understanding
++ `requestAnimationFrame` to replace `setInterval` to repeatedly call an animation, basic usage:<br> 
+```js
+function thisAnimate(){
+  // animations to run, e.g. repeatedly appending a <div>
+  globalId = requestAnimationFrame(thisAnimate);
+}
+
+let globalId = requestAnimationFrame(thisAnimate);
+
+cancelAnimationFrame(thisAnimate)
+```
++ Get to know what is WebSocket which is a protocol that allows persistent TCP connection between client and server.
++ Two ways of showing thumbnails of user-selected images with the `<input type="file">`: 
+1. Using `new FileReader()` and its `readAsDataURL()` method 
+2. `img.src = window.URL.createObjectURL(fileObj)` and `window.URL.revokeObjectURL(img.src)`
++ Other several applications based on `<input type="file">`, [Using files from web app](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications)
++ CSS **masking** is where shapes are created on a foreground layer and use colors to determine how much of the shape shows the background
++ The `mix-blend-mode` property applied to the top element of a stack of image and text, text being at the top, creates a *knockout* design
++ The `multiply` blend mode keeps the darker colors dark and lighter colors let thru whatever's behind them, i.e. 
+
+> A black portion on the top layer will be fully opaque and white will be fully transparent.
+
++ An img to illustrate that:
+![multiple mode](https://res.cloudinary.com/css-tricks/image/upload/c_scale,w_1000,f_auto,q_auto/v1519601323/multiply-blend-mode_asvzmq.jpg)
+
+The difference between 4 blend modes:
+| Blend Mode | How it works |
+| ---------- | ------------ |
+| Multiply | keeps the darker colors dark and lighter colors let thru whatever's behind them |
+| Screen | opposite to *Multiply*, darker colors create translucence while lighter shades remain light and block what’s behind |
+| Darken and lighten, mirroring multiply and screen | details are lost on the portions of the back image that can be seen | 
