@@ -136,7 +136,7 @@ let globalId = requestAnimationFrame(thisAnimate);
 
 cancelAnimationFrame(thisAnimate)
 ```
-+ Get to know what is WebSocket which is a protocol that allows persistent TCP connection between client and server.
++ Get to know what is *WebSocket* which is a protocol that allows persistent TCP connection between client and server.
 + Two ways of showing thumbnails of user-selected images with the `<input type="file">`: 
 1. Using `new FileReader()` and its `readAsDataURL()` method 
 2. `img.src = window.URL.createObjectURL(fileObj)` and `window.URL.revokeObjectURL(img.src)`
@@ -156,3 +156,6 @@ The difference between 4 blend modes:
 | Multiply | keeps the darker colors dark and lighter colors let thru whatever's behind them |
 | Screen | opposite to *Multiply*, darker colors create translucence while lighter shades remain light and block what’s behind |
 | Darken and lighten, mirroring multiply and screen | details are lost on the portions of the back image that can be seen | 
+
+### 27/08/2019
++ Lazy-loading images enables less requests for the initial rendering, can use JavaScript libraries, like [lazysizes](https://github.com/aFarkas/lazysizes) (which can be used for Shopify) or `IntersectionObserver API` to detect when an element comes into view, as opposed to using `getBoundingClientRect()` which triggers *reflow* every time it's called, causing performance bottleneck. Note that `IntersectionObserver API` cannot be used for scroll-dependent animations as the data will be out of date by the time we get to use it.
