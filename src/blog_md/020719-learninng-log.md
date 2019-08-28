@@ -159,3 +159,7 @@ The difference between 4 blend modes:
 
 ### 27/08/2019
 + Lazy-loading images enables less requests for the initial rendering, can use JavaScript libraries, like [lazysizes](https://github.com/aFarkas/lazysizes) (which can be used for Shopify) or `IntersectionObserver API` to detect when an element comes into view, as opposed to using `getBoundingClientRect()` which triggers *reflow* every time it's called, causing performance bottleneck. Note that `IntersectionObserver API` cannot be used for scroll-dependent animations as the data will be out of date by the time we get to use it.
+
+### 28/08/2019
++ Reducing the transfer size of *text-based* assets like HTML, JS and CSS files: first apply content-specific optimisations first, e.g. minifiers, or SVGO for SVG files; then, apply **GZIP** to compress the minified output. *GZIP* needs to be configured on the server side.
++ **Resolution** is the number of pixels on the display. High resoluiton *screens* have multiple device pixels per CSS pixel; high resolution *images* require higher number of pixels and bytes.
