@@ -41,13 +41,14 @@ export default {
   data:function(){
     return {
       items:this.works.works,
-      liId:0
+      liId:0,
+      obs:{}
     }
   },
   mounted:function(){
     swiperInit();
     this.setId();
-    this.liListener();
+    this.obs = this.liListener();
   },
   methods:{
     liListener:function(){
@@ -64,6 +65,7 @@ export default {
       };
       const observer = new MutationObserver(cb);
       observer.observe(tgNd,config);
+      return observer;
     },
     setId:function(){
       const lis = $('.swiper-wrapper ul').find('li');
@@ -72,6 +74,9 @@ export default {
         $(this).attr('data-id',id++)
       })
     }
+  },
+  beforeDestroy:function(){
+    this.obs.disconnect();
   }
 }
 </script>
