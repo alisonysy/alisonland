@@ -10,12 +10,15 @@ export function swiperInit(){
     offsetWid = $('ul li:first-of-type')[0].offsetWidth;
   });
   
+  activateLi(movingUl,curId);
+  
   arrowLf.on('click',()=>{
     curId < 1? curId : curId--;
     movingUl.css({
       transform:`translateX(-${offsetWid*curId}px)`,
       transition:'all .5s'
-    })
+    });
+    activateLi(movingUl,curId);
   });
 
   arrowRt.on('click',()=>{
@@ -23,6 +26,14 @@ export function swiperInit(){
     movingUl.css({
       transform:`translateX(-${offsetWid*curId}px)`,
       transition:'all .5s'
-    })
-  })
+    });
+    activateLi(movingUl,curId);
+  });
+
+  function activateLi(el,id){
+    el.find('li').eq(id)
+      .addClass('active')
+      .siblings()
+      .removeClass('active');
+  }
 }

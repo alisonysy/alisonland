@@ -5,20 +5,10 @@
       <!-- dropdown / whole-screen menu -->
       <fullScreenMenu :items="tabObj" @menu-closed="openMenu = false" :onMenu="openMenu"/>
     </nav>
-    <main class="dspFlex">
-      <div class="bg"></div>
+    <main class="dspFlex posiRela">
+      <div class="bg posiAbso" ></div>
       <div class="ptCard dspFlex">
-        <workSwiper :works="works()"/>
-        <!-- <div class="ptCard-top">
-          <div>Description:</div>
-          <div>Source Code:</div>
-          <div>Techniques:</div>
-          <div>References:</div>
-        </div>
-        <div>
-          <div></div>
-          <div></div>
-        </div> -->
+        <workSwiper :works="works()" @li-change="curWorkTags"/>
       </div>
     </main>
     <!-- menuSlider for categories -->
@@ -52,7 +42,8 @@ export default {
           rt:'/about-me'
         }
       },
-      openMenu:false
+      openMenu:false,
+      curTags:this.works().works[0].tags
     }
   },
   components:{
@@ -65,10 +56,18 @@ export default {
   methods:{
     works:()=>{
       return works;
-    }
+    },
+    curWorkTags:function(res){
+      this.curTags = this.works().works[res].tags;
+    },
+    
   },
   beforeMount:function(){
     this.works();
+    // this.curWorkTags();
+  },
+  mounted:function(){
+    console.log(this.curTags);
   }
 }
 </script>
@@ -76,7 +75,7 @@ export default {
 <style lang="scss" scoped>
 $color:#fff;
 $scrnWid:100vw;
-$scrnHei:100vh;
+$scrnHei:100%;
 %dspFlexC{
   justify-content: center;
   align-items: center;
@@ -111,5 +110,11 @@ main{
   @extend %dspFlexC;
   width:$scrnWid;
   height:auto;
+}
+
+.bg{
+  width:100%;
+  height: $scrnHei;
+  overflow:hidden;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="swiper-wrapper posiRela">
     <ul class="dspFlex">
-      <li v-for="item in items" :key="item.id" class="dspFlex ">
+      <li v-for="item in items" :key="item.id" class="dspFlex">
         <div class="card dspFlex">
           <div class="ptCard-top">
             <div>Description:&nbsp;
@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="ptCard-bottom dspFlex">
-            <div class="fs20">{{ item.name }}</div>
+            <div class="fs20 fw700">{{ item.name }}</div>
             <a :href="item.demoUrl" target="_blank" class="posiRela"></a>
             <!-- <div class="posiRela"></div> -->
           </div>
@@ -40,11 +40,38 @@ export default {
   props:['works'],
   data:function(){
     return {
-      items:this.works.works
+      items:this.works.works,
+      liId:0
     }
   },
   mounted:function(){
     swiperInit();
+    this.setId();
+    this.liListener();
+  },
+  methods:{
+    liListener:function(){
+      const vm = this;
+      const tgNd = $('.swiper-wrapper ul')[0];
+      const config = {attributes:true,childList:false,subtree:true};
+      const cb = function(mutationsList, observer) {
+        for(let mutation of mutationsList) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class' && Array.from(mutation.target.classList).includes('active')) {
+            let id = $(mutation.target).attr('data-id');
+            vm.$emit('li-change',id);
+          }
+        }
+      };
+      const observer = new MutationObserver(cb);
+      observer.observe(tgNd,config);
+    },
+    setId:function(){
+      const lis = $('.swiper-wrapper ul').find('li');
+      let id=0;
+      lis.each(function(i){
+        $(this).attr('data-id',id++)
+      })
+    }
   }
 }
 </script>
@@ -110,6 +137,7 @@ ul{
 .ptCard-top{
   & div{
     margin:1em;
+    line-height: 1.5em;
   }
 
   & div:nth-of-type(2){

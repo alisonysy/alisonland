@@ -56,6 +56,9 @@ ul,li{list-style: none;padding: 0;margin: 0;}
 .fs14{
   font-size: 14px;
 }
+.fw700{
+  font-weight: 700;
+}
 .upperC{
   text-transform: uppercase;
 }
