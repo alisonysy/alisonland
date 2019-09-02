@@ -98,3 +98,13 @@ imagemin(['images/*.{jpg,png}'], 'build/images', {
 [色彩空间对比](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/automating-image-optimization/images/color-wheel_hazsbk.jpg)
 
 大于sRGB的色彩空间被称为宽色域(wide-gamut)
+
+#### 其他色彩相关压缩
+伽玛校正和压缩(gamma correction and compression): 控制一个图像的亮度
+
+色彩档案(color profiles): 描述一个设备的色彩空间，用于在不同的色彩空间中转换，以确保同一张图片在不同的设备中显示一致；ImageOptim会自动删除色彩档案
+
+### 提前加载重要图片
+可以通过`<link rel=preload>`来强制浏览器在不阻塞`onload`事件的前提下发送请求，图像请求可以用`as`属性：`<link rel="preload" as="image" href="logo.png" />`
+
+提前加载的图片通常是网页上部的大图，尽量**避免**加载不能用于所有浏览器的图片格式，e.g. WebP；**避免**加载定义在`srcset`里的响应式图像
