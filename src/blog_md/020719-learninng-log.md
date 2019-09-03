@@ -163,3 +163,7 @@ The difference between 4 blend modes:
 ### 28/08/2019
 + Reducing the transfer size of *text-based* assets like HTML, JS and CSS files: first apply content-specific optimisations first, e.g. minifiers, or SVGO for SVG files; then, apply **GZIP** to compress the minified output. *GZIP* needs to be configured on the server side.
 + **Resolution** is the number of pixels on the display. High resoluiton *screens* have multiple device pixels per CSS pixel; high resolution *images* require higher number of pixels and bytes.
+
+### 03/09/2019
++ New HTML attribute `loading` on `<img>` to allow lazyloading, 3 values available: `auto`, `eager` and `lazy`
++ Responsive images with `srcset` with `w` and `x`, as well as `sizes`
