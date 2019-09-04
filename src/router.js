@@ -2,10 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 //navigation
-import favourites from './views/favourites.vue'
-import blogs from './views/blogs.vue'
 import blogpost from './views/blogpost.vue'
-import portfolio from './views/portfolio.vue'
 
 import blogJSON from './data/blog_md.json'
 
@@ -38,12 +35,12 @@ export default new Router({
     {
       path: '/favsite',
       name: 'favourites',
-      component: favourites
+      component: ()=> import('./views/favourites.vue')
     },
     {
       path:'/blogs',
       name:'blogs',
-      component: blogs
+      component: () => import('./views/blogs.vue')
     },
     {
       path: '/about',
@@ -80,7 +77,7 @@ export default new Router({
     {
       path:'/portfolio',
       name:'portfolio',
-      component:portfolio
+      component:() => import('./views/portfolio.vue')
     }
   ]
 })

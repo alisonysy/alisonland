@@ -16,6 +16,7 @@
 | Data structure | Binary tree **important** **PAUSED** |
 | Principles | Writing a promise - to draw a diagram for better understanding |
 | Tools | WebSocket |
+| Project | Code-splitting | 
 
 🙈
 
@@ -167,3 +168,9 @@ The difference between 4 blend modes:
 ### 03/09/2019
 + New HTML attribute `loading` on `<img>` to allow lazyloading, 3 values available: `auto`, `eager` and `lazy`
 + Responsive images with `srcset` with `w` and `x`, as well as `sizes`
+
+### 04/09/2019
++ Convert a `gif` to a video to reduce download size and improve loading performance, however, for `<video>` to autoplay, the `muted` attribute must be *present* and for iOS devices, `playsinline` attribute is required for autoplay to work as well.
++ Equivalently sized JavaScripts and images have very different costs when page's loading. Images usually **don’t block** the main thread or prevent interfaces from getting interactive while being decoded and rasterized. JS however can delay interactivity due to parse, compile and execution costs.
++ Transmission size is critical for low end networks. Parse time is important for CPU bound devices. Keeping these low matters.
++ Vue code-splitting example: [async component?](https://vuejsdevelopers.com/2017/07/03/vue-js-code-splitting-webpack/)

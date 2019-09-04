@@ -6,16 +6,12 @@
 
 
 <script>
-import loading from "@/components/loading.vue";
-import home from "@/views/Home.vue";
-import VueMarkdown from 'vue-markdown';
 
 export default {
   name: "App",
   components: {
-    loading,
-    home,
-    VueMarkdown
+    home:()=>import('./views/Home.vue'),
+    VueMarkdown:()=>import('vue-markdown')
   },
   data() {
     return {
