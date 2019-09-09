@@ -37,6 +37,8 @@ JavaScript是影响页面TTI的重要因素之一，JS的解析编译和执行�
 + 布局
 + 处理用户输入(包括有触摸监听的触屏事件)
 
+![必须占用主线程的操作](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization/images/1_ec0wEKKVl7iQidBks3oDKg.png)
+
 
 *按路由分包*和*PRPL*是两种常用的加快JS加载的方法：
 
@@ -47,6 +49,7 @@ JavaScript是影响页面TTI的重要因素之一，JS的解析编译和执行�
 + Pre-cache remaining routes.
 + Lazy-load and create remaining routes on demand.
 
+![PRPL模式](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization/images/1_VgdNbnl08gcetpqE1t9P9w.png)
 
 https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/javascript-startup-optimization/#other_costs
 
