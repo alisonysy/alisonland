@@ -50,6 +50,9 @@ function parseProtocol(url) {
 }
 ```
 
+### 对象解构赋值与数组的区别
+数组解构赋值在`let [var1,var2,...] = someArr`的时候，var1和var2是被赋与someArr里某元素的而且同时被创建出来的新的变量，而对象解构赋值`let {prop1:var1 = default, ...var2 } = someObject`中，写在开头的*prop1*是someObject里的属性，并且该属性会单独成为一个新的对象*var1*，而someObject剩余的属性会用于创建一个叫*var2*的**新对象**
+
 ## Operators: 操作符
 
 ### 一元操作符(Unary operators)

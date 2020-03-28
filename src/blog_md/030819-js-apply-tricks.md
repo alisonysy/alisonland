@@ -3,7 +3,7 @@
 ## Function.prototype.apply()
 
 1. 类似于`concat()`，用于把一个数组添加到另一个数组后面
-与`concat()`不同的是，`concat()`会返回新的数组，`apply()`会修改原来数组
+与`concat()`不同的是，`concat()`会返回新的数组，`apply()`会修改原来数组(是因为push()会修改原数组)
 ```js
 var array = ['a', 'b'];
 var elements = [0, 1, 2];

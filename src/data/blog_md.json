@@ -178,6 +178,22 @@
       "abstract":"",
       "updatedAt":"",
       "tag":["javascript","promise","practice","interview-question"]
+    },
+    {
+      "id":"200320-generator-use-case",
+      "createdAt":"Mar 24 2020",
+      "title":"生成器的应用",
+      "subTitle":"",
+      "updatedAt":"",
+      "tag":["javascript","notes","es6"]
+    },
+    {
+      "id":"280320-js-variable-scope",
+      "createdAt":"Mar 28 2020",
+      "title":"变量的作用域",
+      "subTitle":"",
+      "updatedAt":"",
+      "tag":["javascript","notes","es6","scope","lexical environment"]
     }
   ],
   "Redux":[

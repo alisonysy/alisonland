@@ -1,6 +1,6 @@
 ## 懒加载JS：`scrollTop`，`IntersectionObserver`和新的`loading`属性
 
-(CSS Tricks - Complete guide on lazyload yet missing the new loading attr)[https://css-tricks.com/the-complete-guide-to-lazy-loading-images/]
+[CSS Tricks - Complete guide on lazyload yet missing the new loading attr](https://css-tricks.com/the-complete-guide-to-lazy-loading-images/)
 
 # 懒加载之避免重排(reflow)
 
