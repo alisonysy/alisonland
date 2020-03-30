@@ -25,10 +25,6 @@ export default {
         tab3:{
           name:'Portfolio',
           rt:'/portfolio'
-        },
-        tab4:{
-          name:'About Me',
-          rt:'/about-me'
         }
       }
     }

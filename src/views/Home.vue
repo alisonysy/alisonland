@@ -7,10 +7,10 @@
         <span class="letters deepBlue f-monad">lison</span>
       </div>
     </div>
-    <div class="announcement">
+    <!-- <div class="announcement">
       <p>Welcome to my journey of being a web developer. Hope you enjoy and plz feel free to leave a message for any further discussion :)</p>
       <p>欢迎同道的你，也欢迎随时留言探讨~</p>
-    </div>
+    </div> -->
     <!-- <div class="profileImg-wrapper posiAbso">
       <img
         :src="profileImg(profileImgName)"
