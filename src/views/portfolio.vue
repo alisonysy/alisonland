@@ -110,7 +110,7 @@ main{
 
 .bg{
   width:100%;
-  height: calc($scrnHei - 46px);
+  height: calc(100vh - 46px);
   overflow:hidden;
 }
 </style>
