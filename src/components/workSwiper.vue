@@ -3,7 +3,7 @@
     <ul class="dspFlex">
       <li v-for="item in items" :key="item.id" class="dspFlex">
         <div class="card dspFlex">
-          <div class="ptCard-top">
+          <div class="ptCard-top" v-if="!item.hasImage">
             <div>Description:&nbsp;
               {{item.description}}
             </div>
@@ -17,6 +17,25 @@
             </div>
             <div>References:&nbsp;
               {{item.references}}
+            </div>
+          </div>
+          <div class="ptCard-top" v-else-if="item.id === '300320-gsap-gallery'">
+            <div>Description:&nbsp;
+              {{item.description}}
+            </div>
+            <div class="gallery dspFlex">
+              <div>
+                <img src="@/assets/exploded-view.gif" alt="">
+              </div>
+              <div>
+                <img src="@/assets/horizontal-scroll.gif" alt="">
+              </div>
+              <div>
+                <img src="@/assets/juice.gif" alt="">
+              </div>
+              <div>
+                <img src="@/assets/mount-qi.gif" alt="">
+              </div>
             </div>
           </div>
           <div class="ptCard-bottom dspFlex">
@@ -49,6 +68,7 @@ export default {
     swiperInit();
     this.setId();
     this.obs = this.liListener();
+    console.log(this.items);
   },
   methods:{
     liListener:function(){
@@ -95,8 +115,9 @@ $color:#fff;
 }
 
 ul{
-  height:35vw;
+  height:auto;
   width:100%;
+  align-items: center;
 
   & li{
     @extend %dspFlexC;
@@ -140,6 +161,7 @@ ul{
 }
 
 .ptCard-top{
+  width: 100%;
   & div{
     margin:1em;
     line-height: 1.5em;
@@ -152,6 +174,16 @@ ul{
         opacity: .8;
         color:#fa557c;
       }
+    }
+  }
+
+  & .gallery{
+    flex-flow: row wrap;
+    & div{
+      width:45%;
+    }
+    & img{
+      max-width:100%;
     }
   }
 }

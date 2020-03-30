@@ -36,10 +36,6 @@ export default {
         tab3:{
           name:'Blogs',
           rt:'/blogs'
-        },
-        tab4:{
-          name:'About Me',
-          rt:'/about-me'
         }
       },
       openMenu:false,
@@ -75,7 +71,7 @@ export default {
 <style lang="scss" scoped>
 $color:#fff;
 $scrnWid:100vw;
-$scrnHei:100%;
+$scrnHei:100vh;
 %dspFlexC{
   justify-content: center;
   align-items: center;
@@ -103,7 +99,7 @@ nav{
 
 main{
   @extend %dspFlexC;
-  height: 90%;
+  height: calc(100% - 46px);
 }
 
 .ptCard{
@@ -114,7 +110,7 @@ main{
 
 .bg{
   width:100%;
-  height: $scrnHei;
+  height: calc($scrnHei - 46px);
   overflow:hidden;
 }
 </style>
