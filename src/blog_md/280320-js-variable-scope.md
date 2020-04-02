@@ -44,3 +44,10 @@ phrase = 'bye'; //[phrase:'bye']
 
 ## 垃圾回收
 在一般情况下，当函数调用完毕，词法环境及其内部的变量会被回收，但若该函数的内部函数(nested function)仍然能被获取，这个函数的词法环境就不会被回收，因为他正在被引用。
+
+
+## `new Function`
+Syntax:
+`new Function([arg[0],arg[1],...arg[n]],"function body")`
+e.g. `new Function('a','b','c','return a+b+c')`
+除了函数表达式和声明式创建函数，`new Function`是另一种较为少见，但有时不得不用的声明函数的方式。表达式和声明式要求函数在JS执行前就写好，但`new Function`可以让函数体在JS执行的时候才以*字符串*的形式传进去。同时这个函数的词法环境并不指向函数创建时的外部环境，而是指向全局。
