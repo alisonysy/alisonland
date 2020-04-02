@@ -99,3 +99,17 @@ temp = a
 a = {n:2}
 temp.x = a
 ```
+
+## `setTimeout`和`setInterval`的小知识
+2种在一定时间间隔调用函数的方式：
+1. `setInterval`
+2. nested `setTimeout`
+
+内部调用`setTimeout`**优势**：
++ 可以动态调整再次调用的时间；
++ 执行延误时间比`setInterval`更准确 － 在使用`setInterval`时，执行下一次`setInterval`的间隔包含执行本次函数的时间，若本次函数的执行时间超过delay，函数执行完之后会立即执行下一次`setInterval`
+
+注意：当函数被传入`setInterval`或`setTimeout`，调度器会保存指向该函数的引用，直到`setInterval`或`setTimeout`执行完毕，或调用`clearInterval`，该函数才会从内存中被删除。因为函数会引用外部的词法环境，当外部词法环境存在时，外部的变量也存在，这样会*占用大量内存*，因此不使用时，建议取消。
+
+### 立即执行的`setTimeout`
+在**浏览器**里，有规定内部调用的计时器的调用频率，在5次调用内嵌计时器后，间隔会被强制到4ms以上，即过4ms以上才会执行下一轮的`setTimeout`。
