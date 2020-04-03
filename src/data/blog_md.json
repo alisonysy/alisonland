@@ -194,6 +194,14 @@
       "subTitle":"",
       "updatedAt":"",
       "tag":["javascript","notes","es6","scope","lexical environment"]
+    },
+    {
+      "id":"030420-js-decorator",
+      "createdAt":"Apr 03 2020",
+      "title":"什么是装饰器",
+      "subTitle":"",
+      "updatedAt":"",
+      "tag":["javascript","notes","es6","decorator","array"]
     }
   ],
   "Redux":[
