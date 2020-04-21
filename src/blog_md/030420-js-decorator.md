@@ -59,3 +59,36 @@ function hash(args) { // arguments是一个数组或类数组
 
 worker.slow = cachingDecorator(worker.slow, hash);
 ```
+
+### 其他例子
+
+#### spy decorator
+保存每次调用的函数的参数，可用于单元测试
+```js
+function spy(func) {
+  const inner = function(){
+    let args = [];
+    for(let n=0;n<arguments.length;n++){
+      args.push(arguments[n]);
+    }
+    inner.calls.push(args);
+    
+    return func.apply(this,arguments);
+  }
+  inner.calls = []; // 初始化函数inner的属性，该属性应设置在返回的函数身上
+  return inner;
+}
+
+function work(a, b) {
+  alert( a + b ); // work is an arbitrary function or method
+}
+
+work = spy(work);
+
+work(1, 2); // 3
+work(4, 5); // 9
+
+for (let args of work.calls) {
+  alert( 'call:' + args.join() ); // "call:1,2", "call:4,5"
+}
+```
