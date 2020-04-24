@@ -62,15 +62,9 @@ export default new Router({
             component: ()=> import(`./blog_md/${entry.id}.md`)
           })
         })
-        // {
-        //   path:'',
-        //   components: {
-        //     default: ()=> import(`./blog_md/250519-first-time-using-xcode-running-debugging.md`)
-        //   }
-        // }
       ),
       beforeEnter:(to,from,next)=>{
-        console.log(to);
+        console.log('this is to',to);
         next();
       }
     },

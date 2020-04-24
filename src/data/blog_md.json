@@ -93,6 +93,15 @@
       "abstract":"useEffect钩子让关联逻辑的操作和代码不再被生命周期强行分散",
       "updatedAt":"",
       "tag":["react","advanced-level","notes","hooks"]
+    },
+    {
+      "id":"090420-reactjs-interview-questions",
+      "createdAt":"Apr 09 2020",
+      "title":"React.js 面试题",
+      "subTitle":"",
+      "abstract":"",
+      "updatedAt":"",
+      "tag":["react","interview-question"]
     }
   ],
   "Log":[
@@ -180,7 +189,7 @@
       "tag":["javascript","promise","practice","interview-question"]
     },
     {
-      "id":"200320-generator-use-case",
+      "id":"240320-generator-use-case",
       "createdAt":"Mar 24 2020",
       "title":"生成器的应用",
       "subTitle":"",
@@ -202,6 +211,14 @@
       "subTitle":"",
       "updatedAt":"",
       "tag":["javascript","notes","es6","decorator","array"]
+    },
+    {
+      "id":"230420-js-prototypal-inheritance",
+      "createdAt":"Apr 23 2020",
+      "title":"原型继承",
+      "subTitle":"",
+      "updatedAt":"",
+      "tag":["javascript","prototype","inheritance","basic concept"]
     }
   ],
   "Redux":[
