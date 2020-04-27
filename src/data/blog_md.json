@@ -291,5 +291,16 @@
       "updatedAt":"",
       "tag":["performance","analytics","google-developers","api","user-experience"]
     }
+  ],
+  "HTTP":[
+    {
+      "id":"270420-http-auth",
+      "createdAt":"Apr 27 2020",
+      "title":"前端鉴权",
+      "subTitle":"",
+      "abstract":"包括HTTP的basic auth，token验证",
+      "updatedAt":"",
+      "tag":["authentication","authorization","server-side"]
+    }
   ]
 }
