@@ -102,6 +102,15 @@
       "abstract":"",
       "updatedAt":"",
       "tag":["react","interview-question"]
+    },
+    {
+      "id":"060520-babeljs",
+      "createdAt":"May 06 2020",
+      "title":"BabelJS基础配置",
+      "subTitle":"",
+      "abstract":"",
+      "updatedAt":"",
+      "tag":["babel","notes","basic concept"]
     }
   ],
   "Log":[
@@ -218,7 +227,15 @@
       "title":"原型继承",
       "subTitle":"",
       "updatedAt":"",
-      "tag":["javascript","prototype","inheritance","basic concept"]
+      "tag":["javascript","prototype","inheritance","basic concept","notes"]
+    },
+    {
+      "id":"090520-js-class",
+      "createdAt":"May 9 2020",
+      "title":"ES6 class",
+      "subTitle":"super, extends, static ...",
+      "updatedAt":"",
+      "tag":["javascript","prototype","inheritance","basic concept","es6","notes"]
     }
   ],
   "Redux":[
@@ -301,6 +318,15 @@
       "abstract":"包括HTTP的basic auth，token验证",
       "updatedAt":"",
       "tag":["authentication","authorization","server-side"]
+    },
+    {
+      "id":"290420-how-https-works",
+      "createdAt":"Apr 29 2020",
+      "title":"HTTPS工作原理",
+      "subTitle":"",
+      "abstract":"",
+      "updatedAt":"",
+      "tag":["authentication"]
     }
   ]
 }
