@@ -26,3 +26,46 @@ A[constructor] ->(prototype) B.prototpe[constructor:A;method3:function]
 ### 类的静态方法和静态属性
 静态方法用于应用于整个类的功能，而不针对某一个实例，如*对比两个实例*，有别于正常创建实例的*工厂函数*；同理，静态属性用于储存应用于整个类的数据。
 继承父类的子类也能继承静态方法，如`A extends B`可通过`A.staticMethod`获取`B.staticMethod`。
+
+### 继承built-in class
+在继承内置类时，若内置的被继承的方法返回新对象，内部执行会以**子类**的`constructor`创建该对象，因此新返回的对象仍然是子类的实例，可以使用子类的方法。
+```js
+class Array1 extends Array{
+    isEmpty(){
+        return this.length === 0;
+    }
+}
+
+let arr1Inst = new Array1(2,3,5,10,12);
+arr1Inst.isEmpty(); // false -> arr1Inst.constructor === Array1
+
+let filteredArr1Inst = arr1Inst.filter(i => i > 10);
+console.log(filteredArr1Inst); // 12
+filteredArr1Inst.isEmpty(); // false -> method 'isEmpty()' still works since the returned filteredArr1Inst is still an instance of Array1
+```
+
++ 通过静态getter `Symbol.species`改变返回的新对象。在子类中设置`Symbol.species`静态方法，它返回的对象将被用于内置方法中创建新对象时的*构造原型*。
+```js
+class Array1 extends Array{
+    isEmpty(){...}
+    // built-in methods will use this as the constructor
+    static get [Symbol.species](){
+        return Array;
+    }
+}
+
+let arr1Inst_1 = new Array1(2,1,4,45);
+arr1Inst_1.isEmpty(); // false -> arr1Inst_1.constructor === Array1
+
+let filteredArr1Inst_1 = arr1Inst_1.filter( i => i > 10);
+filteredArr1Inst_1.isEmpty(); // Error: filteredArr1Inst_1.isEmpty is not a function
+```
+
++ 内置类中不能继承**静态方法**。如`Array`和`Date`都继承自`Object`，他们的实例都拥有`Object.prototype`的方法，但`Array.[[Prototype]]`没有引用`Object`，因此没有`Array.keys()`等静态方法。
+```js
+Object[defineProperty, keys] ->(prototype) Object.prototype[constructor:Object;toString:function;hasOwnProperty:function]
+                                                    | [[Prototype]]
+Date[now, parse] ->(prototype) Date.prototype[constructor:Date;toString:function;getDate:function]
+                                                    | [[Prototype]]
+                                                new Date()
+```
