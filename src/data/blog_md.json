@@ -328,5 +328,16 @@
       "updatedAt":"",
       "tag":["authentication"]
     }
+  ],
+  "Shopify":[
+    {
+      "id":"130520-shopify-liquid",
+      "createdAt":"May 13 2020",
+      "title":"Shopify Liquid语法使用笔记",
+      "subTitle":"",
+      "abstract":"",
+      "updatedAt":"",
+      "tag":["liquid-object"]
+    }
   ]
 }

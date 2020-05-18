@@ -6,7 +6,7 @@
 1. 由`class`创建的函数有一个特殊的内部属性`[[FunctionKind]]:"classConstructor"`，使用的时候必须通过`new`调用，否则会报错
 2. 类方法是不能枚举的，但函数原型上的方法可以通过`for...in`枚举
 
-### `extends`关键词
+## `extends`关键词
 使用`extends`让一个类A继承另一个类B，类A的`prototype`属性的原型是类B，即`A.prototype.[[Prototype]]`等于`B.prototype`，即当在`A.prototype`上找补到方法的时候，会从`B.prototype`上找。
 ```js
 B[constructor] ->(prototype) B.prototype[constructor:B;method1:function;method2:function...]
@@ -23,7 +23,7 @@ A[constructor] ->(prototype) B.prototpe[constructor:A;method3:function]
 
 注：和`this`一样，在箭头函数里没有`super`，所以在类的方法中使用`setTimeout(()=> super.method(), delay)`可以正常调用父类的方法，但若使用`setTimeout(function(){super.method()},delay)`将会报错－*unexpected super*
 
-### 类的静态方法和静态属性
+## 类的静态方法和静态属性
 静态方法用于应用于整个类的功能，而不针对某一个实例，如*对比两个实例*，有别于正常创建实例的*工厂函数*；同理，静态属性用于储存应用于整个类的数据。
 继承父类的子类也能继承静态方法，如`A extends B`可通过`A.staticMethod`获取`B.staticMethod`。
 
@@ -68,4 +68,45 @@ Object[defineProperty, keys] ->(prototype) Object.prototype[constructor:Object;t
 Date[now, parse] ->(prototype) Date.prototype[constructor:Date;toString:function;getDate:function]
                                                     | [[Prototype]]
                                                 new Date()
+```
+
+### 类检查`instanceof`
+`instanceof`检查实例的原型链上是否有对应的类。也可以通过`Symbol.hasInstance`来定制相关的逻辑。
+`obj instanceof Class`的内在逻辑是：
+1. 如果类有静态方法`Symbol.hasInstance`，就会调用`Class[Symbol.hasInstance](obj)`，此方法应该返回true/false
+```js
+class Animal {
+  static [Symbol.hasInstance](obj) {
+    // if an object has a 'canEat' method, it IS an instance of Class Animal
+    if (obj.canEat) return true;
+  }
+}
+```
+2. 大多数的类没有`Symbol.hasInstance`方法，此时会去检查`Class.prototype`是否出现在`obj`的原型链上
+```js
+obj.__proto__ === Class.prototype?
+obj.__proto__.__proto__ === Class.prototype?
+obj.__proto__.__proto__.__proto__ === Class.prototype?
+...
+```
+注：
++ `Class.prototype.isPrototypeOf(obj)`和`obj instanceof Class`用法相同
++ `Class`的constructor不参与类检查的过程，只有`Class.prototype`起作用
+
+### 类和`toString`
+`Object.prototype.toString.call(xx)`常用于检查某对象的构造类型，通过返回`[object Object/Function...]`等得到xx的构造函数名字。而`Symbol.toStringTag`则可用于定制`toString`的返回值。
+```js
+// set on individual object
+let user = {
+    [Symbol.toStringTag]:"User"
+};
+Object.prototype.toString.call(user);// [object User]
+
+// set on class prototype
+class Animal {}
+let rabbit = new Animal();
+Object.prototype.toString.call(rabbit);// [object Object]
+
+Animal.prototype[Symbol.toStringTag] = "Animal";
+Object.prototype.toString.call(rabbit);// [object Animal]
 ```
