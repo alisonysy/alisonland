@@ -174,3 +174,8 @@ The difference between 4 blend modes:
 + Equivalently sized JavaScripts and images have very different costs when page's loading. Images usually **don’t block** the main thread or prevent interfaces from getting interactive while being decoded and rasterized. JS however can delay interactivity due to parse, compile and execution costs.
 + Transmission size is critical for low end networks. Parse time is important for CPU bound devices. Keeping these low matters.
 + Vue code-splitting example: [async component?](https://vuejsdevelopers.com/2017/07/03/vue-js-code-splitting-webpack/)
+
+### 18/05/2020
++ Responsive Web Design: dynamically set root `font-size` and use `rem` for components [an experimental approach to RWD](https://css-tricks.com/remux-an-experimental-approach-to-responsive-web-design/).
++ React's inline style and **media query**, making use of `matchMedia` [React's inline style with a custom react hook](https://medium.com/@ttennant/react-inline-styles-and-media-queries-using-a-custom-react-hook-e76fa9ec89f6)
++ React `useReducer` and React-Redux(`createReducer`,`createActions`) in combination
