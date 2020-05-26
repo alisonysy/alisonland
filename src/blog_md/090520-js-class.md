@@ -110,3 +110,40 @@ Object.prototype.toString.call(rabbit);// [object Object]
 Animal.prototype[Symbol.toStringTag] = "Animal";
 Object.prototype.toString.call(rabbit);// [object Animal]
 ```
+
+## Mixins
+在JS中，类只能继承*一个*类/对象，`mixin`可以让类/对象拥有其他对象的方法，而无需继承其他对象。
+实际上，`mixin`通过拷贝方法，把对象的方法拷贝到另一个对象/类上，如`Object.assign(User.prototype,sayHiMixin)`，即在`User.prototype`上得到从`sayHiMixin`上拷贝的方法。
+
+`mixin`也能继承自另一个`mixin`，如：
+```js
+let sayMixin = {
+  say(phrase) {
+    alert(phrase);
+  }
+};
+
+let sayHiMixin = {
+  __proto__: sayMixin, // (or we could use Object.create to set the prototype here)
+
+  sayHi() {
+    // call parent method
+    super.say(`Hello ${this.name}`); // 'super' here calls the method in the prototype of the mixin, i.e. sayMixin, not the prototype of the class
+  },
+  sayBye() {
+    super.say(`Bye ${this.name}`); // 
+  }
+};
+
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+// copy the methods
+Object.assign(User.prototype, sayHiMixin);
+
+// now User can say hi
+new User("Dude").sayHi(); // Hello Dude!
+```

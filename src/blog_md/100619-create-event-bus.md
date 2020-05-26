@@ -33,6 +33,13 @@ function idGenerator(){
     return lastIndex
   }
 }
+// or use generator to create unique id
+function *idGenerator(){
+  let i=0;
+  while(true){
+    yield i++;
+  }
+}
 const getIndex = idGenerator()
 ```
 ```js
@@ -154,4 +161,53 @@ console.log(eventBus.subscriptions["loaded"]["1"]);
 a.unsubscribe();
 
 console.log(eventBus.subscriptions["loaded"]["1"]);
+```
+
++ 把eventBus用作mixin
+```js
+let eventMixin = {
+  on(event,handler){
+    if(!this._eventHandlers) this._eventHandlers = {};
+    if(!this._eventHandlers[event]){
+      this._eventHandlers[event] = [];
+    }
+    this._eventHandlers[event].push(handler);
+  }
+
+  off(event,handler){
+    let handlers = this._eventHandlers? this._eventHandlers[event] ? this._eventHandlers[event] : undefined : undefined;
+    if(!handlers) return;
+    for(let i=0;i<handlers.length;i++){
+      if(handlers[i] === handler){
+        handlers.splice(i--,1); // notice that 'i--' here enables the loop to examine the next item of the newly deleted one
+      }
+    }
+  }
+
+  trigger(event,...args){
+    if(!this._eventHandlers || !this._eventHandlers[event]){
+      return;
+    }
+
+    this._eventHandlers[event].forEach(handler => handler.apply(this,args));
+  }
+}
+
+// using eventMixin
+class Menu {
+  choose(value) {
+    this.trigger("select", value);
+  }
+}
+// Add the mixin with event-related methods
+Object.assign(Menu.prototype, eventMixin);
+
+let menu = new Menu();
+
+// add a handler, to be called on selection:
+menu.on("select", value => alert(`Value selected: ${value}`));
+
+// triggers the event => the handler above runs and shows:
+// Value selected: 123
+menu.choose("123");
 ```
