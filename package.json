@@ -10,7 +10,7 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "github-markdown-css": "^3.0.1",
-    "highlight.js": "^9.15.9",
+    "highlight.js": "^10.4.1",
     "jquery": "^3.4.1",
     "leancloud-storage": "^3.13.2",
     "material-design-icons-iconfont": "^3.0.3",
